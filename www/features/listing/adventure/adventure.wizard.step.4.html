@@ -1,0 +1,101 @@
+<div class="bg_container">
+    <div class="first_section adventure_section">
+      <div class="first_content adventure_content boxItem">1</div>
+      <div class="second_content adventure_content boxItem" ng-class="{'active' : as4c.activeview == 4}">2</div>
+      <div class="third_content adventure_content boxItem" ng-class="{'active' : as4c.activeview == 4}">3</div>
+      <div class="fourth_content rt_content adventure_content boxItem" ng-class="{'active' : as4c.activeview == 4}">4</div>
+    </div>
+   <!-- <div class="stage_buttons first_stage_btn">
+      <a href="#">What's your adventure called?</a>
+    </div> 
+     <div class="stage_buttons second_stage_btn">
+      <a href="#">Upload images of your adventure</a>
+    </div> 
+    <div class="stage_buttons third_stage_btn">
+      <a href="#">Describe your adventure</a>
+    </div>
+  	<div class="stage_buttons fourth_stage_btn">
+      <a href="#">Set price and other details</a>
+    </div> -->
+    <div class="ad_stage_buttons ad_fourth_stage_btn">
+      <a href="#">Choose listing options</a>
+    </div>
+  </div>
+
+<div id="ContentPane" class="container-fluid">
+  <form id="AdventureWizard" name="step4AdventureListingForm" class="no-bottom-nav ">
+    <!-- <div class="progress wizard-progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" style="width: 100%">
+	<em>4 of 4</em>
+      </div>
+    </div>
+    <p class="lead text-center">Choose listing options</p>
+    <hr/> -->
+    <div class="listing-preview well well-sm clearfix rt_adventure_stepfour">
+      <div class="image" ng-style="{'background-image':'url(' + as4c.model.images[0].url  + ')'}"></div>
+      <div class="name rt_option_color rt_adventure_name"><strong>Adventures</strong></div>
+      <div class="category rt_label_common_color rt_adventure_type small"><span ng-bind='as4c.model.category.sub'></span>
+	<i class="fa fa-angle-right"></i><span ng-bind='as4c.model.category.subsub'></span>
+      </div>
+		</div>
+		<div class="price small rt_option_color rt_step_four_amount text-muted"><span ng-bind='as4c.model.price|currency:"$"'></span></div>    <div class="panel panel-default">
+				<hr class="spacer"/>
+      <ul class="list-group rt_wizard_page5_list_div">
+				<li class="list-group-item small rt_wizard_page5_list">
+					<label class="rt_label_common_color">
+						<input type="checkbox" name="optionShowcaseListing" ng-model="as4c.model.options.showcase">
+						<strong class="rt_wizard_page5_list_lbl">Showcase Listing</strong>
+					</label>
+					+<span class="rt_wizard_page5_list_lbl_em" ng-bind='as4c.adventuresOptionsPrices.showcase.price | currency:"$"'></span>
+					<div class="rt_wizard_page5_list_lbl_sub">Listing is randomly shown on the ReelTrail home page</div>
+				</li>
+				<li class="list-group-item small rt_wizard_page5_list">
+					<label class="rt_label_common_color">
+						<input type="checkbox" name="optionHighlight" ng-model="as4c.model.options.highlight">
+						<strong class="rt_wizard_page5_list_lbl">Highlight</strong>
+					</label>
+				+<span class="rt_wizard_page5_list_lbl_em" ng-bind='as4c.adventuresOptionsPrices.highlight.price | currency:"$"'></span>
+					<div class="rt_wizard_page5_list_lbl_sub">Listing has highlighted color in lists</div>
+				</li>
+				<li class="list-group-item small rt_wizard_page5_list">
+					<label class="rt_label_common_color">
+						<input type="checkbox" name="optionBoldfaceTitle" ng-model="as4c.model.options.boldface">
+						<strong class="rt_wizard_page5_list_lbl">Boldface Title</strong>
+					</label>
+				+<span class="rt_wizard_page5_list_lbl_em" ng-bind='as4c.adventuresOptionsPrices.boldface.price | currency:"$"'></span>
+					<div class="rt_wizard_page5_list_lbl_sub">Listing title is <strong class="rt_wizard_page5_list_lbl">boldfaced</strong class="rt_wizard_page5_list_lbl"> in lists</div>
+				</li>
+				<li class="list-group-item small rt_wizard_page5_list">
+					<label class="rt_label_common_color">
+						<input type="checkbox" name="optionViewCounter" ng-model="as4c.model.options.viewCounter">
+						<strong class="rt_wizard_page5_list_lbl">View Counter</strong>
+					</label>
+					+<span class="rt_wizard_page5_list_lbl_em" ng-bind='as4c.adventuresOptionsPrices.viewCounter.price | currency:"$"'></span>
+					<div class="rt_wizard_page5_list_lbl_sub">See how many times your listing has been viewed</div>
+				</li>
+      </ul>
+      <!-- <div class="panel-footer">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" id="agreeListingOptionsNoRefund" name="agreeListingOptionsNoRefund" ng-model="as4c.agreeListingOptionsNoRefund" />
+						<div class="rt_option_color rt_adventure_name">
+								I understand that Listing Options are non-refundable.
+						</div>
+					</label>
+				</div>
+      </div> -->
+    </div>
+    <hr class="spacer"/>
+    <!-- <div class="row tighter">
+      <div class="col-xs-7">
+				<button class="btn btn-link" ng-click="as4c.back()"><i class="fa fa-arrow-left"></i> Back</button>
+      </div>
+      <div class="col-xs-5"> -->
+				<div class="rt_wizard_btn_div">
+					<button class="btn rt_wizard_btn" ng-click="as4c.list($event)">List</button>
+				</div>
+				<!-- ng-disabled="as4c.agreeListingOptionsNoRefund===false" -->
+      <!-- </div>
+    </div> -->
+  </form>
+</div>

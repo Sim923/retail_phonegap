@@ -1,0 +1,106 @@
+<div id="ContentPane" class="container-fluid">
+  <form id="ProfileSellerSettings" name="profileSellerSettingsEdit">
+    <div ng-show="pssc.ready()">
+      <fieldset>
+        <legend>Funding Destination</legend>
+        <div class="form-group">
+          <label for="type" class="control-label small">Funding Information</label>
+          <select cordova-keyboard id="type" class="form-control input-sm" ng-model="pssc.model.funding.type">
+            <option value="bank">Bank Account</option>
+            <option value="email">Email Address</option>
+            <option value="mobile_phone">Mobile Number</option>
+	  </select>
+        </div>
+	<div ng-show="pssc.model.funding.type==='bank'">
+          <div class="form-group">
+            <label class="control-label small">Routing Number</label>
+            <input type="text" cordova-keyboard class="form-control input-sm" placeholder="ex.: 1234567890" ng-disabled='pssc.isEdittingAccount===false' ng-model='pssc.model.funding.routingNumber'/>
+          </div>
+          <div class="form-group">
+            <label class="control-label small">Account Number</label>
+            <input type="text" cordova-keyboard class="form-control input-sm" placeholder="ex.: 1234567890" ng-show='pssc.isEdittingAccount' ng-model='pssc.model.funding.accountNumber'/>
+            <input type="text" class="form-control" value="******7890" disabled="disabled" ng-hide='pssc.isEdittingAccount' ng-model='pssc.model.funding.accountNumberLast4Digits'/>
+          </div>
+	</div>
+	<div ng-show="pssc.model.funding.type==='email'">
+          <div class="form-group">
+            <label class="control-label small">Email Address</label>
+            <input type="email" cordova-keyboard class="form-control input-sm" placeholder="mail@example.com" ng-disabled='pssc.isEdittingAccount===false' ng-model='pssc.model.funding.emailAddress'/>
+          </div>
+	</div>
+	<div ng-show="pssc.model.funding.type==='mobile_phone'">
+          <div class="form-group">
+            <label class="control-label small">Mobile Number</label>
+            <input type="tel" cordova-keyboard class="form-control input-sm" placeholder="ex.: +1 234 567 8901" ng-disabled='pssc.isEdittingAccount===false' ng-model='pssc.model.funding.mobileNumber'/>
+          </div>
+	</div>
+      </fieldset>
+      <div class="row tighter">
+        <div class="col-xs-4">
+          <button class="btn btn-warning btn-block" ng-click='pssc.funding.edit()'>Change</button>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-primary btn-block" ng-click="pssc.funding.save()" ng-disabled="pssc.isProcessing===true || pssc.isEdittingAccount===false">Update</button>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-warning btn-block" ng-click='pssc.funding.cancel()' ng-disabled="pssc.isEdittingAccount===false">Cancel</button>
+        </div>
+      </div>
+      <div class="row tighter" ng-hide='pssc.model.funding.status===""'>
+	<label class="control-label col-sm-3">Status</label>
+	<div class="col-sm-9">
+	  <p class="form-control-static text-warning" ng-show='pssc.model.funding.status==="pending"'>Pending</p>
+	  <p class="form-control-static text-success" ng-show='pssc.model.funding.status==="active"'>Active</p>
+	  <p class="form-control-static text-success" ng-show='pssc.model.funding.status==="suspended"'>Suspended</p>
+	  <p class="form-control-static text-success" ng-show='pssc.error' ng-bind='pssc.error'></p>
+	</div>
+      </div>
+      <hr />
+      <fieldset>
+        <legend>Taxify API</legend>
+        <h4 class="text-center">File Accurately and On Time in Every State</h4>
+	<p class="text-center">Avoid sales tax gaps, late fees and audits by automating sales tax compliance on Taxify's easy self-service platform.</p>
+	<hr class="spacer">
+	<div class="row tighter small">
+	  <div class="col-xs-6 text-center">
+	    <p><i class="fa fa-percent fa-5x text-success"></i></p>
+	    <p>
+	      <b>Real-Time Tax Rates</b><br>
+	      <small>Get up-to-date and accurate tax rates in over 14,000 state and local jurisdictions.</small>
+	    </p>
+	  </div>
+	  <div class="col-xs-6 text-center">
+	    <p><i class="fa fa-file-o fa-5x text-success"></i></p>
+	    <p>
+	      <b>Print-Ready Tax Forms</b><br>
+	      <small>Eliminate human errors by generating ready-to-sign forms for any state.</small>
+	    </p>
+	  </div>
+	</div>
+	<div class="row tighter small">
+	  <div class="col-xs-6 text-center">
+	    <p><i class="fa fa-check-circle-o fa-5x text-success"></i></p>
+	    <p>
+	      <b>Automated Filing &amp; Maintenance</b><br>
+	      <small>No more paper. No checks. File and pay tax in every state without licking a stamp.</small>
+	    </p>
+	  </div>
+	  <div class="col-xs-6 text-center">
+	    <p><i class="fa fa-bar-chart-o fa-5x text-success"></i></p>
+	    <p>
+	      <b>Flexible Reporting &amp; Audit Trail</b><br>
+	      <small>Never get caught unprepared. Taxify gives you live access to transactions, past reports and more.</small>
+	    </p>
+	  </div>
+	</div>
+	<p class="text-center"><a href="https://taxify.co" target="_blank" class="btn btn-primary">Sign Up for Taxify</a></p>
+	<hr class="spacer">
+        <div class="form-group">
+          <label class="control-label small">API Key</label>
+          <input type="text" cordova-keyboard class="form-control input-sm" placeholder="" name="TaxifyAPIKey" ng-model="pssc.model.taxify.apiKey" />
+        </div>
+        <button class="btn btn-primary btn-block" ng-click="pssc.taxify.save()">Save</button>
+      </fieldset>
+    </div>
+  </form>
+</div>

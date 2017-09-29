@@ -1,0 +1,9 @@
+/*Signup page custom css*/
+
+.signup_cont {
+    background-image: url('../../img/login_bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 50% 0;
+}

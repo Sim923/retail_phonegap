@@ -1,0 +1,50 @@
+.rt_subtitle_div{
+    background: #062C40;
+    height: 50px;
+    padding-top: 15px; 
+}
+.rt_forgot_main_div{
+    padding: 0 20px;
+}
+.rt_forgot_input input::-webkit-input-placeholder{
+    color: black !important;
+    font-size: 18px;
+}
+.rt_forgot_input .rt_forgot_email_input{
+    padding: 6px 12px;
+    width: 100%;
+    padding-bottom: 20px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: black;
+    border:  0;
+    border-bottom:  1px solid #ccc;
+    background-color: transparent;
+}
+    .rt_letus_lbl{
+    color: #379BDA;
+    font-size: 17px;
+    margin: 0;
+}
+.rt_provideus_lbl{
+    color: #379BDA;
+    font-size: 18px;
+    margin: 20px 0;
+}
+.rt_usename_lbl{
+    color: #669900;
+    font-size: 18px;
+    margin: 20px 10px;
+}
+.rt_send_email_btn_div{
+    text-align: center;
+}
+.rt_send_email_btn{
+    width: 180px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 100px;
+    background: #669900;
+    color: #fff;
+    }

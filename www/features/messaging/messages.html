@@ -1,0 +1,79 @@
+<div class="subscription-list list-group rt_listgroup rt_messaging_selected_USer">
+	<div class="subscription-item list-group-item ">
+		<div class="wrapper rt_message_item">
+			<div class="subscription-badge">
+				<img  ng-src="img/defaultImage.png" class="img-circle" width="45">
+			</div>
+			<div class="subscription-summary rt_content_subscription">
+				<h5 class="name rt_usename_name"><span>User's Real Name </span> &nbsp;&nbsp;&nbsp;<span>
+					<img class="rt_messaging_enable_con" src="icon/active_icon.png">
+					<!-- <img class="rt_messaging_enable_con" src="icon/inactive_icon.png"> -->
+				</span></h5>
+				<div class="details small rt_bold_text_color">
+					<span class="rt_light_text_color">Listing Name</span>
+				</div>
+				<!-- <a ui-sref="profile.fees" class="text-info smaller">Learn More &hellip;</a> -->
+			</div>
+		</div>
+	</div>
+</div>
+<div id="ContentPane" class="container-fluid">
+  <div id="Messaging">
+    <div id="MessageList">
+      <div class="tab-content">
+				<div role="tabpanel" class="tab-pane fade in active" id="tabAllMessages" ng-show="mtc.isVisible">
+					<div class="alert alert-info" ng-show="mtc.threads.length===0">
+						You have no messages yet.
+					</div>
+					<div class="messaging-list list-group" ng-hide="mtc.threads.length===0">
+						<div class="messaging-item list-group-item clearfix" ng-repeat="thread in mtc.threads | orderBy:'-lastUpdated'">
+							<div class="user-name">
+					<div class="participant" ng-repeat="participant in thread.participants | filter:{username : '!' + mtc.username}" ng-click="mtc.messages(participant.username, participant._id, thread._id)">
+						<span class="profile-thumbnail" ng-style="{'background-image':'url(' + participant.profileImage  + ')'}"></span>
+						<span ng-bind='participant.username'></span>
+					</div>
+							</div>
+							<div class="snippet text-muted small">
+					<div ng-repeat="participant in thread.participants | filter:{username : '!' + mtc.username}">
+						<i class="fa fa-quote-left"></i> <span ng-bind="thread.messages[0].message"></span>
+					</div>
+							</div>
+							<div class="timestamp text-muted smaller" ng-bind="thread.lastUpdated | date:'MM/dd/yyyy - h:mma'"></div>
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+    <div id="MessageThread">
+      <div class="messaging-conversation">
+				<div class="messaging-message messaging-received panel panel-default small"
+						ng-repeat="m in mtc.thread"
+						ng-class="{
+								'messaging-message':true,
+								'messaging-received':mtc.username==m.senderId.username,
+								'messaging-sent':mtc.username!==m.senderId.username,
+								'panel':true,
+								'panel-default':true,
+								'small':true
+								}">
+					<div class="panel-body">
+						<div class="body"><span ng-bind="m.message"></span></div>
+						<small class="timestamp text-muted"><span ng-bind="m.timestamp | date:'MM/dd/yyyy - h:mma'"></span></small>
+					</div>
+				</div>
+      </div>
+      <div class="messaging-compose rt_messaging_compose small">
+				<div class="row tighter">
+					<div class="col-xs-10">
+						<!-- <textarea class="form-control input-sm" rows="3" placeholder="Type your message here, tap &lsquo;return&rsquo; to send." ng-enter='mtc.send()' ng-model="mtc.text" cordova-keyboard></textarea> -->
+						<input type="text" cordova-keyboard name='message' class="form-control rt_message_write_box input-sm" ng-required="true" placeholder="Type your message here" ng-enter='mtc.send()' ng-model='mtc.text' cordova-keyboard>
+					</div>
+					<div class="col-xs-2 rt_message_send_btn">
+						<!-- <button type="button" name="button" class="btn btn-success btn-block btn-sm" ng-click="mtc.send()"><i class="fa fa-arrow-right fa-2x"></i></button> -->
+						<i class="fa fa-paper-plane" aria-hidden="true"></i>
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="rt_ad_slider">
+  <md-card class="item-carousel" layout="column" layout-align="center center" md-swipe-left="adc.onSwipeLeft()" md-swipe-right="adc.onSwipeRight()">
+    <jk-carousel
+       data="adc.model.images"
+       item-template-url="'features/details/template/item-image-template.html'"
+       max-width="500px"
+       max-height="500px">
+    </jk-carousel>
+  </md-card>
+</div>
+<div class="rt_ad_price_title_cont">
+  <div class="row listing-price-details">
+    <div class="col-xs-12 listing-price">
+      <div class="text-center">
+        <strong class="listing-item-price strong">$<span ng-bind='adc.model.price|number:2'></span></strong>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="ContentPane" class="container-fluid rt_ad_content_pane">
+  <div id="ListingDetails">
+    <div class="rt_ad_message_seller_btn_cont">
+      <div class="">
+        <button class="btn rt_ad_ms_btn">Message Seller</button>
+      </div>
+    </div>
+    <!-- <hr class="spacer spacer-xs"/>
+    <p class="listing-name text-center">
+      <span ng-bind='adc.model.title'></span><br>
+      <span class="smaller text-muted">Item ID: <span ng-bind='adc.adventureId'></span></span>
+    </p> 
+    <hr class="spacer spacer-sm"/>
+    <button type="button" class="btn btn-block btn-lg btn-primary"  ng-hide="adc.isItemOwnedByUser()"><i class="fa fa-comment"></i> Message Seller</button>
+    <hr class="spacer"/> -->
+    <dl class="listing-information">
+      <dt class="rt_ad_title">Category</dt>
+      <dd class="listing-information-category rt_ad_value">
+      <span ng-bind="adc.model.categories[1].name"></span>
+      <i class="fa fa-angle-right"></i> <span ng-bind="adc.model.categories[2].name"></span>
+      </dd>
+      <!-- <dt>ID</dt>
+      <dd class="listing-information-id"><span ng-bind="adc.adventureId"></span></dd> -->
+      <dt class="rt_ad_title">Duration</dt>
+      <dd class="listing-information-duration rt_ad_value"><span ng-bind='adc.model.days'></span> days</dd>
+      <dt class="rt_ad_title">Intensity</dt>
+      <dd class="listing-information-intensity rt_ad_value"><span ng-bind='adc.model.intensity'></span> out of 5</dd>
+      <dt class="rt_ad_title">Description</dt>
+      <dd class="listing-information-description rt_ad_value" ng-bind='adc.model.description'></dd>
+      <!-- <dt>YouTube Link</dt>
+      <dd class="listing-information-description" ng-bind='adc.model.youtubeLink'></dd> -->
+      <dt class="rt_ad_title">Posted On</dt>
+      <dd class="listing-information-date-posted rt_ad_value" ng-bind='adc.model.postedDate|date:"fullDate"'></dd>
+      <dt class="rt_ad_title">Seller</dt>
+      <dd class="listing-information-seller rt_ad_value"><a ui-sref="home.storefront({id:adc.model.postedByUserId._id})"><span ng-bind='adc.model.postedByUserId.username'></span> <span class="text-muted">&rarr;</span></a></dd>
+      <dt class="rt_ad_title">View Count</dt>
+      <dd class="listing-information-view-count rt_ad_value"></dd>
+      <dt class="rt_ad_title">Location</dt>
+      <dd class="listing-information-location-map-map rt_ad_value">
+      <ng-map map-initialized='adc.mapInit(map)'></ng-map>
+      </dd>
+      <dd>
+        <div class="rt_ad_placename_input">
+          <input type="text" class="form-control rt_ad_custom_inputfiels" placeholder="Enter place name">
+        </div>
+      </dd>
+      <!-- <dd class="listing-information-location-map-location rt_ad_value">
+	    <i class="fa fa-map-marker text-muted"></i>
+	    Address: <span ng-bind="adc.model.location.address"></span>
+      </dd> -->
+    </dl>
+    <div ng-show="adc.isItemOwnedByUser()" class="row tighter">
+      <div class="col-xs-12">
+	       <button class="btn rt_ad_custom_btn_code rt_ad_edit_btn" ng-click='adc.edit()'>Edit</button>
+      </div>
+      <div class="col-xs-12">
+	       <button class="btn rt_ad_custom_btn_code rt_ad_refund_btn" ng-click='adc.refund()'>Refund</button>
+      </div>
+      <div class="col-xs-12">
+	       <button class="btn rt_ad_custom_btn_code rt_ad_remove_btn" ng-click='adc.remove()'>Remove</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<nav id="BottomNav" class="navbar navbar-inverse navbar-fixed-bottom" ng-show="bc.isVisible()">
+  <div class="container-fluid">
+    <p class="nav-icon nav-icon-browse navbar-text" >
+      <a ui-sref='home' ng-class="{'active':(bc.status==='home')}" ng-click="bc.makeactive(1)" ng-init="bc.makeactive(1)">
+          &nbsp;&nbsp;
+          <!-- <i class="fa fa-th-large"></i> -->
+          <img ng-if="bc.step == 1" class="rt_footer_image" src="icon/categeory-select.png" />
+          <img ng-if="bc.step != 1" class="rt_footer_image" src="icon/categeory-unselect.png" />
+          <br>
+  <span>&nbsp;&nbsp;CATEGORIES</span>
+      </a>
+      
+    </p>
+    <p class="nav-icon nav-icon-search navbar-text" >
+      <a ui-sref='search' ng-class="{'active':(bc.status==='search')}" ng-click="bc.makeactive(2)" ng-init="bc.makeactive(2)">
+  <!-- <i class="fa fa-search"></i> -->
+  
+      <img ng-if="bc.step == 2" class="rt_footer_image" src="icon/seach-select.png" />
+      <img ng-if="bc.step != 2" class="rt_footer_image" src="icon/seach-unselect.png" />
+      <br>
+      <span>SEARCH</span>
+      </a>
+    </p>
+    <p class="nav-icon nav-icon-sell navbar-text" >
+      <a ui-sref='sell-landing' ng-class="{'active':(bc.status==='sell')}" ng-click="bc.makeactive(3)" ng-init="bc.makeactive(3)">
+  <!-- <i class="fa fa-tag"></i> -->
+  <img ng-if="bc.step == 3" class="rt_footer_image" src="icon/shell-select.png" />
+  <img ng-if="bc.step != 3" class="rt_footer_image" src="icon/shell-unselect.png" />
+  <br>
+  <span>SELL</span>
+      </a>
+    </p>
+    <p class="nav-icon nav-icon-messages navbar-text">
+      <a ui-sref='messaging' ng-class="{'active':(bc.status==='messaging')}"  ng-click="bc.makeactive(4)" ng-init="bc.makeactive(4)">
+  <!-- <i class="fa fa-comments-o"></i> -->
+  <img ng-if="bc.step == 4" class="rt_footer_image" src="icon/message-select.png" />
+  <img ng-if="bc.step != 4" class="rt_footer_image" src="icon/message-unselect.png" />
+  <br> 
+  <span class="badge" ng-show="bc.data.messagesCount > 0" ng-bind="bc.data.messagesCount">0</span>
+  <span>MESSAGES</span>
+</a>
+    </p>
+    <p class="nav-icon nav-icon-account navbar-text" >
+      <a ui-sref='profile' ng-class="{'active':(bc.status==='profile')}" ng-click="bc.makeactive(5)" ng-init="bc.makeactive(5)">
+  <!-- <i class="fa fa-user-o"></i>  -->
+  <img ng-if="bc.step == 5" class="rt_footer_image" src="icon/profile-select.png" />
+  <img ng-if="bc.step != 5" class="rt_footer_image" src="icon/profile-unselect.png" />
+  <br>
+  <span class="badge" ng-show="bc.data.notificationCount > 0" ng-bind="bc.data.notificationCount">0</span>
+  <span>PROFILE</span>
+      </a>
+    </p>
+  </div>
+</nav>

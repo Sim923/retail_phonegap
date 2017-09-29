@@ -1,0 +1,85 @@
+<div id="ContentPane" class="container-fluid">
+  <form id="Register" name="step2RegisterForm" class="no-bottom-nav">
+    <div class="progress wizard-progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" style="width: 67%">
+	<em>2 of 3</em>
+      </div>
+    </div>
+    <p class="lead text-center">Please provide your address
+      <br><small class="text-muted smaller">for billing and shipping purposes</small>
+    </p>
+    <hr/>
+    <div class="form-group">
+      <label for="line1" class="control-label small">Address</label>
+      <input id="line1" name="line1" type="text" class="form-control input-sm" ng-required="true" placeholder="House number and street" ng-model="rs2c.model.line1">
+      <div class="form-alert" ng-messages="step2RegisterForm.line1.$error" ng-show="step2RegisterForm.line1.$touched && step2RegisterForm.line1.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Address required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="line2" class="control-label small">Apartment / Suite</label> <em class="text-muted small">(optional)</em>
+      <input id="line2" name="line2" type="text" class="form-control input-sm" ng-model="rs2c.model.line2">
+    </div>
+    <div class="form-group">
+      <label for="city" class="control-label small">City</label>
+      <input id="city" name="city" type="text" class="form-control input-sm" ng-required="true" ng-model="rs2c.model.city">
+    </div>
+    <div class="form-group">
+      <div class="row tighter">
+	<div class="col-xs-6">
+	  <label for="state" class="control-label small">State</label>
+	  <select id="state" name="state" class="form-control input-sm" ng-required="true" ng-model="rs2c.model.state">
+	    <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option>
+	    <option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option>
+	    <option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option>
+	    <option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option>
+	    <option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option>
+	    <option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option>
+	    <option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option>
+	    <option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option>
+	    <option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option>
+	    <option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option>
+	    <option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option>
+	    <option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option>
+	    <option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option>
+	    <option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option>
+	    <option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option>
+	    <option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option>
+	    <option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+	  </select>
+	</div>
+	<div class="col-xs-6">
+	  <label for="zipCode" class="control-label small">Zip Code</label>
+	  <input id="zipCode" name="zipCode" type="text" class="form-control input-sm" ng-required="true" ng-model="rs2c.model.zipCode" ng-minlength="5" ng-maxlength="10">
+	  
+	  <div class="form-alert" ng-messages="step2RegisterForm.zip.$error" ng-show="step2RegisterForm.zip.$touched && step2RegisterForm.zip.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Zip Code required.</div>
+	    <div ng-message="minlength" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Zip Code must be at least 5 characters in length.</div>
+	    <div ng-message="maxlength" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Zip Code cannot be over 10 characters in length.</div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone" class="control-label small">Telephone Number</label>
+      <input id="phone" name="phone" type="tel" class="form-control input-sm" ng-required="true" ng-model="rs2c.model.phone" ng-minlength="5" ng-maxlength="15">
+      <div class="form-alert" ng-messages="step2RegisterForm.phone.$error" ng-show="step2RegisterForm.phone.$touched && step2RegisterForm.phone.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Telephone Number required.</div>
+	<div ng-message="minlength" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Telephone Number must be at least 5 characters in length.</div>
+	<div ng-message="maxlength" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Telephone Number cannot be over 15 characters in length.</div>
+      </div>
+    </div>
+    <hr class="spacer"/>
+    <div class="form-group" ng-show='false'>
+      <div class="alert alert-danger">(Error message goes here.)</div>
+    </div>
+    <div class="row tighter">
+      <div class="col-xs-7">
+	<button class="btn btn-link" ng-click='rs2c.back()'><i class="fa fa-arrow-left"></i> Back</button>
+      </div>
+      <div class="col-xs-5">
+	<button class="btn btn-info btn-block" ng-disabled="step2RegisterForm.$invalid" ng-click='rs2c.next()'>Next <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,166 @@
+<div class="bg_container">
+  <div class="first_section item_section">
+    <div class="first_content item_content boxItem">1</div>
+    <div class="second_content rt_content item_content boxItem" ng-class="{'active' : is2c.activeview == 2}">2</div>
+    <div class="third_content item_content boxItem">3</div>
+    <div class="fourth_content item_content boxItem">4</div>
+    <div class="fifth_content item_content boxItem">5</div>
+  </div>
+  <!-- <div class="stage_buttons first_stage_btn">
+    <a href="#">What are you selling?</a>
+  </div>-->
+  <div class="stage_buttons second_stage_btn">
+    <a href="#">Upload images of your item</a>
+  </div>
+  <!-- <div class="stage_buttons third_stage_btn">
+    <a href="#">Describe your item</a>
+  </div>
+  <div class="stage_buttons fourth_stage_btn">
+    <a href="#">Set price and other details</a>
+  </div>
+  <div class="stage_buttons fifth_stage_btn">
+    <a href="#">Choose Listing option</a>
+  </div> -->
+</div>
+
+<div id="ContentPane" class="container-fluid">
+<div id="ImageCropper" class="full-overlay" ng-show="is2c.cropper.visible===true">
+  <button class="btn btn-link btn-lg text-danger close-overlay" ng-click='is2c.cropper.close()'><i class="fa fa-ban"></i></button>
+  <nc-darkroom 
+    image='is2c.cropper.image.base64data' 
+    max-width='600' 
+    max-height='600' 
+    on-crop='is2c.cropper.crop(image)' 
+    history='true' 
+    crop='{}' 
+    rotate='true' 
+    save='false'>
+  </nc-darkroom>
+  <button ng-click="is2c.cropper.upload()">SAVE IMAGE</button>
+</div>
+<!-- <img style="width: 100px; height: 100px" ng-src="{{is2c.cropper.image}}" /> -->
+</div>
+<!-- CAMERA MODAL -->
+<div id="CameraModal" ng-show="is2c.cameraSelector">
+<!-- <div class="wrapper panel panel-default">
+  <div class="panel-heading">
+    <a href="" class="pull-right" ng-click="is2c.closeSelector()">
+<i class="fa fa-remove fa-lg"></i>
+    </a>
+    <h4 class="panel-title">Add an Image</h4>
+  </div>
+  <div class="panel-body">
+    <hr class="spacer spacer-xs" />
+    <div class="options row text-center">
+<div class="col-xs-6">
+  <a href="" class="text-primary" ng-click="is2c.getPhoto($event)">
+    <i class="fa fa-camera fa-5x"></i><br/>
+    <span class="smaller">Take Photo</span>
+  </a>
+</div>
+<div class="col-xs-6">
+  <a href="" class="text-warning" is2c.getFromGallery($event)>
+    <i class="fa fa-image fa-5x"></i><br/>
+    <span class="smaller">Upload Existing</span>
+  </a>
+</div>
+    </div>
+  </div>
+</div> -->
+</div>
+<!-- /CAMERA MODAL -->  
+<form id="ListingWizard" name="step2ItemListingForm" class="no-bottom-nav">
+
+<!-- <div class="progress wizard-progress">
+  <div class="progress-bar progress-bar-success" role="progressbar" style="width: 40%">
+    <em>2 of 5</em>
+  </div>
+</div>
+<p class="lead text-center">Upload images of your item</p>
+<hr/> -->
+<!-- ITEM PREVIEW -->
+<div class="rt_wizard_title_background">
+  <!-- keep empty -->
+  <!-- <div class="image"></div> -->
+  <div class="name rt_wizard_title"><strong ng-bind='is2c.model.title'></strong></div>
+  <div class="rt_wizard_subtitle">
+    <span ng-bind='is2c.model.category.main'></span>
+    <i class="fa fa-angle-right"></i> <span ng-bind='is2c.model.category.sub'></span>
+    <i class="fa fa-angle-right"></i> <span ng-bind='is2c.model.category.subsub'></span>
+  </div>
+</div>
+<div class="rt_wizard_Page2_photos_div">
+<div class="rt_wizard_subtitle"><strong>Photos</strong></div>
+<div class="row tighter image-grid" data-as-sortable='is2c.dragControlListeners' data-ng-model='is2c.images._images'>
+  <div class="col-xs-4 col-sm-4 col-md-4 rt_wizard_photo_img_div" ng-repeat='image in is2c.images._images' data-as-sortable-item='is2c.images._images'>
+    <div class="image" ng-style="{'background-image':'url(' + image.url + ')'}" ng-click='is2c.images.edit(image)'>
+        <div class="frosting" ng-show='image.progress<100'></div>
+          <div class="progress" ng-show='image.progress<100'>
+            <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: {{image.progress}}%"></div>
+          </div> 
+          <button class="delete" ng-show='image.progress===100' ng-click='is2c.images.remove(image)'>
+            <span class="delete-icon fa-stack fa-lg text-danger">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+            </span>
+          </button>
+          <div class="drag-handle" data-as-sortable-item-handle>
+          <span ng-bind='image.id'></span>
+        </div>
+      </div>
+  </div>
+  <div class="col-xs-4 col-sm-4 col-md-4 rt_wizard_photo_img_div" ng-hide="is2c.isCordova" flow-name="is2c.control.flow" flow-init flow-name="is2c.control.flow" flow-object='existingFlowObject' flow-files-submitted='is2c.flow.filesSubmitted($files, $event, $flow)' flow-file-success='is2c.flow.fileSuccess($file, $message, $flow)' flow-file-progress='is2c.flow.fileProgress($file, $event, $flow)' flow-file-added='is2c.flow.fileAdded($file, event)' flow-files-added='is2c.flow.filesAdded($files, $event, $flow)' flow-file-retry='is2c.flow.fileRetry($file, $flow)' flow-file-error='is2c.flow.fileError($file, $message, $flow)' flow-error='is2c.flow.error($file, $message, $flow)' flow-complete='is2c.flow.complete($file, $message, $flow)' flow-upload-started='is2c.flow.uploadStarted()' flow-progress='is2c.flow.progress()'>
+    <span class='image'>
+      <span class="camera-icon fa-stack fa-3x" flow-btn>
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+      </span>
+    </span>
+  </div>
+  <div class="col-xs-4 col-sm-4 col-md-4 rt_wizard_photo_img_div" ng-show="is2c.isCordova">
+    <span class='image'>
+      <span class="camera-icon fa-stack fa-3x">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+      </span>
+    </span>
+  </div>	
+</div>
+<div class="form-alert" ng-messages="" ng-show="is2c.images._images.length===0">
+<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Upload at least one (1) image of the item you're selling.</div>
+</div>
+</div>
+
+<div class="rt_wizard_Page2_UploadPhotos_div">
+  <div class="rt_wizard_subtitle"><strong>Upload Photo</strong></div>
+  <div class="wrapper panel panel-default">
+      <div class="panel-body">
+          <div class="col-xs-12 rt_wizard_camera_img_div">
+            <ul class="list-inline">
+              <li class="rt_cam_icon">
+                <a href="" class="text-primary" ng-click="is2c.getPhoto($event)">
+                  <img src="icon/camera_icon.png">
+                </a>
+            </li>
+            <li class="rt_gallery_icon">
+              <a href="" class="text-warning" is2c.getFromGallery($event)>
+                  <img src="icon/gallery_icon.png">
+              </a>
+            </li>
+          </ul>
+          </div>
+      </div>
+    </div>
+</div>
+<div class="row tighter">
+<!-- <div class="col-xs-7">
+  <button class="btn btn-link" ng-click="is2c.back()">
+    <i class="fa fa-arrow-left"></i> Back
+  </button>
+</div> -->
+<div class="rt_wizard_btn_div">
+  <button class="btn rt_wizard_btn" ng-disabled="step2ItemListingForm.$invalid || is2c.upload.done" ng-click="is2c.next()">NEXT</button>
+</div>
+</div>
+</form>
+</div>

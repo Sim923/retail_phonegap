@@ -1,0 +1,91 @@
+.subscription-actions img.rt_select_icon{
+    width: 20px;
+}
+
+.rt_subscription_item{
+    border-bottom: 1px solid #d0d7da;
+    padding-bottom: 5px;
+}
+
+.subscription-list .subscription-item > .wrapper .subscription-summary.rt_content_subscription{
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.list-group.stretch.rt_listgroup{
+    margin-bottom: 5px !important;
+}
+
+.rt_bronze_name{
+    color: #c68433;
+    text-transform: uppercase;
+}
+.rt_silver_name{
+    color: #04202d;
+    text-transform: uppercase;
+}
+
+.rt_bold_text_color strong{
+    color: #04202d;
+}
+
+span.rt_light_text_color{
+    color: #072c3f;
+    font-size: 12px;
+}
+
+h6.rt_label_common_color{
+    text-transform: none;
+}
+
+.rt_subscriptin .rt_cancel_button{
+    width:100% !important;
+    margin-left: 0% !important;
+    font-size: 12px !important;
+}
+
+.rt_btn_labelbar.rt_subscription{
+    background: #1d5977 !important;
+}
+
+.table.rt_subscription_featureds{
+    width: 95%;
+    margin: auto;
+}
+
+.rt_subscription_featureds tr{    
+    border-bottom: 1px solid #fff;
+    background: #f1f1f1;;
+}
+
+.rt_subscription_featureds tr td.align_right{
+    text-align: right;
+    color: #669803;
+ 
+}
+
+.rt_subscription_featureds tr td img{
+    float: left;
+    width: 18px;
+}
+
+.rt_btn_labelbar.rt_subscription:before{
+    border-top: 5px solid #1d5977 !important;
+}
+
+.rt_info_purched_div.rt_select_sub{
+    padding: 0px !important;
+}
+
+h6.rt_available_text.rt_label_common_color{
+    margin-top: -12px;
+    font-size: 14px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 14px !important;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}

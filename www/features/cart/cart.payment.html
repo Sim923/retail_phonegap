@@ -1,0 +1,299 @@
+<div id="ContentPane" class="container-fluid">
+	<form id="ShoppingCart" class="no-bottom-nav">
+		<fieldset>
+			<div class="rt_cp_payment_summary_cont">
+				<div class="rt_cp_ps_title">Payment Summary</div>
+				<div class="panel panel-default">
+					<ul class="list-group">
+						<li class="rt_cp_ps_listing_li " ng-repeat="item in cpc.cart">
+							<div class="row" >
+								<div class="col-xs-8 rt_cp_ps_color">
+									<span class="rt_cp_ps_listing_title" ng-bind="item.listingId.title" ng-click="cpc.goToListing(item);"></span> <span class="quantity smaller text-muted nowrap rt_cp_ps_listing_subtitle">&times; <span data-ng-bind="item.quantity"></span></span>
+								</div>
+								<div class="col-xs-4 text-right rt_cp_ps_color">
+									<div><span ng-bind="item.price*item.quantity*0.01|currency:'$'"></span></div>
+									<div class="smaller text-muted rt_cp_ps_listing_price" ng-show="item.listingId.flatShippingRate>0">Shipping: +<span ng-bind="item.listingId.flatShippingRate*item.quantity*0.01|currency:'$'"></span></div>
+									<div class="smaller text-muted rt_cp_ps_listing_price" ng-show="item.tax>0">Taxes: +<span ng-bind="item.tax*item.quantity|currency:'$'"></span></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="panel-footer rt_cp_ps_panel_footer">
+					<div class="row small">
+						<div class="col-xs-8">
+							<em>Item Subtotal</em>
+						</div>
+						<div class="col-xs-4 text-right">
+							<em class="text-muted"><span data-ng-bind="cpc.subtotal()|currency:'$'"></span></em>
+						</div>
+					</div>
+					<div class="row small">
+						<div class="col-xs-8">
+							<em>Shipping</em>
+						</div>
+						<div class="col-xs-4 text-right">
+							<em class="text-muted" ng-show="cpc.shippingFee()>0"><span ng-bind="cpc.shippingFee()|currency:'$'"></span></em>
+							<em class="text-muted" ng-hide="cpc.shippingFee()>0">(free)</em>
+						</div>
+					</div>
+					<div class="row small" ng-show="cpc.taxes.total>0">
+						<div class="col-xs-8">
+							<em>Tax</em>
+						</div>
+						<div class="col-xs-4 text-right">
+							<em class="text-muted" ng-bind="cpc.taxes.total|currency:'$'"></em>
+						</div>
+					</div>
+					<div class="row small">
+						<div class="col-xs-8">
+							<em>Processing Fee <span class="small text-muted">(2.99% + $0.45)</span></em>
+						</div>
+						<div class="col-xs-4 text-right">
+							<span class="text-muted" ng-bind="cpc.processingFee()|currency:'$'"></span>
+						</div>
+					</div>
+					<hr class="spacer spacer-xs"/>
+					<div class="row rt_cp_ps_total_row">
+						<div class="col-xs-8">
+							<strong>Total</strong>
+						</div>
+						<div class="col-xs-4 text-right">
+							<strong><span class="rt_cp_ps_total_amount" data-ng-bind="cpc.total()|currency:'$'"></span></strong>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+		<div class="rt_cp_shipping_cont">
+			<div class="rt_cp_shipping_title">
+				Shipping Address
+			</div>
+		</div>
+		<!-- <div class="panel panel-default">
+			<div class="panel-heading">
+			<h3 class="panel-title">Shipping Address</h3>
+			</div> -->
+		<div class="panel-body rt_cp_shipping_panel_body">
+			<div>
+				<p><span data-ng-bind="cpc.address.contact"><span></span></span></p>
+			</div>
+			<div>
+				<p><span data-ng-bind="cpc.address.line1"><span></span></span></p>
+			</div>
+			<div ng-show="address.line2">
+				<p><span data-ng-bind="cpc.address.line2"><span></span></span></p>
+			</div>
+			<div>
+				<p>
+					<span data-ng-bind="cpc.address.city"></span>
+					<span data-ng-bind="cpc.address.state"></span>
+					<span data-ng-bind="cpc.address.zip_code"></span>
+				</p>
+				<p><span data-ng-bind="cpc.address.phone"></span></p>
+			</div>
+		</div>
+		<!-- </div> -->
+		<div class="rt_cp_payment_info_cont">
+			<div class="rt_cp_payment_info_title">Payment Information</div>
+		</div>
+		<!-- <div class="panel panel-default">
+			<div class="panel-heading">
+			<legend>Payment Information</legend>
+			</div> -->
+	<div class="panel-body rt_cp_payment_info_panel_body">
+		<div class="form-group">
+			<label class='control-label small' for='payment-type'>Payment Type</label>
+			<select cordova-keyboard name="payment-type" class="form-control" model="cpc.paymentType">
+			<option value="Credit Card">Credit Card</option>
+			<option value="PayPal">PayPal</option>
+			</select>
+		</div>
+		<div ng-show="cpc.paymentType==='Credit Card'">
+			<div class='form-group'>
+				<label class='control-label small' for='card_number'>Card Number</label>
+				<div id='card_number'></div>
+			</div>
+			<div class="form-group">
+				<label class='control-label small' for='expiration_date'>Expiration Date</label>
+				<div id='expiration_date'></div>
+			</div>
+			<div class="form-group">
+				<label class='control-label small' for='cvv'>CVV</label>
+				<div id='cvv'></div>
+			</div>
+			<div class="form-group">
+				<label class='control-label small' for='postal_code'>Postal Code</label>
+				<div id='postal_code'></div>
+			</div>
+		</div>
+	</div>
+		
+		<div class="rt_cp_billing_cont">
+			<div class="rt_cp_billing_title">Billing Address</div>
+		</div>
+	<!-- <div class="panel panel-default">
+		<div class="panel-heading">
+		<label for="billingAddress" class="control-label small">Billing Address</label>
+		</div> -->
+	<div class="panel panel-body rt_cp_billing_panel_body">
+		<div class="form-group">
+			<select cordova-keyboard id="billingAddress" class="form-control input-sm" ng-model='cpc.sameAsShipping' ng-change="changed = cpc.selected(changed)">
+				<option value="sameAsShipping" selected="selected">(Same as Shipping Address)</option>
+				<option value="newAddress">New Address</option>
+			</select>
+			<div ng-show="cpc.sameAsShipping==='sameAsShipping'">
+				<p><span data-ng-bind="cpc.address.contact"></span></p>
+				<p><span data-ng-bind="cpc.address.line1"></span></p>
+				<p ng-show="cpc.address.line2"><span data-ng-bind="cpc.address.line2"></span></p>
+				<p>
+					<span data-ng-bind="cpc.address.city"></span> <span data-ng-bind="cpc.address.state"></span> <span data-ng-bind="cpc.address.zipCode"></span>
+				</p>
+			</div>
+			<div ng-show="cpc.sameAsShipping==='newAddress'" >
+				<div ng-show="changed">
+					<p><span data-ng-bind="cpc.address.contact"></span></p>
+					<p><span data-ng-bind="cpc.address.line1"></span></p>
+					<p ng-show="cpc.address.line2"><span data-ng-bind="cpc.address.line2"></span></p>
+					<p>
+						<span data-ng-bind="cpc.address.city"></span> <span data-ng-bind="cpc.address.state"></span> <span data-ng-bind="cpc.address.zipCode"></span>
+					</p>
+					<div>
+						<button class="btn btn-warning" ng-click="changed = cpc.selected(changed)">Change</button>
+					</div>
+				</div>
+				<form class="" name="billingAddressForm" id="billingAddressForm" novalidate ng-hide="changed">
+					<div class="form-group">
+						<label class="control-label small">Name</label>
+						<input name="name" id="name" class="form-control" type="text" cordova-keyboard placeholder="First and Last Name" ng-maxlength="24" ng-required="true" ng-model="cpc.address.contact"/>
+						<div ng-messages="billingAddressForm.name.$error" ng-show="billingAddressForm.name.$touched" class="form-alert">
+							<div ng-message="required" class="text-danger smaller">Name cannot be blank.</div>
+							<div ng-message="minlength" class="text-danger smaller">Name must be at least 8 characters in length.</div>
+							<div ng-message="maxlength" class="text-danger smaller">Name cannot be over 24 characters in length.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label small">Address</label>
+						<input name="address1" id="address1" class="form-control" type="text" cordova-keyboard ng-minlength="12" ng-maxlength="32" ng-required="true" ng-model="cpc.address.line1"/>
+						<div ng-messages="billingAddressForm.address1.$error" ng-show="billingAddressForm.address1.$touched" class="form-alert">
+							<div ng-message="required" class="text-danger smaller">Address cannot be blank.</div>
+							<div ng-message="minlength" class="text-danger smaller">Address must be at least 12 characters in length.</div>
+							<div ng-message="maxlength" class="text-danger smaller">Address cannot be over 32 characters in length.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label small">Apt / Suite</label>
+						<input class="form-control" type="text" cordova-keyboard placeholder="(Optional)" ng-disabled='billing.address.verified' ng-model="cpc.address.line2" />
+					</div>
+					<div class="form-group">
+						<label class="control-label small">City</label>
+						<input name="city" id="city" class="form-control" type="text" cordova-keyboard ng-minlength="3" ng-maxlength="24" ng-required="true" ng-model="cpc.address.city"/>
+						<div ng-messages="billingAddressForm.city.$error" ng-show="billingAddressForm.city.$touched" class="form-alert">
+							<div ng-message="required" class="text-danger smaller">City cannot be blank.</div>
+							<div ng-message="minlength" class="text-danger smaller">City must be at least 3 characters in length.</div>
+							<div ng-message="maxlength" class="text-danger smaller">City cannot be over 24 characters in length.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label small">State</label>
+						<select cordova-keyboard class="form-control" ng-model="cpc.address.state">
+							<option value="AL">AL</option>
+							<option value="AK">AK</option>
+							<option value="AZ">AZ</option>
+							<option value="AR">AR</option>
+							<option value="CA">CA</option>
+							<option value="CO">CO</option>
+							<option value="CT">CT</option>
+							<option value="DE">DE</option>
+							<option value="DC">DC</option>
+							<option value="FL">FL</option>
+							<option value="GA">GA</option>
+							<option value="HI">HI</option>
+							<option value="ID">ID</option>
+							<option value="IL">IL</option>
+							<option value="IN">IN</option>
+							<option value="IA">IA</option>
+							<option value="KS">KS</option>
+							<option value="KY">KY</option>
+							<option value="LA">LA</option>
+							<option value="ME">ME</option>
+							<option value="MD">MD</option>
+							<option value="MA">MA</option>
+							<option value="MI">MI</option>
+							<option value="MN">MN</option>
+							<option value="MS">MS</option>
+							<option value="MO">MO</option>
+							<option value="MT">MT</option>
+							<option value="NE">NE</option>
+							<option value="NV">NV</option>
+							<option value="NH">NH</option>
+							<option value="NJ">NJ</option>
+							<option value="NM">NM</option>
+							<option value="NY">NY</option>
+							<option value="NC">NC</option>
+							<option value="ND">ND</option>
+							<option value="OH">OH</option>
+							<option value="OK">OK</option>
+							<option value="OR">OR</option>
+							<option value="PA">PA</option>
+							<option value="RI">RI</option>
+							<option value="SC">SC</option>
+							<option value="SD">SD</option>
+							<option value="TN">TN</option>
+							<option value="TX">TX</option>
+							<option value="UT">UT</option>
+							<option value="VT">VT</option>
+							<option value="VA">VA</option>
+							<option value="WA">WA</option>
+							<option value="WV">WV</option>
+							<option value="WI">WI</option>
+							<option value="WY">WY</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="control-label small">Zip Code</label>
+						<input name="zip" id="zip" class="form-control" type="text" cordova-keyboard ng-minlength="5" ng-maxlength="10" ng-required="true" ng-model="cpc.address.zipCode" />
+						<div ng-messages='billingAddressForm.zip.$error' ng-show='billingAddressForm.zip.$touched' class="form-alert">
+							<div ng-message="required" class="text-danger smaller">Zip code cannot be blank.</div>
+							<div ng-message="minlength" class="text-danger smaller">Zip code must be at least 5 characters in length.</div>
+							<div ng-message="maxlength" class="text-danger smaller">Zip code cannot be over 10 characters in length.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label small">Phone</label>
+						<input name="phone" id="phone" class="form-control" type="text" cordova-keyboard ng-minlength="10" ng-maxlength="24" ng-required="true" ng-model="cpc.address.phone" />
+						<div ng-messages="billingAddressForm.phone.$error" ng-show="billingAddressForm.phone.$touched" class="form-alert">
+							<div ng-message="required" class="text-danger smaller">Phone cannot be blank.</div>
+							<div ng-message="minlength" class="text-danger smaller">Phone must be at least 10 characters in length.</div>
+							<div ng-message="maxlength" class="text-danger smaller">Phone cannot be over 24 characters in length.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label small">Email</label>
+						<input name="email" id="email" class="form-control" type="email" cordova-keyboard ng-minlength="10" ng-maxlength="64" ng-required="true" ng-model="cpc.address.email" />
+						<div ng-messages="billingAddressForm.email.$error" ng-show="billingAddressForm.email.$touched" class="form-alert">
+							<div ng-message="required" class="text-danger smaller">Email cannot be blank.</div>
+							<div ng-message="email" class="text-danger smaller">Email not valid format.</div>
+							<div ng-message="minlength" class="text-danger smaller">Email must be at least 10 characters in length.</div>
+							<div ng-message="maxlength" class="text-danger smaller">Email cannot be over 64 characters in length.</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-warning" ng-disabled="billingAddressForm.$invalid" ng-click="changed = true">Change</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- </div> -->
+	<!-- <hr class="spacer"/> -->
+	<div class="rt_cp_footer_btn">
+		<button class="btn rt_cp_placeorder_btn" ng-click='cpc.purchase()'>Place Order</button>
+	</div>
+	<!-- <div class="row">
+		<div class="col-xs-12">
+		<button class="btn btn-primary btn-block btn-lg" ng-click='cpc.purchase()'>Place Order</button>
+		</div>
+		</div> -->
+	</form>
+</div>

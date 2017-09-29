@@ -1,0 +1,106 @@
+.rt_item_edit_page_div{
+    margin: 20px 0;
+}
+.rt_item_edit_page_div label{
+    font-size: 18px;
+    color: #579301;
+}
+.rt_item_edit_page_div input, .rt_item_edit_page_div select{
+    border-bottom: 1px solid #ccc;
+    height: 50px;
+    color: black;
+    font-size: 16px;
+}
+.rt_item_edit_page_div textarea{
+    border-bottom: 1px solid #ccc;
+    color: black;
+    height: 100px;
+}
+.rt_item_edit_details_btn {
+    position: relative;
+    padding: 5px;
+    margin: 20px auto;
+    background: #1d5977;
+    display: block;
+    width: 100%;
+    height: 35px;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    text-transform: none;
+    font-size: 14px;
+}
+.rt_item_edit_details_btn:before {
+	content: "";
+	position: absolute;
+	border-top: 5px solid #1d5977;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50% , 0);
+}
+.rt_item_edit_page_check_box_div_right{
+    text-align: right;
+    margin-top: -15px;
+}
+.rt_item_edit_page_check_box_div_left{
+    margin-top: -15px;
+}
+.rt_item_edit_page_check_box_div_right label, .rt_item_edit_page_check_box_div_left label{
+    font-size: 16px
+}
+.rt_ie_original_lbl{
+    margin-top: 100px;
+}
+.rt_item_edit_page_div .rt_ie_custom_inputgroup_addon {
+    background: transparent;
+    font-size: 16px;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+}
+.rt_item_edit_page_div .rt_ie_inputgroup input {
+    padding-left: 2px;
+    height: 50px;
+    font-size: 16px;
+}
+.rt_ie_item_div .rt_ie_item_ .rt_ie_list_items{
+    border-bottom: 1px solid #ccc;
+}
+.rt_ie_list_items label{
+    color: #579301;
+    font-size: 16px;
+}
+.rt_ie_list_items div{
+    padding-left: 20px;
+    font-size: 14px;
+}
+.rt_ie_update_btn_div{
+    text-align: center;
+}
+.rt_ie_update_btn_div button{
+    width: 60%;
+    background-color: #579301;
+    border-radius: 100px;
+    color: #fff;
+    font-size: 16px;
+    height: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.rt_ie_cancel_btn_div{
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+.rt_ie_cancel_btn_div button{
+    width: 60%;
+    background-color: #062C40;
+    border-radius: 100px;
+    color: #fff;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+}

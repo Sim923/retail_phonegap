@@ -1,0 +1,151 @@
+<div id="ContentPane" class="container-fluid">
+  <form id="SubscriptionPayment" name="adventurePaymentForm" class="no-bottom-nav">
+    <p class="lead rt_payment_text_color">Subscription Payment</p>
+		<!-- <hr> -->
+		<div class="subscription-list list-group stretch rt_listgroup rt_payment_group">
+				<div class="subscription-item list-group-item ">
+					<div class="wrapper rt_subscription_item">
+						<div class="subscription-badge">
+							<img alt="{{spc.plan.title}}" ng-src="{{spc.plan.logo}}" class="img-circle" width="50">
+						</div>
+						<div class="subscription-summary rt_content_subscription">
+							<h5 class="name rt_gold_name"><span ng-bind="spc.model.plan.name"></span></h5>
+							<div class="details small rt_bold_text_color">
+								<strong class="price" ng-show="spc.model.plan.percentage">
+									<span ng-bind="spc.model.plan.price|currency:'$'"></span>/month</strong>
+									<br>
+									<span class="rt_light_text_color" ng-bind="spc.model.plan.percentage"></span><span class="rt_light_text_color">% Transaction Fee</span>
+							</div>
+							<!-- <a ui-sref="profile.fees" class="text-info smaller">Learn More &hellip;</a> -->
+						</div>
+						<div class="subscription-actions rt_payment_subscription">
+								<button class="btn btn-md rt_success_button btn-block">Change</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+    <!-- <div class="subscription-preview well well-sm clearfix">
+      <img alt="{{spc.model.plan.title}}" class="subscription-badge img-circle" ng-src="{{spc.model.plan.logo}}">
+      <div class="name"><strong ng-bind="spc.model.plan.name"></strong></div>
+      <div class="price small"><span ng-bind="spc.model.plan.price|currency:'$'"></span>/month</div>
+      <div class="fee small text-muted"><em><span ng-bind="spc.model.plan.percentage"></span>% fee</em></div>
+    </div> -->
+    <fieldset class="rt_paddingelement">
+			<!-- <legend>Payment Summary</legend> -->
+			<button class="btn rt_btn_labelbar rt_subscription">Payment Summary</button>
+			<hr class="spacer"> 
+			<div class="form-group ">
+					<label for="itemType" class="control-label small _lable-color">Payment Scheme</label>
+					<select cordova-keyboard id="itemType" class="form-control input-sm rt_option_color _inputelemtnt">
+						<option value="">Monthly</option>
+					</select>
+			</div>
+      <div class="panel panel-default rt_payment_panel">
+				<div class="panel-body rt_panel_body">
+					<div class="row tighter">
+						<div class="col-xs-8">
+							<strong>Subscription Fee/Month</strong>
+						</div>
+						<div class="col-xs-4 text-right">
+							<span><span ng-bind="spc.model.plan.price|currency:'$'"></span></span>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer rt_payment_footer">
+					<!-- <hr class="spacer spacer-xs"/> -->
+					<div class="row">
+							<div class="col-xs-8">
+								<strong class="rt_payment_tax">Tax</strong>
+							</div>
+							<div class="col-xs-4 text-right">
+								<strong class="rt_payment_tax"><span>$0.00</span></strong>
+							</div>
+						</div>
+					<div class="row">
+						<div class="col-xs-8">
+							<strong class="rt_payment_total">Total</strong>
+						</div>
+						<div class="col-xs-4 text-right">
+							<strong><span class="rt_payment_total" ng-bind="spc.model.plan.price|currency:'$'"></span></strong>
+						</div>
+					</div>
+				</div>
+      </div>
+    </fieldset>
+    <fieldset class="rt_paddingelement rt_payment_fields">
+			<!-- <legend>Payment Information</legend> -->
+			<button class="btn rt_btn_labelbar rt_subscription">Payment Information</button>
+			<hr class="spacer"> 
+			<div class="form-group ">
+					<label for="itemType" class="control-label small _lable-color">Payment Method</label>
+					<select cordova-keyboard id="itemType" class="form-control input-sm rt_option_color _inputelemtnt">
+						<option value="">Credit Card</option>
+					</select>
+					<select cordova-keyboard id="itemType" class="form-control input-sm rt_option_color _inputelemtnt">
+							<option value="">Master Card (*-8888)</option>
+						</select>
+			</div>
+			<hr class="spacer">
+			<div class="form-group ">
+					<label for="itemType" class="control-label small _lable-color">Shipping Address</label>
+					<select cordova-keyboard id="itemType" class="form-control input-sm rt_option_color _inputelemtnt">
+						<option value="">Infinite Loop</option>
+					</select>
+			</div>
+			<hr class="spacer">
+			<div class="form-group ">
+					<label for="itemType" class="control-label small _lable-color">Billing Address</label>
+					<select cordova-keyboard id="itemType" class="form-control input-sm rt_option_color _inputelemtnt">
+						<option value="">Same as Shipping Address</option>
+					</select>
+			</div>
+
+      <!-- <div class="braintree-payment-information">
+				<div class='form-group'>
+					<label class='control-label small' for='card_number'>Card Number</label>
+					<p id='card_number' class='form-control-static small'></p>
+				</div>
+				<div class="form-group">
+					<label class='control-label small' for='expiration_date'>Expiration Date</label>
+					<p id='expiration_date' class='form-control-static small'></p>
+				</div>
+				<div class="form-group">
+					<label class='control-label small' for='cvv'>CVV</label>
+					<p id='cvv' class="form-control-static small"></p>
+				</div>
+				<div class="form-group">
+					<label class='control-label small' for='postal_code'>Postal Code</label>
+					<p id='postal_code' class='form-control-static small'></p>
+				</div>
+      </div> -->
+    </fieldset>
+    <!-- <div class="form-group">
+      <div class="checkbox">
+			<label for="agreeNonRefundable" class="small">
+				<input id="agreeNonRefundable" name="agreeNonRefundable" type="checkbox" ng-model="iec.model.agreeNonRefundable">
+				I understand that subscription payments are non-refundable.
+			</label>
+      </div>
+    </div>
+    <hr class="spacer">
+    <div class="row tighter">
+      <div class="col-xs-7">
+					<button class="btn btn-link" ui-sref="profile.subscription.select"><i class="fa fa-arrow-left"></i> Back</button>
+      </div>
+      <div class="col-xs-5">
+				<button class="btn btn-primary btn-block" ng-disabled="iec.model.agreeNonRefundable===false" ng-click="spc.purchase()">Pay</button>
+      </div>
+    </div> -->
+	</form>
+	<hr class="spacer">
+	<hr class="spacer">
+	<div class="rt_subscription_pay_btn_div">
+		<button class="btn rt_success_button btn-block" ng-click="spc.purchase()">Pay</button>
+	</div>
+
+
+</div>

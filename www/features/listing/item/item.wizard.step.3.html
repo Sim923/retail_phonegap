@@ -1,0 +1,106 @@
+<div class="bg_container">
+  <div class="first_section item_section">
+    <div class="first_content item_content boxItem">1</div>
+    <div class="second_content rt_content item_content boxItem" ng-class="{'active' : is3c.activeview == 3}">2</div>
+    <div class="third_content rt_content item_content boxItem" ng-class="{'active' : is3c.activeview == 3}">3</div>
+    <div class="fourth_content item_content boxItem">4</div>
+    <div class="fifth_content item_content boxItem">5</div>
+  </div>
+  <!-- <div class="stage_buttons first_stage_btn">
+    <a href="#">What are you selling?</a>
+  </div>
+  <div class="stage_buttons second_stage_btn">
+    <a href="#">Upload images of your item</a>
+  </div>-->
+  <div class="stage_buttons third_stage_btn">
+    <a href="#">Describe your item</a>
+  </div>
+  <!-- <div class="stage_buttons fourth_stage_btn">
+    <a href="#">Set price and other details</a>
+  </div>
+  <div class="stage_buttons fifth_stage_btn">
+    <a href="#">Choose Listing option</a>
+  </div> -->
+</div>
+
+<div id="ContentPane" class="container-fluid">
+<form id="ListingWizard" name="step3ItemListingForm" class="no-bottom-nav">
+  <!-- <div class="progress wizard-progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 60%">
+<em>3 of 5</em>
+    </div>
+  </div>
+  <p class="lead text-center">Describe your item</p>
+  <hr/> -->
+  <div class="rt_wizard_title_background">
+      <!-- <div class="image" ng-style="{'background-image':'url(' + is3c.model.images[0].url  + ')'}"></div> -->
+      <div class="name rt_wizard_title"><strong ng-bind='is3c.model.title'></strong></div>
+      <div class="rt_wizard_subtitle"><span ng-bind='is3c.model.category.main'></span>
+        <i class="fa fa-angle-right"></i> <span ng-bind='is3c.model.category.sub'></span>
+        <i class="fa fa-angle-right"></i> <span ng-bind='is3c.model.category.subsub'></span>
+      </div>
+  </div>
+
+  <div class="rt_wizard_lbl_txt_div">
+    <label for="condition" class="control-label rt_wizard_lbl">Condition</label>
+    <select cordova-keyboard id="condition" name="condition" class="form-control rt_wizard_txt input-sm" ng-required="true" ng-model="is3c.model.condition">
+<option>&mdash;</option>
+<option value="New">New</option>
+<option value="New (Special)">New (Special)</option>
+<option value="Used">Used</option>
+<option value="For Parts, Not Working">For Parts, Not Working</option>
+<option value="Other">Other</option>
+    </select>
+    <div class="form-alert" ng-messages="step3ItemListingForm.condition.$error" ng-show="step3ItemListingForm.condition.$touched && step3ItemListingForm.condition.$error">
+<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Condition required.</div>
+    </div>
+  </div>
+
+  <div class="rt_wizard_lbl_txt_div" ng-show="is3c.model.condition==='Used'">
+    <label for="conditionDetails" class="control-label rt_wizard_lbl">Condition Details</label>
+    <textarea cordova-keyboard id="conditionDetails" name="conditionDetails" class="form-control rt_wizard_txt input-sm" rows="5" ng-required="is3c.model.condition==='Used'" ng-model="is3c.model.conditionDetails"></textarea>
+    <div class="form-alert" ng-messages="step3ItemListingForm.conditionDetails.$error" ng-show="step3ItemListingForm.conditionDetails.$touched && step3ItemListingForm.conditionDetails.$error">
+<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Condition Details required.</div>
+    </div>
+  </div>
+
+  <div class="rt_wizard_lbl_txt_div">
+    <label for="countryOfManufacture" class="control-label rt_wizard_lbl">Country of Manufacture</label>
+    <select cordova-keyboard id="countryOfManufacture" name="countryOfManufacture" class="form-control rt_wizard_txt input-sm" ng-required="false" ng-model="is3c.model.countryOfManufacture" ng-options='country.code as country.name for country in is3c.countries'>
+    </select>
+  </div>
+
+  <div class="rt_wizard_lbl_txt_div">
+    <label for="description" class="control-label rt_wizard_lbl">Description</label>
+    <textarea cordova-keyboard id="description" name="description" class="form-control rt_wizard_page3_description input-sm" rows="5" ng-required="true" placeholder="Provide additional details of your item&hellip;" ng-model="is3c.model.description"></textarea>
+    <div class="form-alert" ng-messages="step3ItemListingForm.description.$error" ng-show="step3ItemListingForm.description.$touched && step3ItemListingForm.description.$error">
+<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Description required.</div>
+    </div>
+  </div>
+
+  <div class="rt_wizard_handcrafted_checkbox_div">
+    <div class="checkbox">
+      <label for="handcrafted" class="small">
+        <input id="handcrafted" name="handcrafted" type="checkbox" model="is3c.model.isHandcrafted">
+        Handcrafted?
+      </label>
+    </div>
+  </div>
+  <div class="rt_wizard_clear"></div>
+
+  <div class="rt_wizard_lbl_txt_div">
+    <label for="youtubeLink" class="control-label rt_wizard_lbl">YouTube Link</label> <em class="rt_wizard_lbl_optional">(Optional)</em>
+    <input id="youtubeLink" name="youtubeLink" type="url" cordova-keyboard class="form-control rt_wizard_txt input-sm" placeholder="ex: youtube.com/watch?v=dQw4w9WgXcQ" ng-model="is3c.model.youtubeLink">
+  </div>
+
+  <hr class="spacer"/>
+    <!-- <div class="col-xs-7">
+<button class="btn btn-link" ng-click="is3c.back()"><i class="fa fa-arrow-left"></i> Back</button>
+    </div> -->
+    <div class="rt_wizard_btn_div">
+<button class="btn rt_wizard_btn" ng-click="is3c.next()">NEXT</button>
+    </div>
+</form>
+</div>
+
+<!-- ng-disabled="step3ItemListingForm.$invalid" -->

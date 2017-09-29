@@ -1,0 +1,41 @@
+.address-item.rt_addresses{
+    border-bottom: 1px solid #d0d7da;
+}
+
+.line-1.rt_address_addone{
+    color: #072c3f;
+    font-weight: bold;
+    text-align: left;
+    font-size: 14px;
+}
+.line-1.rt_address_addtwo{
+    color: #072c3f;
+    font-size: 14px;
+}
+
+.listings-list.list-group.stretch.rt_profile_watch{
+    background: transparent;
+}
+.wrapper.rt_unwatchlist_watch{
+    text-align: center;
+}
+
+.wrapper.rt_unwatchlist_watch span{
+    color: #fff;
+    text-align: center;
+}
+
+.quick-actions.rt_removewatch {
+    background-color: rgba(255, 156, 18, 0.77);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.rt_success_button_profile.rt_address_button{
+    width: 80%;
+    margin-left: 9%;
+}

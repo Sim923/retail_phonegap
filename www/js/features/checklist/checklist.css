@@ -1,0 +1,27 @@
+.rt_checklist_main_div{
+    padding: 0 20px;
+}
+.rt_first_subtitle{
+    color: #0794D6;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+.rt_second_subtitle{
+    color: #0794D6;
+    margin-bottom: 0;
+    font-size: 17px;
+}
+.rt_text_color_black{
+    color: black;
+    font-size: 17px;
+}
+.rt_list{
+    background: #F0F1F2;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1px;
+    padding: 20px 10px;
+}
+.rt_text_color_green{
+    color: #4D8B01;
+    font-size: 18px;
+}

@@ -1,0 +1,55 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ProfilePaymentMethods" class="rt_pm_card_cont">
+    <h6>Credit Cards</h6>
+    <div class="payment-method-list list-group stretch">
+      <a href="" class="payment-method-item list-group-item clearfix">
+	<div class="payment-type rt_pm_payment_icon">
+	  <img src="../../icon/payment_icon1.png" alt="american card icon">
+	</div>
+	<div class="serial-number rt_pm_serial_status">
+	  <span class="rt_pm_ls">**** **** ****</span> <span class="bold">7890</span>
+	</div>
+	<div class="status smaller text-muted rt_pm_status_title">
+	  <span class="is-primary">Primary</span>
+	  <span class="expires rt_pm_serial_status">Expires 01/2022</span>
+	</div>
+      </a>
+      <a href="" class="payment-method-item list-group-item clearfix">
+	<div class="payment-type rt_pm_payment_icon">
+	  <img src="../../icon/payment_icon2.png" alt="visa card icon">
+	</div>
+	<div class="serial-number rt_pm_serial_status">
+	  <span class="rt_pm_ls">**** **** ****</span> <span class="bold"> 3456</span>
+	</div>
+	<div class="status smaller text-muted">
+	  <span class="expires rt_pm_serial_status">Expires 12/2018</span>
+	</div>
+	<!-- SWIPE-ACTIVATED QUICK ACTIONS -->
+	<div class="quick-actions">	
+	  <div class="wrapper">
+	    <button class="btn rt_pm_makeprimary_btn">Make Primary</button>
+	    <!-- <button class="btn rt_pm_delete">Delete</button> -->
+	  </div>
+	</div>
+      </a>
+    </div>
+    <h6>Bank Accounts</h6>
+    <div class="payment-method-list list-group stretch">
+      <a href="" class="payment-method-item list-group-item clearfix">
+	<div class="payment-type rt_pm_payment_icon">
+	  <img src="../../icon/bank_icon.png" alt="bank icon">
+	</div>
+	<div class="serial-number rt_pm_serial_status">
+	  <span class="rt_pm_ls">**** **</span> <span class="bold"> 56 78</span>
+	</div>
+	<div class="details smaller text-muted">
+	  <span class="type rt_pm_serial_status">Company Account</span>
+	</div>
+      </a>
+    </div>
+    <hr class="spacer spacer-md">
+    <div class="rt_pm_footer_bnt">
+    	<button class="btn rt_pm_addpayment_btn" ng-click="ppmc.gotToEditPaymentMethod()">Add Payment Method</button>
+	</div>
+  </div>
+</div>

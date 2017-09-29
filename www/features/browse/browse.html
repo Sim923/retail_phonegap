@@ -1,0 +1,10 @@
+<div id="ContentPane" class="_ContentPane">
+  <div id="Browse">
+    <div class="browseTabs">
+      <div bs-active-pane="bc.activeTab" bs-tabs>
+        <div ng-repeat="tab in bc.tabs.get() | orderBy:'order'" data-title="{{tab.title}}" name="{{tab.title}}" ng-include="tab.url" bs-pane>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

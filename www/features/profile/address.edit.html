@@ -1,0 +1,101 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="AddressEdit" name="addressEdit" class="no-bottom-nav">
+    <div class="rt_address_txt_div">
+      <label for="recipient" class="control-label small">Recipient</label>
+      <input id="recipient" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" placeholder="First name and Surname" ng-model="paec.model.contact" cordova-keyboard/>
+      <div class="form-alert" ng-messages="addressEdit.contact.$error" ng-show="addressEdit.contact.$touched && addressEdit.contact.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Recipient required.</div>
+      </div>
+    </div>
+    <div class="rt_address_txt_div">
+      <label for="line1" class="control-label small">Address</label>
+      <input id="line1" name="line1" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" placeholder="House number and street" ng-model="paec.model.line1">
+      <div class="form-alert" ng-messages="addressEdit.line1.$error" ng-show="addressEdit.line1.$touched && addressEdit.line1.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Address required.</div>
+      </div>
+    </div>
+    <div class="rt_address_txt_div">
+      <label for="line2" class="control-label small">Apartment/Suite(Optional)</label>
+      <input id="line2" name="line2" type="text" cordova-keyboard class="form-control input-sm" ng-model="paec.model.line2">
+    </div>
+    <div class="rt_address_txt_div">
+      <label for="city" class="control-label small">City</label>
+      <input id="city" name="city" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="paec.model.city">
+      <div class="form-alert" ng-messages="addressEdit.city.$error" ng-show="addressEdit.city.$touched && addressEdit.city.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> City required.</div>
+      </div>
+    </div>
+    <div class="rt_address_txt_div">
+      <div class="row tighter">
+	<div class="">
+	  <label for="state" class="control-label small">State</label>
+	  <select cordova-keyboard id="state" name="state" class="form-control input-sm rt_add_address_select_state" ng-required="true" ng-model="paec.model.state">
+      <option value="Select State">Select State</option>
+	    <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option>
+	    <option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option>
+	    <option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option>
+	    <option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option>
+	    <option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option>
+	    <option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option>
+	    <option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option>
+	    <option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option>
+	    <option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option>
+	    <option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option>
+	    <option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option>
+	    <option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option>
+	    <option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option>
+	    <option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option>
+	    <option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option>
+	    <option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option>
+	    <option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+	  </select>
+	  <div class="form-alert" ng-messages="addressEdit.state.$error" ng-show="addressEdit.state.$touched && addressEdit.state.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> State required.</div>
+	  </div>
+	</div>
+	<div class="">
+	  <label for="zip" class="control-label small">Zip Code</label>
+	  <input id="zip" name="zip" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="paec.model.zipCode" ng-minlength="5" ng-maxlength="10">
+	  <div class="form-alert" ng-messages="addressEdit.zip.$error" ng-show="addressEdit.zip.$touched && addressEdit.zip.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Zip Code required.</div>
+	    <div ng-message="minlength" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Zip Code must be at least 5 characters in length.</div>
+	    <div ng-message="maxlength" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Zip Code cannot be over 10 characters in length.</div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="row tighter">
+      <!-- <div class="col-xs-6">
+        <div class="form-group">
+          <label class="control-label small">Country</label>
+          <select cordova-keyboard class="form-control" ng-model='paec.model.country' ng-options='country.code as country.name for country in paec.countries'></select>
+	</div>
+
+      <div class="col-xs-6">
+        <div class="form-group">
+          <label class="control-label small">Email Address</label>
+          <input type="email" cordova-keyboard class="form-control" ng-model='paec.model.email' />
+        </div>
+      </div>
+    </div> -->
+    <div class="rt_address_txt_div">
+      <label for="phone" class="control-label small">Telephone Number</label>
+      <input id="phone" name="phone" type="tel" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="paec.model.phone" ng-minlength="5" ng-maxlength="15">
+      <div class="form-alert" ng-messages="addressEdit.phone.$error" ng-show="addressEdit.phone.$touched && addressEdit.phone.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Telephone Number required.</div>
+	<div ng-message="minlength" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Telephone Number must be at least 5 characters in length.</div>
+	<div ng-message="maxlength" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Telephone Number cannot be over 15 characters in length.</div>
+      </div>
+    </div>
+    <!-- <div class="rt_address_txt_div">
+      <label for="isPrimary" class="checkbox-inline small"><input id="isPrimary" type="checkbox" ng-model='paec.model.isPrimary'>Primary Address?</label>
+    </div> -->
+    <!-- <hr class="spacer spacer-md">
+    <div class="row tighter"> -->
+      <div class="rt_add_address_save_cancel_btn_div">
+        <button class="rt_add_address_save_btn" ng-click="paec.save()">SAVE</button>
+        <button class="rt_add_address_cancel_btn" ng-click="paec.cancel()">CANCEL</button>
+      </div>
+    <!-- </div> -->
+  </div>
+</div>

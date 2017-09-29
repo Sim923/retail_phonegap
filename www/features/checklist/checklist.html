@@ -1,0 +1,25 @@
+<div class="rt_checklist_main_div">
+	<div class="">
+	  <p class="rt_first_subtitle">The page you are trying to access requires that you have completed your profile information.</p>
+		<p class="rt_second_subtitle">It'll only take a few minutes, and unlocks the</p>
+		<p class="rt_text_color_black">full ReelTrail experience.</p>
+	</div>
+	<br>
+	<ul class="list-group">
+	  <li class="list-group-item rt_list" ng-class="{'list-group-item-warning' : (!cc.address && !cc.dob && !cc.funding)}">
+	    <i class="fa" ng-class="cc.address ? 'fa-check-square-o' : 'fa-square-o'"></i>&nbsp;
+	    <span class="rt_text_color_green" ng-click="cc.checklist.address()" ng-hide='cc.address && !cc.dob && !cc.funding'>Physical Address</span>
+	    <!-- <a href="" ng-click="cc.checklist.address()" class="text-warning rt_text_color_green" ng-show='!cc.address && !cc.dob && !cc.funding'><b>Physical Address</b> <i class="fa fa-angle-right"></i></a> -->
+	  </li>
+	  <li class="list-group-item rt_list" ng-class="{'list-group-item-warning' : (cc.address && !cc.dob && !cc.funding)}">
+	    <i class="fa" ng-class="cc.dob ? 'fa-check-square-o' : 'fa-square-o'"></i>&nbsp;
+	    <span class="rt_text_color_green" ng-click="cc.checklist.details()" ng-hide='cc.address && !cc.dob && !cc.funding'>Date of Birth</span>
+	    <!-- <a href="" ng-click="cc.checklist.details()" class="text-warning rt_text_color_green" ng-show='cc.address && !cc.dob && !cc.funding'><b>Date of Birth</b> <i class="fa fa-angle-right"></i></a> -->
+	  </li>
+	  <li class="list-group-item rt_list" ng-class="{'list-group-item-warning' : (cc.address && cc.dob && !cc.funding)}">
+	    <i class="fa" ng-class="cc.funding ? 'fa-check-square-o' : 'fa-square-o'"></i>&nbsp;
+	    <span class="rt_text_color_green" ng-click="cc.checklist.seller()" ng-hide='cc.address && cc.dob && !cc.funding'>Funding Destination</span>
+	    <!-- <a href="" ng-click="cc.checklist.seller()" class="text-warning rt_text_color_green" ng-show='cc.address && cc.dob && !cc.funding'><b>Funding Destination</b> <i class="fa fa-angle-right"></i></a> -->
+	  </li>
+	</ul>
+</div>

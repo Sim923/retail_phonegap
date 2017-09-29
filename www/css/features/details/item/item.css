@@ -1,0 +1,111 @@
+.rt_imagetitle{
+    z-index: 9999;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    top: 65px;
+}
+
+.jk-carousel .radio-buttons-container md-radio-button .md-off{
+    background: #fff;
+}
+
+md-radio-button.md-checked .md-on{
+    background: #55bedd;
+}
+
+#ListingDetails .listing-price .listing-item-price {
+    font-size: 16px;
+    color: #072B3F;
+    float: left;
+}
+
+#ListingDetails .listing-price .listing-shipping-price{
+    font-size: 12px;
+    color: #55bedd;
+    float: left;
+    text-align: left;
+    margin-left: -72px;
+    display: inline;
+    font-style: normal;
+}
+
+label.rt_label{
+    color: #669803;
+}
+
+.input-group .form-control.rt_input_item{
+    background: transparent;
+    color: #072c3f;
+}
+
+.btn.rt_transparent_elemnt{
+    background: #669803;
+    border-radius: 20px !important;
+    color: #fff;
+}
+
+.form-group.rt_quantity_btn{
+    border-bottom: 1px solid #d0d7da;
+}
+
+.rt_quantity_btn .input-group{
+    margin-bottom: 5px;
+}
+
+.md-button.md-icon-button md-icon{
+    display: none !important;
+}
+
+.rt_addcart_makeoffer{
+    width: 100%;
+}
+
+.rt_addcart_makeoffer .rt_addcart_makeoffer_col{
+    width: 50%;
+    float: left;
+    margin: auto;
+}
+
+.rt_addcartbutton{
+    background: #669803;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.rt_makeofferbutton{
+    background: #072c3f;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.rt_spacewithitemname{
+    margin-right: 15px;
+}
+
+.rt_cancel_button.rt_messagesellor{
+    margin-top: 50px;
+}
+
+dl.rt_paddingelement dt{
+    color: #669803 !important;
+}
+
+dl.rt_paddingelement dd{
+    color:#072c3f;
+}
+
+.rt_addcart_makeoffer_col img{
+    vertical-align: middle;
+    width: 19px;
+    margin-right: 15px;
+    margin-top: -2px;
+}
+.jk-carousel .radio-buttons-container md-radio-button .md-off {
+    border-color: transparent;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+}

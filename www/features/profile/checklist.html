@@ -1,0 +1,31 @@
+<div id="ContentPane" class="container-fluid">
+  
+  <div id="ProfileChecklist" class="no-bottom-nav">
+
+<div class="hero-backdrop hero-backdrop_access-gate"></div>
+
+<p class="lead text-center"><b>Before you continue&hellip;</b></p>
+<p class="small text-center">The page you are trying to access requires that you have completed your profile information. It'll only take a few minutes, and unlocks the <span class="nowrap">full ReelTrail experience!</span></p>
+<hr>
+
+<ul class="list-group">
+  <li class="list-group-item" ng-class="cc.address ? 'text-muted' : 'list-group-item-warning'">
+    <i class="fa" ng-class="cc.address ? 'fa-check-square-o' : 'fa-square-o'"></i>&nbsp;
+    <span ng-show='cc.address'>Physical Address</span>
+    <a href="/profile/details" class="text-warning" ng-hide='cc.address'><b>Physical Address</b> <i class="fa fa-angle-right"></i></a>
+  </li>
+  <li class="list-group-item" ng-class="cc.dob ? 'text-muted' : 'list-group-item-warning'">
+    <i class="fa" ng-class="cc.dob ? 'fa-check-square-o' : 'fa-square-o'"></i>&nbsp;
+    <span ng-show='cc.dob'>Date of Birth</span>
+    <a href="/profile/details" class="text-warning" ng-hide='cc.dob'><b>Date of Birth</b> <i class="fa fa-angle-right"></i></a>
+  </li>
+  <li class="list-group-item" ng-class="cc.funding ? 'text-muted' : 'list-group-item-warning'">
+    <i class="fa" ng-class="cc.funding ? 'fa-check-square-o' : 'fa-square-o'"></i>&nbsp;
+    <span ng-show='cc.funding'>Funding Destination</span>
+    <a href="/profile/seller-settings" class="text-warning" ng-hide='cc.funding'><b>Funding Destination</b> <i class="fa fa-angle-right"></i></a>
+  </li>
+</ul>
+
+  </div>
+  
+</div>

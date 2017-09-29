@@ -1,0 +1,289 @@
+<div>
+  <h2 ng-hide="ssc.shippingLabels.length===0">Shipping Details</h2>
+  <div class="listing-preview well well-sm clearfix">
+    <div class="image" ng-style="{'background-image':'url(' + ssc.sale.listingId.images[0].url  + ')'}"></div>
+    <div class="name"><strong ng-bind='ssc.sale.listingId.title'></strong></div>
+    <div class="category small"><span ng-bind="ssc.sale.listingId.categories[0].name"></span>
+      <i class="fa fa-angle-right"></i> <span ng-bind="ssc.sale.listingId.categories[1].name"></span>
+      <i class="fa fa-angle-right"></i> <span ng-bind="ssc.sale.listingId.categories[2].name"></span>
+    </div>
+    <div class="price small text-muted"><em><span ng-bind="ssc.sale.total*0.01|currency:'$'"></span></em></div>
+    <div class="shipping-fee smaller text-muted"><em>+<span ng-bind="ssc.total|currency:'$'"></span> Shipping Fee</em></div>
+    <div class="processing-fee smaller text-muted"><em>+<span ng-bind="ssc.processingFee()|currency:'$'"></span> Reeltrail Processing Fee</em></div>
+  </div>
+  <div class="row" ng-hide="ssc.shippingLabels.length===0">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+	<div class="panel-heading"><h3 class="panel-title">Seller Address</h3></div>
+	<div class="panel-body">
+	  <div class="form-horizontal">
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Name</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.seller.contact'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Address</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.seller.line1'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Apt/Suite</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.seller.line2'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">City</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.seller.city'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">State</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.seller.state'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Zip Code</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.seller.zipCode'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Phone</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.seller.phone'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Email</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.seller.email'></p></div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+	<div class="panel-heading"><h3 class="panel-title">Buyer Address</h3></div>
+	<div class="panel-body">
+	  <div class="form-horizontal">
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Name</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.buyer.contact'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Address</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.buyer.line1'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Apt/Suite</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.buyer.line2'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">City</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.buyer.city'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">State</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.buyer.state'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Zip Code</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.buyer.zipCode'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Phone</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.buyer.phone'></p></div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Email</label>
+	      <div class="col-sm-9"><p class="form-control-static" data-ng-bind='ssc.sale.addresses.shipping.buyer.email'></p></div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="panel panel-default" ng-hide="ssc.shippingLabels.length===0">
+	<div class="panel-heading"><h3 class="panel-title">Parcels</h3></div>
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th>Parcels</th>
+	      <th class="text-right">Cost (USD)</th>
+	      <th>Status</th>
+	    </tr>
+	  </thead>
+	  <tfoot>
+	    <tr>
+	      <td>Sum</td>
+	      <td class="text-right" data-ng-bind='ssc.total()+ssc.procesingFee()'></td>
+	      <td></td>
+	    </tr>
+	  </tfoot>
+	  <tbody>
+	    <tr ng-repeat='label in ssc.shippingLabels'>
+	      <td data-ng-bind='label.option.servicelevel_name'></td>
+	      <td class="text-right" data-ng-bind='label.option.amount'></td>
+	      <td></td>
+	    </tr>
+	  </tbody>
+	</table>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+	<div class="panel-heading"><h3 class="panel-title">Payment Information</h3></div>
+	<div class="panel-body">
+          <form class='form-horizontal braintree-payment-information'>
+            <div class='form-group'>
+              <label class='control-label col-sm-4' for='card_number'>Card Number</label>
+              <div id='card_number' class='col-sm-8'></div>
+            </div>
+            <div class="form-group">
+              <label class='control-label col-sm-4' for='expiration_date'>Expiration Date</label>
+              <div id='expiration_date' class='col-sm-4'></div>
+            </div>
+            <div class="form-group">
+              <label class='control-label col-sm-4' for='cvv'>CVV</label>
+              <div id='cvv' class="col-sm-8"></div>
+            </div>
+            <div class="form-group">
+              <label class='control-label col-sm-4' for='postal_code'>Postal Code</label>
+              <div id='postal_code' class='col-sm-8'></div>
+            </div>
+          </form>
+	  <div class="alert alert-danger" ng-show="csc.error" ng-bind='ssc.error'></div>
+	  <div class="text-right">
+	    <button class="btn btn-primary btn-lg" ng-click='ssc.purchase()'>Purchase</button>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+	<div class="panel-heading"><h3 class="panel-title">Billing Address</h3></div>
+	<div class="panel-body">
+	  <p class="checkbox" ng-hide='ssc.sale.addresses.billing.seller'>
+	    <label><input ng-model='ssc.sameAsShipping' name="billingAddressSame" type="checkbox" checked="true"> Same as Shipping?</label>
+	  </p>
+	  <div ng-show='ssc.sameAsShipping || ssc.sale.addresses.shipping.buyer'>
+	    <p><span data-ng-bind="ssc.sale.addresses.shipping.buyer.contact"><span></p>
+	    <p><span data-ng-bind="ssc.sale.addresses.shipping.buyer.line1"><span></p>
+	    <p ng-show="ssc.sale.addresses.shipping.buyer.line2"><span data-ng-bind="ssc.sale.addresses.shipping.buyer.line2"><span></p>
+	    <p><span data-ng-bind="ssc.sale.addresses.shipping.buyer.city"></span> <span data-ng-bind="ssc.sale.addresses.shipping.buyer.state"></span> <span data-ng-bind="ssc.sale.addresses.shipping.buyer.zipCode"></span></p>
+	  </div>
+	  <div ng-hide='ssc.sameAsShipping || ssc.sale.addresses.billing.seller'>
+	    <form class="form-horizontal" novalidate>
+	      <div class="form-group">
+		<label class="col-sm-4 control-label" for='savedAddresses'>Saved Addresses</label>
+		<div class="col-sm-8">
+		  <select cordova-keyboard class="form-control" name="savedAddresses" data-ng-model="ssc.selectedSellerAddress" data-ng-options="address.line1 for address in (ssc.addresses|filter:{shippoId:'!!'}) track by address._id" ng-change='ssc.addressChanged(ssc.selectedSellerAddress)'>
+		    <option value="">New Address&hellip;</option>
+		  </select>
+		</div>
+	      </div>
+	    </form>
+	    <form class="form-horizontal" name="billingAddressForm" id="billingAddressForm" novalidate>
+	      <div class="form-group">
+		<label class="col-sm-4 control-label">Name</label>
+		<div class="col-sm-8">
+		  <input name="name" id="name" class="form-control" type="text" cordova-keyboard placeholder="First and Last Name" ng-maxlength="24" ng-required="true" ng-model="ssc.address.contact" ng-disabled='ssc.selectedSellerAddress'/>
+		</div>
+		<div ng-messages="billingAddressForm.name.$error" ng-show="billingAddressForm.name.$touched" class="col-sm-9 col-sm-offset-3 small">
+		  <div ng-message="required" class="alert alert-danger rt-alert">Name cannot be blank.</div>
+		  <div ng-message="minlength" class="alert alert-danger rt-alert">Name must be at least 8 characters in length.</div>
+		  <div ng-message="maxlength" class="alert alert-danger rt-alert">Name cannot be over 24 characters in length.</div>
+		</div>
+	      </div>
+	      <div class="form-group">
+		<label class="col-sm-4 control-label">Address</label>
+		<div class="col-sm-8">
+		  <input name="address1" id="address1" class="form-control" type="text" cordova-keyboard ng-minlength="12" ng-maxlength="32" ng-required="true" ng-model="ssc.address.line1" ng-disabled='ssc.selectedSellerAddress'/>
+		</div>
+		<div ng-messages="billingAddressForm.address1.$error" ng-show="billingAddressForm.address1.$touched" class="col-sm-9 col-sm-offset-3 small">
+		  <div ng-message="required" class="alert alert-danger rt-alert">Address cannot be blank.</div>
+		  <div ng-message="minlength" class="alert alert-danger rt-alert">Address must be at least 12 characters in length.</div>
+		  <div ng-message="maxlength" class="alert alert-danger rt-alert">Address cannot be over 32 characters in length.</div>
+		</div>
+	      </div>
+	      <div class="form-group">
+		<label class="col-sm-4 control-label">Apt / Suite</label>
+		<div class="col-sm-8">
+		  <input class="form-control" type="text" cordova-keyboard placeholder="(Optional)" ng-model="ssc.address.line2" ng-disabled='ssc.selectedSellerAddress'/>
+		</div>
+	      </div>
+	      <div class="form-group">
+		<label class="col-sm-4 control-label">City</label>
+		<div class="col-sm-8">
+		  <input name="city" id="city" class="form-control" type="text" cordova-keyboard ng-minlength="3" ng-maxlength="24" ng-required="true" ng-model="ssc.address.city" ng-disabled='ssc.selectedSellerAddress' />
+		</div>
+		<div ng-messages="billingAddressForm.city.$error" ng-show="billingAddressForm.city.$touched" class="col-sm-9 col-sm-offset-3 small">
+		  <div ng-message="required" class="alert alert-danger rt-alert">City cannot be blank.</div>
+		  <div ng-message="minlength" class="alert alert-danger rt-alert">City must be at least 3 characters in length.</div>
+		  <div ng-message="maxlength" class="alert alert-danger rt-alert">City cannot be over 24 characters in length.</div>
+		</div>
+	      </div>
+	      <div class="form-group">
+		<label class="col-sm-4 control-label">State</label>
+		<div class="col-sm-8">
+		  <select cordova-keyboard class="form-control" ng-model="ssc.address.state" ng-disabled='ssc.selectedSellerAddress' >
+		    <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option>
+		    <option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option>
+		    <option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option>
+		    <option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option>
+		    <option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option>
+		    <option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option>
+		    <option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option>
+		    <option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option>
+		    <option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option>
+		    <option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option>
+		    <option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option>
+		    <option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option>
+		    <option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option>
+		    <option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option>
+		    <option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option>
+		    <option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option>
+		    <option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+		  </select>
+		</div>
+	      </div>
+	      <div class="form-group">
+		<label class="col-sm-4 control-label">Zip Code</label>
+		<div class="col-sm-8">
+		  <input name="zip" id="zip" class="form-control" type="text" cordova-keyboard ng-minlength="5" ng-maxlength="10" ng-required="true" ng-model="ssc.address.zipCode" ng-disabled='ssc.selectedSellerAddress' />
+		</div>
+		<div ng-messages='billingAddressForm.zip.$error' ng-show='billingAddressForm.zip.$touched' class="col-sm-9 col-sm-offset-3 small">
+		  <div ng-message="required" class="alert alert-danger rt-alert">Zip code cannot be blank.</div>
+		  <div ng-message="minlength" class="alert alert-danger rt-alert">Zip code must be at least 5 characters in length.</div>
+		  <div ng-message="maxlength" class="alert alert-danger rt-alert">Zip code cannot be over 10 characters in length.</div>
+		</div>
+	      </div>
+	      <div class="form-group">
+		<label class="col-sm-4 control-label">Phone</label>
+		<div class="col-sm-8">
+		  <input name="phone" id="phone" class="form-control" type="text" cordova-keyboard ng-minlength="10" ng-maxlength="24" ng-required="true" ng-model="ssc.address.phone" ng-disabled='ssc.selectedSellerAddress' />
+		</div>
+		<div ng-messages="billingAddressForm.phone.$error" ng-show="billingAddressForm.phone.$touched" class="col-sm-9 col-sm-offset-3 small">
+		  <div ng-message="required" class="alert alert-danger rt-alert">Phone cannot be blank.</div>
+		  <div ng-message="minlength" class="alert alert-danger rt-alert">Phone must be at least 10 characters in length.</div>
+		  <div ng-message="maxlength" class="alert alert-danger rt-alert">Phone cannot be over 24 characters in length.</div>
+		</div>
+	      </div>
+	      <div class="form-group">
+		<label class="col-sm-4 control-label">Email</label>
+		<div class="col-sm-8">
+		  <input name="email" id="email" class="form-control" type="text" cordova-keyboard ng-minlength="10" ng-maxlength="64" ng-required="true" ng-model="ssc.address.email" ng-disabled='ssc.selectedSellerAddress' />
+		</div>
+		<div ng-messages="billingAddressForm.email.$error" ng-show="billingAddressForm.email.$touched" class="col-sm-9 col-sm-offset-3 small">
+		  <div ng-message="required" class="alert alert-danger rt-alert">Email cannot be blank.</div>
+		  <div ng-message="minlength" class="alert alert-danger rt-alert">Email must be at least 10 characters in length.</div>
+		  <div ng-message="maxlength" class="alert alert-danger rt-alert">Email cannot be over 24 characters in length.</div>
+		</div>
+	      </div>
+	      <div class="form-group">
+		<div class="col-sm-8 col-sm-offset-4">
+		  <button class="btn btn-warning" ng-show='(billingAddressForm.$valid || ssc.selectedSellerAddress) && !ssc.sale.addresses.billing.seller' ng-click="ssc.saveAddress()">Save Address</button>
+		</div>
+	      </div>
+	    </form>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+  <div class="" style="text-align: center">
+    <div ng-show="ssc.isProcessing">Processing Labels ... Please wait ...</div>
+  </div>
+</div>

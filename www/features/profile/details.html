@@ -1,0 +1,203 @@
+<!-- CAMERA MODAL -->
+<div id="CameraModal" ng-show="pdc.cameraSelector">
+  <div class="wrapper panel panel-default">
+    <div class="panel-heading">
+      <a href="" class="pull-right" ng-click="pdc.closeSelector($event)">
+	<i class="fa fa-remove fa-lg"></i>
+      </a>
+      <h4 class="panel-title">Add an Image</h4>
+    </div>
+    <div class="panel-body">
+      <hr class="spacer spacer-xs" />
+      <div class="options row text-center">
+	<div class="col-xs-6">
+	  <a href="" class="text-primary" ng-click="pdc.getPhoto($event)">
+	    <i class="fa fa-camera fa-5x"></i><br>
+	    <span class="smaller">Take Photo</span>
+	  </a>
+	</div>
+	<div class="col-xs-6">
+	  <a href="" class="text-warning" ng-click="pdc.getFromGallery($event)">
+	    <i class="fa fa-image fa-5x"></i><br>
+	    <span class="smaller">Upload Existing</span>
+	  </a>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /CAMERA MODAL -->  
+<div id="ContentPane" class="container-fluid _ContentPane">
+  <form id="profileDetailsEdit" name="profileDetailsEdit" class="rt_profile_detail_main_div">
+    <div class="profile-image-container text-center rt_editprofile_image_div">
+      <div ng-class="{'my-disable': !pdc.model.images.length}" class="profile-image" style="background-image: url({{pdc.model.profileImage}})" ng-click="pdc.showModal(pdc.model.profileImage)">
+      </div>
+      <div class="loading-animation" ng-class="{'hidden': pdc.update.done}">
+	      <i class="fa fa-spinner fa-pulse fa-4x text-muted"></i>
+      </div>
+      <hr class="spacer spacer-sm"/>
+      <div ng-hide="pdc.isCordova" flow-init flow-name="pdc.control.flow" flow-object='existingFlowObject' flow-files-submitted='pdc.flow.filesSubmitted($files, $event, $flow)' flow-file-success='pdc.flow.fileSuccess($file, $message, $flow)' flow-file-progress='pdc.flow.fileProgress($file, $event, $flow)' flow-file-added='pdc.flow.fileAdded($file, event)' flow-files-added='pdc.flow.filesAdded($files, $event, $flow)' flow-file-retry='pdc.flow.fileRetry($file, $flow)' flow-file-error='pdc.flow.fileError($file, $message, $flow)' flow-error='pdc.flow.error($file, $message, $flow)' flow-complete='pdc.flow.complete($file, $message, $flow)' flow-upload-started='pdc.flow.uploadStarted()' flow-progress='pdc.flow.progress()'>
+        <span class="btn rt_success_button btn-sm" flow-btn>Change</span>
+      </div>
+      <div ng-show="pdc.isCordova">
+        <button class="btn rt_success_button rt_profile_photo_change_btn btn-sm" ng-click="pdc.openSelector($event)">Change</button>
+      </div>
+    </div>
+    <hr class="spacer"/>
+    <div class="rt_paddingelement">
+      <div class="form-group">
+        <label for="username" class="control-label rt_editprofile_label rt_label_common_color small">Username</label>
+        <input id="username" type="text" cordova-keyboard class="form-control _inputelemtnt input-sm" placeholder="Username" ng-required="true" value="Username" ng-model="pdc.model.username">
+        <!-- <small class="help-block">This is used to identify you along with your listings, purchases and other transactions.</small> -->
+      </div>
+      <div class="form-group">
+        <label for="firstName" class="control-label rt_editprofile_label rt_label_common_color small">Name</label>
+        <!-- <div class="row tighter">
+          <div class="col-xs-6"> -->
+            <input id="firstName" name='firstName' type="text" cordova-keyboard class="form-control _inputelemtnt input-sm" ng-required="true" placeholder="First Name" ng-model='pdc.model.firstName'>
+            <!-- <div class="form-alert" ng-messages="profileDetailsEdit.firstName.$error" ng-show="profileDetailsEdit.firstName.$touched && profileDetailsEdit.firstName.$error">
+              <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> First Name required.</div>
+            </div> -->
+          <!-- </div> -->
+          <!-- <div class="col-xs-6"> -->
+            <input type="text" cordova-keyboard name='lastName' class="form-control _inputelemtnt input-sm" ng-required="true" placeholder="Last Name" ng-model='pdc.model.lastName'>
+            <!-- <div class="form-alert" ng-messages="profileDetailsEdit.lastName.$error" ng-show="profileDetailsEdit.lastName.$touched && profileDetailsEdit.lastName.$error">
+              <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Last name required.</div>
+            </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      </div>
+      <div class="form-group">
+        <label for="email" class="control-label rt_editprofile_label rt_label_common_color small">Email Address</label>
+        <input id="email" name='email' type="email" cordova-keyboard class="form-control _inputelemtnt input-sm" ng-required="true" autocomplete='off' ng-model='pdc.model.email' email-availability-validator='https://reeltrail.com/rtapi/v1/users/check/email'>
+        <div class="form-alert" ng-messages="profileDetailsEdit.email.$error" ng-show="profileDetailsEdit.email.$touched">
+          <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Email Address required.</div>
+          <div ng-message="email" class="smaller alert-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Email is not valid.</div>
+          <div ng-message="emailLoading" class="smaller text-muted"><i class="fa fa-fw fa-spinner fa-pulse"></i> Checking&hellip;</div>
+          <div ng-message="emailAvailable" class="smaller alert-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> The email is already in use.</div>
+        </div>
+      </div>
+
+      <div class="form-group rt_editprofile_primary">
+          <!-- ng-show='pdc.model.dob.year' -->
+        <label for="primaryAddress" class="control-label rt_editprofile_label rt_label_common_color small">Primary Address</label>
+        <pre class="small _inputelemtnt" ng-show='pdc.primaryAddress._id'>
+          <strong><span ng-bind="pdc.primaryAddress.line1"></span></strong>
+          <br><span ng-bind="pdc.primaryAddress.city"></span> 
+          <span ng-bind="pdc.primaryAddress.state"></span>, 
+          <span ng-bind="pdc.primaryAddress.zipCode"></span> 
+        </pre>
+  
+        <small class="rt_help_text_color help-block">The location displayed in your public profile is based on your <span class="nowrap">chosen primary address.</span></small>
+        <button class="btn rt_success_button btn-sm" ui-sref="profile.address">Change</button>
+      </div>
+
+      <div class="form-group">
+        <label for="timeZone" class="control-label small rt_editprofile_label rt_label_common_color">Time Zone</label>
+        <select cordova-keyboard id="timeZone" name="timeZone" class="form-control input-sm rt_option_color _inputelemtnt" ng-model="pdc.model.settings.timezone" ng-options="timezone.id as timezone.text for timezone in pdc.timezones">
+        </select>
+        <small class="rt_help_text_color help-block">Select your time zone to correctly display all dates and times based <span class="nowrap">on your location.</span></small>
+      </div>
+
+      <div class="form-group">
+        <label for="currentPassword" class="control-label rt_editprofile_label rt_label_common_color small">Current Password</label>
+        <input id="currentPassword" name="currentPassword" placeholder="Select TimeZone" type="password" cordova-keyboard class="form-control _inputelemtnt input-sm" ng-model='pdc.model.password' password-validator='/rtapi/v1/users/check/password' />
+        <div class="rt_help_text_color help-block smaller">You must enter your current password before you can save changes to <span class="nowrap">your profile details.</span></div>
+        <div class="form-alert" ng-messages="profileDetailsEdit.currentPassword.$error" ng-show="profileDetailsEdit.currentPassword.$touched && profileDetailsEdit.currentPassword.$error">
+        <div ng-message="required" class="smaller text-danger">
+          <i class="fa fa-fw fa-exclamation-triangle"></i> Password required.</div>
+        </div>
+      </div>
+
+
+      <fieldset>
+          <label for="password" class="control-label rt_editprofile_label rt_label_common_color small">Change Password</label>
+          <div class="form-group">
+            <!-- <div class="row tighter">
+              <div class="col-xs-6"> -->
+                <input
+                  id="password"
+                  name="password"
+                  type="password" cordova-keyboard
+                  class="form-control input-sm _inputelemtnt"
+                  ng-required="pdc.model.password.length>0"
+                  ng-model="pdc.model.newPassword"
+                  placeholder="New Password"
+                  ng-minlength="5"
+                  ng-maxlength="16"/>
+                <div class="form-alert" ng-messages="profileDetailsEdit.newPassword.$error" ng-show="profileDetailsEdit.newPassword.$touched && profileDetailsEdit.newPassword.$error">
+                  <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Password required.</div>
+                  <div ng-message='minlength' class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Password should be at least 8 characters in length.</div>
+                  <div ng-message='maxlength' class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Password cannot be over 24 characters in length.</div>
+                </div>
+              <!-- </div>
+              <div class="col-xs-6"> -->
+                <input
+                  id="newPassword2"
+                  name="newPassword2"
+                  type="password" cordova-keyboard
+                  class="form-control input-sm _inputelemtnt"
+                  ng-required="pdc.model.password.length>0"
+                  ng-model="pdc.model.newPassword2"
+                  placeholder="Confirm Password"
+                  compare-to="pdc.model.newPassword" />
+                <div class="form-alert" ng-messages="profileDetailsEdit.newPassword2.$error" ng-show="profileDetailsEdit.newPassword2.$touched && profileDetailsEdit.newPassword2.$error">
+                  <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Confirm Password required.</div>
+                  <div ng-message="compareTo" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Passwords do not match.</div>
+                </div>
+              <!-- </div>
+            </div> -->
+            <small class="_lable-profile_detail_color"><span class="nowrap ">Leave blanlk to keep your current password.</small>
+            <!-- <small class="help-block">Use numbers and symbols to make it hard for anyone to guess. Don't share your passwords with anyone else. Leave both fields blank to keep <span class="nowrap">your current password.</small> -->
+          </div>
+        </fieldset>
+
+      <!-- <div class="form-group">
+        <label for="entityType" class="control-label small">Entity Type</label>
+        <select cordova-keyboard id="entityType" class="form-control input-sm" ng-model='pdc.model.type' ng-options='obj.text for obj in pdc.accountTypes track by obj.value'>
+        </select>
+      </div>
+      <div class="form-group" ng-show="entityType==='company'">
+        <label for="businessName" class="control-label small">Business Name</label>
+        <input id="businessName" name='businessName' type="text" cordova-keyboard class="form-control input-sm" ng-required="entityType==='company'" ng-model='pdc.model.businessName'>
+        <div class="form-alert" ng-messages="profileDetailsEdit.businessName.$error" ng-show="profileDetailsEdit.businessName.$touched && profileDetailsEdit.businessName.$error">
+        <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Business Name required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="monthOfBirth" class="control-label small">Date of Birth</label>
+        <div class="row tighter">
+          <div class="col-xs-3">
+            <select cordova-keyboard name='yearOfBirth' class="form-control input-sm" ng-model='pdc.model.yearOfBirth' ng-options='obj.text for obj in pdc.years track by obj.value'></select>
+          </div>
+          <div class="col-xs-6">
+            <select cordova-keyboard name='monthOfBirth' id="monthOfBirth" class="form-control input-sm" ng-model='pdc.model.monthOfBirth' ng-options='obj.text for obj in pdc.months track by obj.value' ng-change='pdc.updateDays(pdc.model.monthOfBirth.value)'></select>
+          </div>
+          <div class="col-xs-3">
+            <select cordova-keyboard name='dayOfBirth' class="form-control input-sm" ng-model='pdc.model.dayOfBirth' ng-options='obj.text for obj in pdc.days track by obj.value'></select>
+          </div>
+        </div>
+        <div class="form-alert" ng-messages="" ng-show="">
+          <div ng-message="" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must be 13 years old to remain a member.</div>
+        </div>
+      </div> -->
+      
+      
+      
+    
+      
+      <hr class="spacer">
+      <!-- <div class="row tighter">
+        <div class="col-xs-6"> -->
+          <div class="rt_profile_details_btn">
+            <button class="btn rt_success_button  btn-block" ng-disabled='profileDetailsEdit.$invalid || !pdc.upload.done' ng-click='pdc.update()'>Update</button>
+        <!-- </div>
+        <div class="col-xs-6"> -->
+          <button class="btn rt_cancel_button btn-block" ng-click='pdc.cancel()'>Cancel</button>
+          </div>
+        <!-- </div>
+      </div> -->
+    </div>
+    
+  </form>
+</div>

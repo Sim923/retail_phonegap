@@ -1,0 +1,51 @@
+<div class="rt_select_box_div">
+	<select cordova-keyboard class="form-control input-sm rt_select_box" ng-model='ppc.selectedFilter' ng-options='selectedFilter.text for selectedFilter in ppc.filter track by selectedFilter.id'>
+	</select>
+</div>
+<div id="ContentPane" class="container-fluid">
+  <div id="ProfileListings">
+		<!-- <div id="alerts-container"></div> -->
+
+
+
+		<div class="rt_info_purched_div">
+			<label class="rt_purched_info">Press and Hold each item to see options</label>
+		</div>
+		
+    <div ng-show="ppc.purchases.length===0" class="alert small alert-info">You have no sold yet.</div>
+    <div class="listings-list list-group stretch">
+      <div class="listing-preview list-group-item rt_profile_watch" ng-repeat="item in ppc.purchases" md-swipe-left="ppc.swipe.left(item)" md-swipe-right="ppc.swipe.right(item)">
+
+				<div class="image" ng-style="{'background-image':'url(' + item.saleId.listingId.images[0].url  + ')'}"></div>
+
+				<div class="rt_name_watch">
+						<div class="rt_firtst_contain">
+								<div class="name rt_watch_item_name">
+										<strong ng-bind="item.saleId.listingId.title"></strong>
+								</div>
+								<div class="category small rt_watch_item_name">
+									<span ng-bind="item.saleId.listingId.categories[0].name"></span>
+									<i class="fa fa-angle-right"></i> <span ng-bind="item.saleId.listingId.categories[1].name"></span>
+									<i class="fa fa-angle-right"></i> <span ng-bind="item.saleId.listingId.categories[2].name"></span>
+								</div>							
+						</div>
+						<div class="rt_second_contain">
+								<div class="price small text-muted rt_watch_item_name">
+										<em><span ng-bind="item.saleId.total * item.quantity * 0.01 | currency:'$'"></span></em>
+									</div>
+						</div>
+					</div>
+				<!-- <div class="price small text-muted" ng-show="ppc.refunds[item.saleId._id]"><em><span>REFUNDED</span></em></div> -->
+				<div class="quick-actions rt_action_purchase" ng-show="item.visible">
+					<div class="wrapper rt_unwatchlist_purchase" ng-click="ppc.goToFeedback(item.saleId._id)">
+						<!-- <button class="btn btn-info btn-sm" ng-click="ppc.goToListing(item.saleId.listingId._id)">View</button> -->
+						<span>GIVE FEEDBACK</span>
+						<!-- <button class="btn btn-warning btn-sm" ng-click="ppc.goToRefund(item.saleId._id)">Get Refund</button> -->
+						<!-- <button class="btn btn-danger btn-sm" title="Claim" ng-click="ppc.goToClaim(item.saleId._id)"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></button> -->
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,83 @@
+/*StoreFront custom css*/
+
+.rt_sf_name{
+	margin: 10px 0;
+}
+.rt_sf_name h3 {
+    color: #3399db;
+    margin: 0;
+    font-weight: bold;
+}
+.rt_sf_place_time {
+	margin-bottom: 15px;
+}
+.rt_sf_place_time h5 {
+	margin: 0px;
+    color: #fff;
+    font-size: 16px;
+}
+.rt_sf_rating_star {
+	height: auto;
+	padding:15px 0px;
+}
+.rt_sf_rating_font {
+	color: #fff;
+	font-size: 18px;
+
+}
+.fa_inactive_star {
+	color: #1d5977;
+}
+
+/*Tabs section*/
+.rt_sf_tabs_cont .nav-tabs>li {
+	width: 50%;
+}
+.rt_sf_tabs_cont .nav-tabs {
+	border: none;
+}
+.rt_sf_tabs_cont .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	border: none;
+	border-bottom: 3px solid #669900;
+	font-weight: bold;
+}
+.rt_sf_tabs_cont .nav-tabs>li>a {
+	color: #669900;
+    font-size: 16px;
+    text-align: center;
+}
+#ContentPane .rt_sf_tabs_cont .rt_sf_tab_content {
+	padding: 15px;
+}
+.rt_sf_sort_content_block {
+	border: 1px solid #ccc;
+	position: relative;
+}
+.rt_sf_sort_content_img_text h6 {
+	position: absolute;
+	margin: 0px;
+	padding: 5px;
+	color: #fff;
+	width: 100%;
+    letter-spacing: 0;
+}
+.rt_sf_sort_content_img_text h6.rt_sf_sort_pn {
+	bottom: 20px;
+    font-weight: bold;
+    font-size: 11px;
+}
+.rt_sf_sort_content_img_text h6.rt_sf_sort_pp {
+	bottom: 5px;
+    font-weight: normal;
+    font-size: 10px;
+}
+.rt_sf_sort_content_block img {
+	width: 165px;
+	height: 165px;
+}
+.rt_sf_padding_right {
+	padding-right: 8px;
+}
+.rt_sf_padding_left {
+	padding-left: 8px;
+}

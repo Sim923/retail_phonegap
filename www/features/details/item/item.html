@@ -1,0 +1,113 @@
+<div id="ContentPane" class="_ContentPane">
+  <div id="ListingDetails">
+    <md-card class="item-carousel" layout="column" layout-align="center center" md-swipe-left="idc.onSwipeLeft()" md-swipe-right="idc.onSwipeRight()">
+        <span class="rt_imagetitle" ng-bind='idc.model.title'></span> 
+      <jk-carousel
+         data="idc.model.images"
+         item-template-url="'features/details/template/item-image-template.html'"
+         max-width="500px"
+         max-height="300px">               
+      </jk-carousel>
+      
+    </md-card>
+    
+    <div class="row listing-price-details rt_paddingelement">
+      <div class="col-xs-7 listing-price">
+        <div class="text-center">
+                <strong class="listing-item-price strong">
+                  <span ng-bind='idc.convertCurrency(idc.model.ourPrice)|currency:"$"'>
+                  </span>
+                </strong>
+                <br>
+                <!-- <small class="listing-original-price text-muted"><span ng-bind="idc.convertCurrency(idc.model.originalPrice)|currency:'$'"></span></small> -->
+                <em class="listing-shipping-price text-muted small" ng-show="idc.model.flatShippingRate>0">
+                  +<span ng-bind="idc.convertCurrency(idc.model.flatShippingRate)|currency:'$'"></span> shipping
+                </em>
+                <em class="listing-shipping-price text-muted small" ng-hide="idc.model.flatShippingRate>0">(free shipping)</em>
+        </div>
+      </div>
+      <div class="col-xs-5 listing-quantity">
+        <div class="form-group text-center rt_quantity_btn" ng-hide="idc.isOwner()">
+          <label for="quantity" class="control-label small rt_label">Quantity</label>
+          <div class="input-group input-group-sm">
+            <span class="input-group-btn"><button class="btn rt_transparent_elemnt" ng-disabled="idc.model.inStock <= 0; idc.cart.quantity == idc.model.inStock" type="button" ng-click="idc.cart.addQuantity()"><i class="fa fa-plus"></i></button></span>
+            <input name="quantity" type="text" class="form-control text-center rt_input_item rt_transparent_elemnt" readonly="readonly" ng-model="idc.cart.quantity" ng-if="idc.model.inStock > 0">
+            <input name="quantity" type="text" class="form-control text-center rt_input_item rt_transparent_elemnt" readonly="readonly" value=0 ng-if="idc.model.inStock <= 0">
+            <span class="input-group-btn"><button class="btn rt_transparent_elemnt" ng-disabled="idc.cart.quantity <= 1" type="button" ng-click="idc.cart.removeQuantity()"><i class="fa fa-minus"></i></button></span>
+          </div>
+        </div>
+        <div class="form-group text-center" ng-show="idc.isOwner()">
+          <span ng-bind="idc.model.inStock"></span> <span>Left in stock</span>
+        </div>
+      </div>
+    </div>
+    <hr class="spacer spacer-sm">
+    <div>
+      <div class="rt_addcart_makeoffer">
+        <div class="rt_addcart_makeoffer_col">
+            <button type="button" class="btn btn-block btn-lg rt_addcartbutton" ng-click='idc.cart.add()'>
+                <!-- ng-hide="idc.isOwner()" -->
+                <img src="icon/cart1.png" />
+              Add to Cart
+            </button>
+        </div>
+        <div class="rt_addcart_makeoffer_col">
+            <button type="button" class="btn btn-block btn-lg rt_makeofferbutton" ng-click="idc.goToOffers(idc.model._id)">
+                <!-- ng-hide="idc.isOwner()||idc.model.isAcceptingOffers===false" -->
+              <img src="icon/offer_icon.png" />
+                Make Offer
+              </button>
+        </div>
+      </div>
+    </div>
+    <div class="rt_id_body_content">
+      <div ng-hide="idc.isOwner()" class="row tighter">
+        <div class="rt_id_mid_buttons">
+          <button type="button" class="btn rt_messagesellor_btn" ng-hide='idc.model.postedByUserId.username===ldc.user.username' ng-click="idc.messageSeller(idc.model.postedByUserId.username, idc.model.postedByUserId._id)">
+               Message Seller
+            </button>
+          <button class="btn rt_watchlisting_button" ng-hide="idc.isUserWatching" ng-click="idc.watch(idc.model._id)">
+              Watch Listing
+          </button>
+        </div>
+      </div>
+    
+    <!-- <hr class="spacer"> -->
+    <div class="rt_id_content">
+    <dl class="listing-information rt_paddingelement">
+      <dt>Category</dt>
+      <dd class="listing-information-category"><span ng-bind='idc.model.categories[0].name'></span>
+	<i class="fa fa-angle-right"></i> <span ng-bind='idc.model.categories[1].name'></span>
+	<i class="fa fa-angle-right"></i> <span ng-bind='idc.model.categories[2].name'></span>
+      </dd>
+      <dt>Condition</dt>
+      <dd class="listing-information-condition" ng-bind='idc.model.condition'></dd>
+      <dd class="listing-information-condition-details" ng-show="idc.model.condition==='Used'"><span ng-bind='idc.model.conditionDetails'></span></dd>
+      <dt>Country of Manufacture</dt>
+      <dd class="listing-information-country-of-manufacture" ng-bind="idc.model.countryOfManufacture"></dd>
+      <dt>Description</dt>
+      <dd class="listing-information-description" ng-bind='idc.model.description'></dd>
+      <!-- <dt>YouTube Link</dt>
+      <dd class="listing-information-description" ng-bind='idc.model.youtubeLink'></dd> -->
+      <dt>Posted on</dt>
+      <dd class="listing-information-date-posted" ng-bind='idc.model.postedDate'></dd>
+      <dt>Seller</dt>
+      <dd class="listing-information-seller"><a href=""><span ng-bind='idc.model.postedByUserId.username'></span> <span class="text-muted">&rarr;</span></a></dd>
+      <dt>Return Policy</dt>
+      <dd class="listing-information-return-policy" ng-show="idc.model.returnPolicy>0"><b><span ng-bind="idc.model.returnPolicy"></span> days</b><br> <small>By purchasing this item, the buyer agrees to the policies set forth by the seller.</small></dd>
+      <dd class="listing-information-return-policy" ng-show="idc.model.returnPolicy===0">NO RETURNS</dd>
+
+      <dt ng-show="idc.isItemOwnedByUser()">View Count</dt>
+      <dd class="listing-information-view-count" ng-show="idc.isItemOwnedByUser()" ng-bind='idc.model.viewCount.authenticated'></dd>
+      <dt>View Count</dt>
+      <dd class="listing-information-watch-count" ng-bind='idc.watchCount'></dd>
+    </dl>
+  </div>
+  </div>
+    <div  class="row tighter rt_paddingelement" ng-show="idc.isItemOwnedByUser()">
+        <button class="btn rt_id_edit_button" ng-click="idc.edit()">Edit</button>
+        <button class="btn rt_refund_button">Refund</button>
+        <button class="btn rt_remove_button" ng-click="idc.remove()">Remove</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ShoppingCart" class="no-bottom-nav">
+		<div ng-show="cc.cart.empty()">
+				<p class="text-center text-muted">
+				</p>
+				<p class="lead text-center rt_cartempty_lbl">Hmm, your cart is empty.
+				<br><small class="text-muted smaller rt_letfix_lbl">Let's fix that.</small>
+				</p>
+				<div class="rt_cart_img">
+						<img class="rt_empty_cart_img" src="icon/cart3.png">
+				</div>
+				<div class="rt_btn_div">
+					<button class="rt_browse_listing_btn" ui-sref="home" >Browse Listings</button>
+					<button class="rt_view_watch_list_btn" ui-sref="profile.watches">View my Watch List</button>
+				</div>
+		</div>
+    <div class="panel panel-default" ng-repeat='(seller, items) in cc.cart.items'>
+      <!-- <div class="panel-heading">
+				<h3 class="panel-title">Items from <span ng-bind="seller"></span></h3>
+      </div> -->
+      <div class="list-group item-list">
+				<div class="item-preview rt_shoppng_cart clearfix" ng-repeat="listing in items">
+							<div class="image" ng-style="{'background-image':'url(' + listing.listingId.images[0].url + ')'}"></div>
+							<div class="price small rt_cart_item_price">
+								<span class="total-price">$<span ng-bind='listing.price*listing.quantity*0.01|number:2'></span></span>
+								<em ng-show="listing.listingId.flatShippingRate > 0" class="shipping-price small text-muted">+$<span ng-bind='listing.listingId.flatShippingRate*0.01|number:2'></span></em>
+							</div>
+							<div class="name rt_cart_item_price">
+								<strong ng-bind='listing.listingId.title'></strong><br>
+								<span  ng-bind="listing.quantity"></span>
+							</div>
+					<div class="details form-inline">
+						<button type="button" class="btn btn-sm btn-danger pull-right" aria-label="Remove Item" title="Remove Item" ng-click="cc.cart.remove(seller, listing.listingId._id)"><i class="fa fa-remove"></i></button>
+							<div class="input-group input-group-sm">
+					<span class="input-group-btn"><button class="btn btn-default" ng-disabled="listing.quantity <= 1" type="button" ng-click="listing.quantity=listing.quantity-1; cc.cart.stepper(listing._id, listing.quantity)"><i class="fa fa-minus"></i></button></span>
+					<input name="quantity" type="text" class="form-control text-center" readonly="readonly" ng-model="listing.quantity">
+					<span class="input-group-btn"><button class="btn btn-default" ng-disabled="listing.quantity == listing.listingId.inStock" type="button" ng-click="listing.quantity=listing.quantity+1; cc.cart.stepper(listing._id, listing.quantity)"><i class="fa fa-plus"></i></button></span>
+							</div>
+					</div>
+				</div>
+				<div class="rt_footer_buttons">
+					<div class="rt_footer_text_cart">
+							<label for="itemType" class="control-label small _lable-color">Sub total</label>
+							<h4 class="rt_total_on_cart" ng-bind='cc.cart.subTotal(items)'></h4>
+					</div>
+					<div class="rt_footer_text_cart">
+							<button class="btn rt_checkout_cart_button btn-md" ng-click='cc.cart.goToShipping(seller)'>
+									Checkout</button>
+					</div>
+					
+						
+					
+					<!-- <button class="btn btn-info btn-block" ng-click=''><i class="fa fa-shopping-bag"></i> Continue Shopping</button> -->
+				</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="bg_container">
+	<div class="first_section item_section">
+		<div class="first_content rt_content item_content boxItem" ng-class="{'active' : is1c.activeview == 1}">1</div>
+		<div class="second_content item_content boxItem">2</div>
+		<div class="third_content item_content boxItem">3</div>
+		<div class="fourth_content item_content boxItem">4</div>
+		<div class="fifth_content item_content boxItem">5</div>
+	</div>
+	<div class="stage_buttons first_stage_btn">
+		<a href="#">What are you selling?</a>
+	</div>
+	<!-- <div class="stage_buttons second_stage_btn">
+		<a href="#">Upload images of your item</a>
+	</div>
+	<div class="stage_buttons third_stage_btn">
+		<a href="#">Describe your item</a>
+	</div>
+	<div class="stage_buttons fourth_stage_btn">
+		<a href="#">Set price and other details</a>
+	</div>
+	<div class="stage_buttons fifth_stage_btn">
+		<a href="#">Choose Listing option</a>
+	</div> -->
+</div>
+
+<div id="ContentPane" class="container-fluid">
+<form id="ListingWizard" name="step1ItemListingForm" class="no-bottom-nav">
+	<!-- <div class="progress wizard-progress">
+		<div class="progress-bar progress-bar-success" role="progressbar" style="width: 20%">
+<em>1 of 5</em>
+		</div>
+	</div>
+	<p class="lead text-center">What are you selling?</p>
+	<hr/> -->
+	<div class="rt_wizard_Page1_lbl_txt_div">
+		<label for="title" class="control-label rt_wizard_lbl ">Item Name</label>
+		<input id="title" name="title" type="text" cordova-keyboard class="form-control rt_wizard_txt" ng-required="true" placeholder="Brand and/or model of your item&hellip;" ng-model="is1c.model.title">
+	<div class="form-alert" ng-messages="step1ItemListingForm.title.$error" ng-show="step1ItemListingForm.title.$touched && step1ItemListingForm.title.$error">
+		<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Item Name required.</div>
+	</div>
+	</div>
+	<div class="rt_wizard_Page1_lbl_txt_div">
+		<label for="mainCategory" class="control-label rt_wizard_lbl">Category</label>
+		<div class="row tighter">
+						<div class="col-xs-12">
+							<select cordova-keyboard id="mainCategory" name="mainCategory" class="form-control rt_wizard_txt input-sm" ng-required="true" data-ng-model="is1c.model.category0" data-ng-options="idx as choice.name for (idx, choice) in is1c.categories | filter:{name:'!Adventures'}">
+								<option>&mdash;</option>
+							</select>
+							<div class="form-alert" ng-messages="step1ItemListingForm.mainCategory.$error" ng-show="step1ItemListingForm.mainCategory.$touched && step1ItemListingForm.mainCategory.$error">
+								<div ng-message="required" class="smaller text-danger">
+									<i class="fa fa-fw fa-exclamation-triangle"></i> Main Category required.
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<hr class="spacer spacer-xs visible-xs"/>
+							<select cordova-keyboard id="subcategory1" name="subcategory1" class="form-control rt_wizard_txt input-sm" ng-required="true" data-ng-model="is1c.model.category1" data-ng-options="idx as choice.name for (idx, choice) in is1c.categories[is1c.model.category0].subcategories">
+								<option>&mdash;</option>
+							</select>
+							<div class="form-alert" ng-messages="step1ItemListingForm.subcategory1.$error" ng-show="step1ItemListingForm.subcategory1.$touched && step1ItemListingForm.subcategory1.$error">
+								<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Sub Category required.</div>
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<hr class="spacer spacer-xs visible-xs"/>
+							<select cordova-keyboard id="subcategory2" name="subcategory2" class="form-control rt_wizard_txt input-sm" ng-required="true" data-ng-model="is1c.model.category2" data-ng-options="idx as choice.name for (idx, choice) in is1c.categories[is1c.model.category0].subcategories[is1c.model.category1].subcategories">
+								<option>&mdash;</option>
+							</select>
+							<div class="form-alert" ng-messages="step1ItemListingForm.subcategory2.$error" ng-show="step1ItemListingForm.subcategory2.$touched && step1ItemListingForm.subcategory2.$error">
+								<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Sub Sub Category required.</div>
+							</div>
+						</div>
+		</div>
+	</div>    
+		<div class="rt_wizard_btn_div">
+				<button class="btn rt_wizard_btn" ng-click="is1c.next()">NEXT</button>
+		</div>
+</form>
+</div>
+
+<!-- ng-disabled="step1ItemListingForm.$invalid" -->

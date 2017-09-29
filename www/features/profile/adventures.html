@@ -1,0 +1,45 @@
+<div class="rt_adventures_select_box_div">
+  <select cordova-keyboard name="adventureFilter" class="form-control input-sm rt_adventures_select_box">
+    <option>All adventures</option>
+  </select>
+</div>
+<div id="ContentPane" class="container-fluid">
+  <div id="ProfileListings">
+    <div id="alerts-container"></div>
+    <div ng-show="pac.output.list.length===0" class="alert small alert-info">You have no adventures yet.</div>
+    <div class="listings-list list-group stretch" infinite-scroll='pac.loadMore()' infinite-scroll-disabled='pac.output.loading' infinite-scroll-distance='1'>
+      <a ng-repeat='adventure in pac.output.list' ui-sref="home.adventure({id:adventure.id})" class="listing-preview list-group-item clearfix" md-swipe-left="pac.model.swipe.left(adventure)" md-swipe-right="pac.model.swipe.right(adventure)">
+  <div class="image" ng-style="{'background-image': 'url(' + adventure.images[0] + ')'}"></div>
+  <div class="name"><strong ng-bind='adventure.title'></strong></div>
+  <div class="category small"> <span ng-bind='pac.category.get(adventure.cat[0], adventure.cat[1], adventure.cat[2]).sub.name'></span>
+    <i class="fa fa-angle-right"></i> <span ng-bind='pac.category.get(adventure.cat[0], adventure.cat[1], adventure.cat[2]).subsub.name'></span>
+  </div>
+  <div class="price small text-muted">
+    <em>
+      <span ng-bind='adventure.price|currency:"$"'></span>
+    </em>
+  </div>
+  <!-- <div class="quick-actions" ng-show="adventure.visible">
+    <div class="wrapper">
+      <button type="button" class="btn btn-info btn-sm" title="Edit Adventure" ng-click='pac.model.edit(adventure)'>Edit</button>
+      <button type="button" class="btn btn-danger btn-sm" title="Delete Adventure" ng-click='pac.model.remove(adventure)'>Remove</button>
+    </div>
+  </div> -->
+        <div class="quick-actions rt_adventure_slide_btns_cont" ng-show="adventure.visible">
+          <div class="wrapper rt_adventure_slide_edit_button" ng-click='pac.model.edit(adventure)'>
+            <!-- <button type="button" class="" title="Edit Adventure" ng-click='pwc.model.edit(adventure)'>Edit</button> -->
+            <span>Edit</span>
+          </div>
+          <div class="wrapper rt_adventure_slide_remove_button" ng-click='pac.model.remove(adventure)'>
+            <!-- <button type="button" class="" title="Delete Adventure" ng-click='pwc.model.remove(adventure)'>Remove</button> -->
+                <span>Delete</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <hr>
+    <div class="loading-animation text-center" ng-show='pac.output.loading'>
+      <i class="fa fa-spinner fa-pulse fa-2x fa-fw text-muted"></i>
+    </div>
+  </div>
+</div>

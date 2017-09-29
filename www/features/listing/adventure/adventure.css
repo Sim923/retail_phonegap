@@ -1,0 +1,517 @@
+/* step one css */
+
+.rt_profile_detail_main_div input._inputelemtnt::-webkit-input-placeholder {
+    color: #072c3f !important;
+    color: #072c3f;
+}
+
+.rt_profile_detail_main_div input._inputelemtnt::-moz-placeholder {  /* Firefox 19+ */
+    color: #072c3f !important;
+    color: #072c3f;
+}
+
+.rt_profile_detail_main_div textarea._inputelemtnt::-webkit-input-placeholder {
+    color: #072c3f !important;
+    color: #072c3f;
+}
+
+.rt_profile_detail_main_div textarea._inputelemtnt::-moz-placeholder {  /* Firefox 19+ */
+    color: #072c3f !important;
+    color: #072c3f;
+}
+
+.rt_adventure_group.rt_profile_detail_main_div{
+    margin-left: 7px;
+}
+
+.rt_adventure_contain .rt_label_common_color{
+    margin-left: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* second */
+
+.rt_step_two_adventure{
+    text-align: center;
+    background: transparent;
+}
+
+.rt_step_two_adventure .rt_step_two_adventure{
+
+}
+
+.rt_imagepicker_header{
+    background: transparent;
+    border-color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #669803;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.rt_image_picker_icon{
+    width: 35px;
+}
+
+.rt_image_picker_buttons{
+    width: 45%;
+    margin: auto;
+}
+
+.rt_camera_click{
+    width: 65px;
+    height: 65px;
+    margin: auto;
+    background: #072c3f;
+    float: left;
+    border-radius: 35px;
+    line-height: 57px;
+}
+
+.rt_gallery_pick{
+    width: 65px;
+    height: 65px;
+    margin: auto;
+    background: #072c3f;
+    float: right;
+    border-radius: 35px;
+    line-height: 57px;
+}
+
+.rt_delete_icon{
+    width: 25px;
+}
+
+.rt_image_view, .rt_step_three_duration{
+    width: 100%;
+    margin: auto;
+    height: 40px;
+}
+
+.rt_image_view .image.rt_image_file{
+    width: 32%;
+    margin: auto;
+    float: left;
+}
+.custom_image_grid_padding {
+    padding: 0 3px !important;
+}
+
+.well-sm.rt_adventure_stepthree{
+    text-align: center;
+}
+
+.rt_step_groupsize_duration{
+    width: 48%;
+    margin: auto;
+    float: right;
+}
+
+.rt_step_duration{
+    width: 48%;
+    margin: auto;
+    float: left;
+}
+
+.rt_rate_text{
+    color: #072c3f;
+}
+
+.rt_step_three .rt_label_common_color{
+    margin-left: 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.panel>.list-group .list-group-item, .panel>.panel-collapse>.list-group:first-child .list-group-item:first-child {
+    border-top: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: #f1f1f1;
+    border-bottom: 3px solid #fff;
+    border-width: 2px 0 !important;
+    border-color: #fff;
+}
+
+.rt_adventure_name_items{
+    margin-left: 15px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.rt_adventure_type{
+    font-size: 18px
+}
+
+.listing-preview.well.well-sm.rt_adventure_stepfour{
+    background: transparent !important;
+}
+
+.rt_step_four_amount{
+    margin-left: 18px;
+    margin-top: -10px;
+}
+.rt_custom_btn_group_container {
+    padding: 2px;
+    border: 1px solid #aeaeae;
+    border-radius: 50px;
+}
+.rt_custom_btn_group_container .btn-blue {
+    color: #3498db;
+    background: #062c3f;
+    border-radius: 50px;
+}
+.rt_custom_btn_group_container .btn.active {
+    border-bottom: none;
+    background: #3498db !important;
+    color: #fff !important;
+}
+.rt_custom_btn_group_container .btn-green {
+    color: #2ecc71;
+    /* background: #2ecc71; */
+    border-radius: 50px;
+}
+.rt_custom_btn_group_container .btn-saffron {
+    color: #f39c12;
+    /* background: #3498db; */
+    border-radius: 50px;
+}
+.rt_custom_btn_group_container .btn-dark-saffron{
+    color: #dc8732;
+    /* background: #3498db; */
+    border-radius: 50px;
+}
+.rt_custom_btn_group_container .btn-red {
+    color: #e74c3c;
+    /* background: #e74c3c; */
+    border-radius: 50px;
+}
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    outline: 0px auto -webkit-focus-ring-color !important;
+    outline-offset: 0px;
+}
+
+/*New Adventure stage header*/
+
+.bg_container {
+	background: #062c3f;
+    padding: 5%;
+    padding-bottom: 10px !important;
+}
+.item_section {
+	position: relative;
+	padding-bottom: 5%;
+	margin: 0 5% 0 10%;
+}
+.item_content {
+	position: absolute;
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    top: -17px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.rt_content.active{
+	background: #669900;
+}
+.second_content {
+	left: 35%;
+    background: #062c3f;
+}
+.third_content {
+	left: 55%;
+    background: #062c3f;
+}
+.fourth_content {
+	left: 75%;
+    background: #062c3f;
+}
+.item_button {
+	width: 450px;
+    margin: 0 auto;
+    text-align: center;
+	margin-top: 3%;
+}
+.item_content:before, .item_content:after
+{
+  content:'';
+  width:500%;
+  border-bottom:1px solid;
+  position:absolute;
+  top:50%;
+}
+:after {
+  left:100%;
+}
+:before {
+  right:100%;
+}
+.item_content:first-of-type:before,
+.item_content:last-of-type:after {
+  display:none;
+}
+.stage_buttons {
+	position: relative;
+    margin: 5%;
+    text-align: center;
+}
+.stage_buttons a {
+	padding: 10px 12px;
+    border-radius: 20px;
+    color: #fff;
+    background: #1e5977;
+    display: block;
+	position: relative;
+	font-size: 18px;
+	text-decoration: none;
+}
+.first_stage_btn a:before {
+	content: "";
+    position: absolute;
+    border-bottom: 10px solid #1e5977;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: -20px;
+    left: 12%;
+}
+.second_stage_btn a:before {
+	content: "";
+    position: absolute;
+    border-bottom: 10px solid #1e5977;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: -20px;
+    left: 30%;
+}
+.third_stage_btn a:before {
+	content: "";
+    position: absolute;
+    border-bottom: 10px solid #1e5977;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: -20px;
+    left: 50%;
+}
+.fourth_stage_btn a:before {
+	content: "";
+    position: absolute;
+    border-bottom: 10px solid #1e5977;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: -20px;
+    left: 70%;
+}
+.fifth_stage_btn a:before {
+	content: "";
+    position: absolute;
+    border-bottom: 10px solid #1e5977;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: -20px;
+    left: 87%;
+}
+
+.rt_success_button_step_four{
+    background: #669803;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    border-radius: 20px !important;
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 10px;
+}
+
+.btn.btn-default.rt_plusbutton{
+    width: 23px;
+    height: 23px;
+    padding: 1px;
+}
+
+
+/*Media Query*/
+@media only screen and (max-width: 991px) {
+	.item_content:before, .item_content:after {
+		width: 350%
+	}
+}
+@media only screen and (max-width: 767px) {
+	.item_content:before, .item_content:after {
+		width: 204%
+	}
+}
+@media only screen and (max-width: 500px) {
+	.item_content:before, .item_content:after {
+		width: 150%
+	}
+}
+@media only screen and (max-width: 400px) {
+	.item_content:before, .item_content:after {
+		width: 95%
+	}	
+}
+@media only screen and (max-width: 330px) {
+	.item_content:before, .item_content:after {
+		width: 75%
+	}	
+}
+
+.bg_container {
+	background: #062c3f;
+	padding: 5%;
+}
+.adventure_section {
+	position: relative;
+	padding-bottom: 5%;
+	margin: 5px 0% 0 15%;
+}
+.adventure_content {
+	position: absolute;
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    top: -17px;
+    width: 30px;
+    height: 30px;
+    line-height: 25px;
+    text-align: center;
+    font-size: 16px;
+}
+.first_content {
+	left: 5%;
+	background: #062c3f;
+}
+.second_content {
+	left: 25%;
+    background: #062c3f;
+}
+.third_content {
+	left: 45%;
+    background: #062c3f;
+}
+.fourth_content {
+	left: 65%;
+    background: #062c3f;
+}
+.adventure_button {
+	width: 450px;
+    margin: 0 auto;
+    text-align: center;
+	margin-top: 3%;
+}
+.adventure_content:before, .item_content:after
+{
+  content:'';
+  width:500%;
+  border-bottom:1px solid;
+  position:absolute;
+  top:50%;
+}
+:after {
+  left:100%;
+}
+:before {
+  right:100%;
+}
+.adventure_content:first-of-type:before,
+.adventure_content:last-of-type:after {
+  display:none;
+}
+.ad_stage_buttons {
+	position: relative;
+    margin: 5%;
+    text-align: center;
+}
+.ad_stage_buttons a {
+	padding: 6px 12px;
+    border-radius: 20px;
+    color: #fff;
+    background: #1e5977;
+    display: block;
+	position: relative;
+	font-size: 16px;
+	text-decoration: none;
+}
+.ad_first_stage_btn a:before {
+	content: "";
+    position: absolute;
+    border-bottom: 10px solid #1e5977;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: -20px;
+    left: 17%;
+}
+.ad_second_stage_btn a:before {
+	content: "";
+    position: absolute;
+    border-bottom: 10px solid #1e5977;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: -20px;
+    left: 35%;
+}
+.ad_third_stage_btn a:before {
+	content: "";
+    position: absolute;
+    border-bottom: 10px solid #1e5977;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: -20px;
+    left: 55%;
+}
+.ad_fourth_stage_btn a:before {
+	content: "";
+    position: absolute;
+    border-bottom: 10px solid #1e5977;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: -20px;
+    left: 75%;
+}
+
+
+/*Media Query*/
+@media only screen and (max-width: 991px) {
+	.adventure_content:before, .adventure_content:after {
+		width: 350%
+	}
+}
+@media only screen and (max-width: 767px) {
+	.adventure_content:before, .adventure_content:after {
+		width: 225%
+	}
+}
+@media only screen and (max-width: 500px) {
+	.adventure_content:before, .adventure_content:after {
+		width: 150%
+	}
+}
+@media only screen and (max-width: 400px) {
+	.adventure_content:before, .adventure_content:after {
+		width: 115%
+	}	
+}
+@media only screen and (max-width: 330px) {
+	.adventure_content:before, .adventure_content:after {
+		width: 85%
+	}	
+}

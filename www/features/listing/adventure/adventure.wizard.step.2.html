@@ -1,0 +1,203 @@
+<div class="bg_container">
+    <div class="first_section adventure_section">
+      <div class="first_content adventure_content boxItem">1</div>
+      <div class="second_content rt_content adventure_content boxItem" ng-class="{'active' : as2c.activeview == 2}">2</div>
+      <div class="third_content adventure_content boxItem">3</div>
+      <div class="fourth_content adventure_content boxItem">4</div>
+    </div>
+   <!-- <div class="stage_buttons first_stage_btn">
+      <a href="#">What's your adventure called?</a>
+    </div> -->
+     <div class="ad_stage_buttons ad_second_stage_btn">
+      <a href="#">Upload images of your adventure</a>
+    </div>
+   <!-- <div class="stage_buttons third_stage_btn">
+      <a href="#">Describe your item</a>
+    </div>
+    <div class="stage_buttons fourth_stage_btn">
+      <a href="#">Set price and other details</a>
+    </div>
+    <div class="stage_buttons fifth_stage_btn">
+      <a href="#">Choose Listing option</a>
+    </div> -->
+  </div>
+
+<div id="ContentPane" class="container-fluid">
+  <div id="ImageCropper" class="full-overlay" ng-show="as2c.cropper.visible===true">
+    <button class="btn btn-link btn-lg text-danger close-overlay" ng-click='as2c.cropper.close()'><i class="fa fa-ban"></i></button>
+    <nc-darkroom 
+      image='as2c.cropper.image.base64data' 
+      max-width='600' 
+      max-height='600' 
+      on-crop='as2c.cropper.crop(image)' 
+      history='true' 
+      crop='{}' 
+      rotate='true' 
+      save='false'>
+    </nc-darkroom>
+    <button ng-click="as2c.cropper.upload()">SAVE IMAGE</button>
+  </div>
+  <!-- CAMERA MODAL -->
+  <div id="CameraModal" ng-show="as2c.cameraSelector">
+    <div class="wrapper panel panel-default">
+      <div class="panel-heading">
+	<a href="" class="pull-right" ng-click="as2c.closeSelector()">
+	  <i class="fa fa-remove fa-lg"></i>
+	</a>
+	<h4 class="panel-title">Add an Image</h4>
+      </div>
+      <div class="panel-body">
+	<hr class="spacer spacer-xs" />
+	<div class="options row text-center">
+	  <div class="col-xs-6">
+	    <a href="" class="text-primary" ng-click="as2c.getPhoto($event)">
+	      <i class="fa fa-camera fa-5x"></i><br>
+	      <span class="smaller">Take Photo</span>
+	    </a>
+	  </div>
+	  <div class="col-xs-6">
+	    <a href="" class="text-warning" ng-click="as3c.getFromGallery($event)">
+	      <i class="fa fa-image fa-5x"></i><br>
+	      <span class="smaller">Upload Existing</span>
+	    </a>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+  <!-- /CAMERA MODAL --> 
+  
+  <form id="ListingWizard" name="step2AdventureListingForm" class="no-bottom-nav">
+    <!-- <div class="progress wizard-progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" style="width: 40%">
+        <em>2 of 5</em>
+      </div>
+    </div>
+    <p class="lead text-center">Upload images of your adventure</p>
+    <hr class="spacer"/> -->
+    <div class="well-sm clearfix rt_step_two_adventure">
+      <!-- <div class="image"></div> -->
+      <div class="name rt_option_color rt_adventure_name"><strong ng-bind='as2c.model.title'></strong></div>
+      <div class="category rt_label_common_color small rt_adventure_type">
+        Adventures
+        <i class="fa fa-angle-right"></i> <span ng-bind="as2c.model.category.sub"></span>
+        <i class="fa fa-angle-right"></i> <span ng-bind="as2c.model.category.subsub"></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <!-- <div data-as-sortable='as2c.dragControlListeners' data-ng-model='as2c.images._images'> -->
+        <div class="rt_imagepicker_header">
+            Photos
+        </div>
+        <!-- <div class="rt_image_view" ng-repeat='image in as2c.images._images' data-as-sortable-item='as2c.images._images'>
+          <div class="image rt_image_file" ng-style="{'background-image':'url(' + image.url + ')'}" ng-click='as2c.images.edit(image)'>
+            <div class="frosting" ng-show="image.progress<100"></div>
+            <div class="progress" ng-show="image.progress<100"><div class="progress-bar progress-bar-striped active" role="progressbar" style="width: {{image.progress}}%"></div></div>
+            <button class="delete" ng-show="image.progress===100" ng-click="as2c.images.remove(image)">
+              <img class="rt_delete_icon" src="icon/close_icon.png">
+            </button>
+            <div class="drag-handle" data-as-sortable-item-handle></div>
+          </div>
+        </div> -->
+
+        <div class="row tighter image-grid" data-as-sortable='as2c.dragControlListeners' data-ng-model='as2c.images._images'>
+          <div class="col-xs-4 col-sm-4 col-md-3 custom_image_grid_padding" ng-repeat='image in as2c.images._images' data-as-sortable-item='as2c.images._images'>
+            <div class="image" ng-style="{'background-image':'url(' + image.url + ')'}" ng-click='as2c.images.edit(image)'>
+              <div class="frosting" ng-show="image.progress<100"></div>
+              <div class="progress" ng-show="image.progress<100"><div class="progress-bar progress-bar-striped active" role="progressbar" style="width: {{image.progress}}%"></div></div>
+              <button class="delete" ng-show="image.progress===100" ng-click="as2c.images.remove(image)">
+                <span class="delete-icon fa-stack fa-lg text-danger">
+                  <img class="rt_delete_icon" src="icon/close_icon.png">
+                </span>
+              </button>
+              <div class="drag-handle" data-as-sortable-item-handle></div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-4 col-md-3" ng-hide="as2c.isCordova" flow-name="as2c.control.flow" flow-init flow-object='existingFlowObject' flow-files-submitted='as2c.flow.filesSubmitted($files, $event, $flow)' flow-file-success='as2c.flow.fileSuccess($file, $message, $flow)' flow-file-progress='as2c.flow.fileProgress($file, $event, $flow)' flow-file-added='as2c.flow.fileAdded($file, event)' flow-files-added='as2c.flow.filesAdded($files, $event, $flow)' flow-file-retry='as2c.flow.fileRetry($file, $flow)' flow-file-error='as2c.flow.fileError($file, $message, $flow)' flow-error='as2c.flow.error($file, $message, $flow)' flow-complete='as2c.flow.complete($file, $message, $flow)' flow-upload-started='as2c.flow.uploadStarted()' flow-progress='as2c.flow.progress()'>
+            <span class='image'>
+              <span class="camera-icon fa-stack fa-3x" flow-btn>
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+              </span>
+            </span>
+          </div>
+        </div>  
+          
+
+        <!-- image-picker -->
+
+        <div class="rt_image_picker">
+          <div class="wrapper">
+              <hr class="spacer"/>
+            <div class="rt_imagepicker_header">
+              Upload Photo
+            </div>
+            <div class="wrapper panel panel-default">
+              <div class="panel-body">
+                  <div class="col-xs-12 rt_wizard_camera_img_div">
+                    <ul class="list-inline">
+                      <li class="rt_cam_icon">
+                        <a href="" class="text-primary" ng-click="as2c.getPhoto($event)">
+                          <img src="icon/camera_icon.png">
+                        </a>
+                    </li>
+                    <li class="rt_gallery_icon">
+                      <a href="" class="text-warning" ng-click="as2c.getFromGallery($event)">
+                          <img src="icon/gallery_icon.png">
+                      </a>
+                    </li>
+                  </ul>
+                  </div>
+              </div>
+            </div>
+            <!-- <div class="panel-body">
+       
+            <div class="options row text-center rt_image_picker_buttons">
+              <div class="rt_camera_click">
+                <a href="" class="text-primary" ng-click="as2c.getPhoto($event)">
+                  <img class="rt_image_picker_icon" src="icon/camera_icon.png">             
+                </a>
+              </div>
+              <div class="rt_gallery_pick">
+                <a href="" class="text-warning" ng-click="as2c.getFromGallery($event)">
+                    <img class="rt_image_picker_icon" src="icon/gallery_icon.png">                  
+                </a>
+              </div>
+            </div>
+            </div> -->
+          </div>
+        </div>
+        <!-- <div class="col-xs-6 col-sm-4 col-md-3" ng-hide="as2c.isCordova" flow-name="as2c.control.flow" flow-init flow-object='existingFlowObject' flow-files-submitted='as2c.flow.filesSubmitted($files, $event, $flow)' flow-file-success='as2c.flow.fileSuccess($file, $message, $flow)' flow-file-progress='as2c.flow.fileProgress($file, $event, $flow)' flow-file-added='as2c.flow.fileAdded($file, event)' flow-files-added='as2c.flow.filesAdded($files, $event, $flow)' flow-file-retry='as2c.flow.fileRetry($file, $flow)' flow-file-error='as2c.flow.fileError($file, $message, $flow)' flow-error='as2c.flow.error($file, $message, $flow)' flow-complete='as2c.flow.complete($file, $message, $flow)' flow-upload-started='as2c.flow.uploadStarted()' flow-progress='as2c.flow.progress()'>
+          <span class='image'>
+            <span class="camera-icon fa-stack fa-3x" flow-btn>
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+            </span>
+          </span>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3" ng-show="as2c.isCordova">
+          <span class='image'>
+            <span class="camera-icon fa-stack fa-3x" ng-click="as2c.openSelector($event)">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+            </span>
+          </span>
+        </div> -->
+      <!-- </div> -->
+      <div class="form-alert" ng-messages="" ng-show="as2c.images._images.length===0">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Upload at least one (1) image of the item you're selling.</div>
+      </div>
+    </div>
+    <hr class="spacer"/>
+    <!-- <div class="row tighter">
+      <div class="col-xs-7">
+	      <button class="btn btn-link" ng-click="as2c.back()"><i class="fa fa-arrow-left"></i> Back</button>
+      </div>
+      <div class="col-xs-5"> -->
+        <div class="rt_wizard_btn_div">
+          <button class="btn rt_wizard_btn" ng-disabled="step2AdventureListingForm.$invalid || !as2c.upload.done" ng-click="as2c.next()">Next</button>
+        </div>
+      <!-- </div>
+    </div> -->
+  </form>
+</div>

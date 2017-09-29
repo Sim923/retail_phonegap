@@ -1,0 +1,26 @@
+.rt_forgot_main_div{
+    padding: 20px;
+}
+    .rt_letus_lbl{
+    background: #062C40;
+    color: #379BDA;
+}
+.rt_provideus_lbl{
+    color: #379BDA;
+    font-size: 18px;
+}
+.rt_usename_lbl{
+    color: #669900;
+    font-size: 18px;
+}
+.rt_send_email_btn_div{
+    text-align: center;
+}
+.rt_send_email_btn{
+    width: 150px;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 100px;
+    background: #669900;
+    color: #fff;
+    }

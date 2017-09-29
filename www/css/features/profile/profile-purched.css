@@ -1,0 +1,30 @@
+.rt_info_purched_div{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 8px;
+}
+
+label.rt_purched_info{
+    text-align: center;
+    color: #072c3f;
+}
+
+.wrapper.rt_unwatchlist_purchase{
+    text-align: center;
+}
+
+.wrapper.rt_unwatchlist_purchase span{
+    color: #fff;
+    text-align: center;
+}
+
+.quick-actions.rt_action_purchase {
+    background-color: rgba(46, 135, 191, 0.77);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}

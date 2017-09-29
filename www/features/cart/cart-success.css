@@ -1,0 +1,61 @@
+/*Cart success custom css*/
+
+.rt_cs_cont {
+	text-align: center;
+	padding: 15px 0 0 0;
+}
+.rt_cs_cont .rt_cs_title {
+	font-size: 18px;
+	font-weight: bold;
+	color: #062c3f;
+	margin: 5px 0;
+}
+.rt_cs_cont .rt_cs_subtitle {
+	font-size: 18px;
+	font-weight: bold;
+	color: #062c3f;
+}
+.rt_cs_cont .rt_cs_sub_subtitle {
+	font-size: 16px;
+	color: #062c3f;
+}
+.rt_cs_success_img {
+	text-align: center;
+}
+.rt_cs_success_img img {
+	width: 250px;
+	height: auto;
+	display: block;
+	max-width: 100%;
+	margin: 0 auto;
+}
+.rt_cs_button_cont {
+	text-align: center;
+}
+.rt_cs_button_cont .rt_cs_browse_btn {
+	height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #669900;
+    font-size: 16px;
+    width: 60%;
+    font-weight: bold;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.rt_cs_button_cont .rt_cs_viewlist_btn {
+	height: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    color: #fff;
+    background: #062C40;
+    width: 60%;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}

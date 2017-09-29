@@ -1,0 +1,38 @@
+<div class="rt_select_box_div">
+    <select cordova-keyboard class="form-control input-sm rt_select_box" ng-model='pnc.selectedFilter' ng-options='selectedFilter.text for selectedFilter in pnc.filter track by selectedFilter.id'>
+    </select>
+</div>
+<div id="ContentPane" class="container-fluid">
+  <div id="ProfileNotifications">
+    <div id="alerts-container"></div>
+    <div class="form-group">
+    </div>
+    <div ng-if="(pnc.notifications | filterByIsActive:isActive | filter:pnc.selectedFilter.id).length <= 0">
+      <div class="alert alert-info rt-alert row rt_notification_message" ng-bind="pnc.selectedFilter.notification"></div>
+    </div>
+    <div class="notification-list list-group stretch">
+      <div href="" class="notification-item list-group-item"  ng-class="{unread: !notification.isRead}" ng-repeat="notification in pnc.notifications | filterByIsActive:isActive | filter:pnc.selectedFilter.id | orderBy:'-datePosted'" md-swipe-left="pnc.model.swipe.left(notification)" md-swipe-right="pnc.model.swipe.right(notification)">
+        <div class="" ng-click='pnc.goTo(notification)'>
+          <div class="notification-badge smaller">
+            <i class="fa fa-circle"></i>
+          </div>
+          <div class="message small">
+            <div class="rt_notification_message" ng-bind='notification.message'></div>
+            <div class="rt_date_next_line"></div>
+            <div class="rt_notification_date" ng-bind='notification.date'></div>
+          </div>
+          <div class="timestamp smaller text-muted">
+            <span ng-bind="notification.datePosted | date:'MM/dd/yyyy - h:mma'"></span>
+          </div>
+        </div>
+	<div class="quick-actions" ng-show="notification.visible">
+	  <div class="wrapper">
+            <button class="btn btn-default" type="button" title="Mark as Read" ng-click='pnc.mark(notification)' ng-hide='notification.isRead'>Mark as Read</button>
+            <button class="btn btn-info" type="button" title="Mark as Unread"  ng-click='pnc.unmark(notification)' ng-show='notification.isRead'>Mark as Unread</button>
+            <button class="btn btn-warning" type="button" title="Remove"  ng-click='pnc.archive(notification)'>Remove</button>
+          </div>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>

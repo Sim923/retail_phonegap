@@ -1,0 +1,39 @@
+<div class="rt_select_box_div">
+	<select cordova-keyboard class="form-control input-sm rt_select_box" ng-model='pwc.selectedFilter' ng-options='selectedFilter.text for selectedFilter in pwc.filter track by selectedFilter.id'>
+	</select>
+</div>
+<div id="ContentPane" class="container-fluid">
+  <div id="ProfileListings">
+    <div id="alerts-container"></div>
+    <div ng-show="pwc.watches.length===0" class="alert alert-info">You are not watching any listings</div>
+    <div class="listings-list list-group stretch rt_profile_watch">
+      <a ng-repeat='watch in pwc.watches' ui-sref="profile.watches()" class="listing-preview list-group-item clearfix" md-swipe-left="pwc.model.swipe.left(watch)" md-swipe-right="pwc.model.swipe.right(watch)">
+				<div class="image" ng-style="{'background-image': 'url(' + watch.listingId.images[0].url + ')'}"></div>
+				
+				<div class="rt_name_watch">
+					<div class="rt_firtst_contain">
+							<div class="name rt_watch_item_name">
+									<strong ng-bind='watch.listingId.title'></strong>
+								</div>
+							<div class="category small rt_watch_item_name"> <span ng-bind="watch.listingId.categories[0].name"></span>
+								<i class="fa fa-angle-right"></i> <span ng-bind="watch.listingId.categories[1].name"></span>
+								<i class="fa fa-angle-right"></i> <span ng-bind="watch.listingId.categories[2].name"></span>
+							</div>							
+					</div>
+					<div class="rt_second_contain">
+							<div class="price small text-muted rt_watch_item_name">
+									<em><span ng-bind="watch.listingId.ourPrice*0.01|currency:'$'"></span></em>
+								</div>
+					</div>
+				</div>
+				<div class="quick-actions rt_removewatch" ng-show="watch.visible">
+					<div class="wrapper rt_unwatchlist_watch" ng-click='pwc.unwatch(watch)'>
+						<!-- <button type="button" class="" title="View Listing" ng-click='pwc.model.edit(watch)'>View</button> -->
+						<span>REMOVE FROM</span><br><span> WATCHLIST</span>
+					</div>
+				</div>
+			</a>
+			<hr class="rt_watch_hr_tag">
+    </div>
+  </div>
+</div>

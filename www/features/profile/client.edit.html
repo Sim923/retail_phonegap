@@ -1,0 +1,109 @@
+<div id="ContentPane" class="container-fluid">
+  
+  <form id="ClientDetails">
+
+<!-- NAME -->
+<div class="row tighter">
+  <div class="col-xs-6">
+    <div class="form-group">
+      <label for="firstName" class="control-label small">First Name</label>
+      <input name="firstName" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="model.firstName">
+    </div>
+  </div>
+  
+  <div class="col-xs-6">
+    <div class="form-group">
+      <label for="lastName" class="control-label small">Last Name</label>
+      <input name="lastName" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="model.lastName">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="address" class="control-label small">Address</label>
+  <input name="address" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="model.address" placeholder="House number and street">
+</div>
+
+<div class="form-group">
+  <label for="aptSuite" class="control-label small">Apartment / Suite</label> <em class="small text-muted">(optional)</em>
+  <input name="aptSuite" type="text" cordova-keyboard class="form-control input-sm" ng-model="model.aptSuite">
+</div>
+
+<div class="form-group">
+  <label for="city" class="control-label small">City</label>
+  <input name="city" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="model.city">
+</div>
+
+<div class="row tighter">
+  <div class="col-xs-6">
+    <div class="form-group">
+      <label for="state" class="control-label small">State</label>
+      <select cordova-keyboard name="state" class="form-control input-sm" ng-model="model.state">
+	    <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option>
+	    <option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option>
+	    <option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option>
+	    <option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option>
+	    <option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option>
+	    <option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option>
+	    <option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option>
+	    <option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option>
+	    <option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option>
+	    <option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option>
+	    <option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option>
+	    <option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option>
+	    <option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option>
+	    <option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option>
+	    <option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option>
+	    <option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option>
+	    <option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="col-xs-6">
+    <div class="form-group">
+      <label for="zip" class="control-label small">Zip Code</label>
+      <input name="zip" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="model.zip">
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="phone" class="control-label small">Telephone Number</label>
+  <input name="phone" type="tel" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="model.phone">
+</div>
+
+<!-- EMAIL -->
+<div class="form-group">
+  <label for="email" class="control-label small">Email Address</label>
+  <input name="email" type="email" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="model.emal" placeholder="mail@example.com">
+</div>
+
+<div class="form-group">
+  <label for="percentage" class="control-label small">Percentage</label>
+  <div class="input-group">
+    <input
+      name="percentage"
+      type="number" cordova-keyboard
+      class="form-control"
+      ng-required="true"
+      ng-model="model.percentage"/>
+    <span class="input-group-addon">%</span>
+  </div>
+</div>
+
+<hr class="spacer">
+
+<div class="row tighter">
+  <div class="col-xs-6">
+    <button class="btn btn-primary btn-block">Update</button>
+  </div>
+  
+  <div class="col-xs-6">
+    <button class="btn btn-warning btn-block">Cancel</button>
+  </div>
+</div>
+
+  </form>
+  
+</div>

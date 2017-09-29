@@ -1,0 +1,36 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ShoppingCart" class="no-bottom-nav">
+    <!-- <p class="text-center text-success">
+          <span class="fa-stack fa-4x">
+          	<i class="fa fa-circle fa-stack-2x"></i>
+          	<i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+          </span>
+        </p> -->
+    <div class="rt_cs_cont">
+      <div class="rt_cs_title">Success!</div>
+      <div class="rt_cs_subtitle" ng-show="csc.empty()">Your Order has been placed</div>
+      <div class="rt_cs_subtitle" ng-hide="csc.empty()">Your Order has been placed. You still have items in your cart from other sellers.</div>
+      <div class="rt_cs_sub_subtitle">What do you want to do next?</div>
+      <div class="rt_cs_success_img">
+        <img src="../../icon/cart_success.png" alt="">
+      </div>
+      <div class="rt_cs_button_cont">
+        <button class="btn rt_cs_browse_btn" ui-sref="home">Browse Listings</button>
+        <button class="btn rt_cs_viewlist_btn" ui-sref="profile.watches">View my Watch List</button>
+      </div>
+    </div>
+    <!-- <p class="lead text-center" ng-show="csc.empty()">
+      Success: your order <span class="nowrap">has been placed!</span><br/>
+    </p>
+    <p class="lead text-center" ng-hide="csc.empty()">
+      Success: your order has been placed! You still have items in your cart <span class="nowrap">from other sellers.</span><br/>
+    </p> 
+    <p class="lead text-center">
+      <small class="text-muted smaller">What do you want to do next?</small>
+    </p>
+    <hr/>
+    <button class="btn btn-primary btn-lg btn-block" ui-sref="home.cart">View Shopping Cart</button>
+    <button class="btn btn-default btn-lg btn-block" ui-sref="home">Browse Listings</button>
+    <button class="btn btn-info btn-lg btn-block" ui-sref="profile.watches">View my Watch List</button>-->
+  </div>
+</div>

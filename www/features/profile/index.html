@@ -1,0 +1,115 @@
+<div id="ContentPane" class="_ContentPane">
+  <div id="Profile">
+    <div class="profile-image-container text-center rt_profile_header">
+      <div class="loading-animation">
+  <i class="fa fa-spinner fa-pulse fa-4x"></i>
+      </div>
+      <div class="profile-image" ng-style="{'background-image': 'url('+pc.model.profileImage+')'}"></div>
+      <div class="profile-badge"><img alt="Gold Badge" ng-src="img/badge-{{pc.model.subscription.name|lowercase}}@2x.png"></div>
+      <hr class="spacer spacer-xs">
+      <div class="profile-details">
+      <h4 class="name rt_profile_name"><span ng-bind='pc.model.firstName'></span> <span ng-bind='pc.model.lastName'></span></h4>
+      <h4 class="name rt_profile_address">
+            <span ng-bind='pc.model?.ciry'></span> 
+            <span ng-bind='pc.model?.state'></span>
+      </h4>
+      <h4 class="name rt_profile_address">
+            <span ng-bind='pc.model?.date'></span> 
+      </h4>
+  <!--<p class="summary small text-muted"><span class="location">City, State</span> &bull; <span class="date-joined">January 2016</span></p>-->
+  <div class="rating rt_profile_rating">
+    <div class="rating-stars">
+        <i class="fa fa-star"></i>
+      <i ng-class="{'fa fa-star-o' : pc.model.average < 2, 'fa fa-star' : pc.model.average > 1}"></i>
+      <i ng-class="{'fa fa-star-o' : pc.model.average < 3, 'fa fa-star' : pc.model.average > 2}"></i>
+      <i ng-class="{'fa fa-star-o' : pc.model.average < 4, 'fa fa-star' : pc.model.average > 3}"></i>
+      <i ng-class="{'fa fa-star-o' : pc.model.average < 5, 'fa fa-star' : pc.model.average == 5}"></i>
+    </div>
+    <small class="rating-count text-muted smaller" ng-bind="pc.model.reviews"></small> Ratings
+  </div>
+      </div>
+    </div>
+    <hr class="spacer">
+    <div class="quick-links">
+      <button class="btn btn-block rt_success_button_profile">Enable Push Notifications</button>
+      <!-- <button class="btn btn-block btn-default"><i class="fa fa-trophy"></i> Invite Friends, Earn Rewards!</button> -->
+    </div>
+    <hr class="spacer">
+    <div class="list-group rt_paddingelement rt_profile_contain">
+      <button type="button" class="list-group-item" ng-click='pc.profile.notifications()'>
+                  <img ng-src="icon/icon2.png"> Notifications <span class="badge"><span data-ng-bind="pc.data.notificationCount"></span></span>
+      </button>
+      <button type="button" class="list-group-item" ng-click='pc.profile.watchlist()'>
+                  <img ng-src="icon/icon3.png"> Watch List
+      </button>
+      <button type="button" class="list-group-item" ng-click='pc.profile.items()'>
+                  <img ng-src="icon/icon4.png">
+   Items
+      </button>
+      <button type="button" class="list-group-item" ng-click='pc.profile.adventures()'>
+                  <img ng-src="icon/icon5.png">
+   Adventures
+      </button>
+      <button ng-click="pc.profile.purchased()" type="button" class="list-group-item">
+                  <img ng-src="icon/icon6.png">
+   Purchased
+      </button>
+      <button type="button" class="list-group-item" ng-click="pc.profile.sales()">
+                  <img ng-src="icon/icon7.png">
+   Sold
+      </button>
+      <button type="button" class="list-group-item" ng-click='pc.profile.feedback()'>
+                  <img ng-src="icon/icon8.png">
+   Feedback
+      </button>
+    </div>
+    <hr class="spacer">
+    <div class="list-group rt_paddingelement rt_profile_contain">
+      <button type="button" class="list-group-item" ng-click='pc.profile.details()'>
+                  <img ng-src="icon/icon9.png">
+  Profile Details
+      </button>
+      <button type="button" class="list-group-item" ng-click='pc.profile.subscription()'>
+                  <img ng-src="icon/icon10.png">
+   Subscription
+      </button>
+      <button type="button" class="list-group-item" ng-click='pc.profile.paymentmethod()'>
+                  <img ng-src="icon/icon11.png">
+            Payment Methods
+      </button>
+      <button type="button" class="list-group-item" ng-click='pc.profile.address()'>
+                  <img ng-src="icon/icon12.png">
+   Addresses
+      </button>
+      <!--<button type="button" class="list-group-item" ng-click='pc.profile.referrals()'><i class="fa fa-address-card fa-fw text-muted"></i> Referrals</button>-->
+      <button type="button" class="list-group-item" ng-click='pc.profile.sellerSettings()'>
+                  <img ng-src="icon/icon13.png">
+   Seller Settings
+      </button>
+      <!-- button type="button" class="btn-block list-group-item"><i class="fa fa-users fa-fw text-muted"></i> Clients</button -->
+      <!-- <button type="button" class="list-group-item" ng-click='pc.profile.support()'>
+                  <img ng-src="icon/icon15.png">
+   Support
+      </button> -->
+    </div>
+    <hr class="spacer">
+    <div class="list-group rt_paddingelement rt_profile_contain">
+    
+      <button type="button" class="list-group-item" ng-click='pc.profile.appsetting()'>
+                  <img ng-src="icon/icon14.png">
+            App setting
+      </button>
+      <button type="button" class="list-group-item" ng-click='pc.profile.about()'>
+                  <img ng-src="icon/icon15.png">
+            About
+      </button>
+      <button type="button" class="list-group-item rt_logout" ng-click='pc.logout()'>
+        <img ng-src="icon/icon16.png">
+        Logout
+      </button>
+    </div>
+    <!-- <div class="list-group rt_paddingelement rt_profile_contain">
+      
+    </div> -->
+  </div>
+</div>

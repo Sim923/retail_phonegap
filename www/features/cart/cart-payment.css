@@ -1,0 +1,148 @@
+/*cart payment custom css*/
+
+.rt_cp_payment_summary_cont .rt_cp_ps_title {
+    position: relative;
+	padding: 5px;
+	margin: 20px auto;
+	background: #1d5977;
+	display: block;
+	width: 100%;
+	color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    letter-spacing: normal;
+    font-weight: 600;
+}
+.rt_cp_payment_summary_cont .rt_cp_ps_title:before {
+    content: "";
+	position: absolute;
+	border-top: 5px solid #1d5977;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50% , 0);
+}
+.rt_cp_shipping_title {
+    position: relative;
+	padding: 5px;
+	margin: 20px auto;
+	background: #1d5977;
+	display: block;
+	width: 100%;
+	color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    letter-spacing: normal;
+    font-weight: 600;
+}
+.rt_cp_shipping_title::before {
+    content: "";
+	position: absolute;
+	border-top: 5px solid #1d5977;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50% , 0);
+}
+.rt_cp_payment_info_title {
+    position: relative;
+	padding: 5px;
+	margin: 20px auto;
+	background: #1d5977;
+	display: block;
+	width: 100%;
+	color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    letter-spacing: normal;
+    font-weight: 600;
+}
+.rt_cp_payment_info_title:before {
+    content: "";
+	position: absolute;
+	border-top: 5px solid #1d5977;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50% , 0);
+}
+.rt_cp_billing_title {
+    position: relative;
+	padding: 5px;
+	margin: 20px auto;
+	background: #1d5977;
+	display: block;
+	width: 100%;
+	color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    letter-spacing: normal;
+    font-weight: 600;
+}
+.rt_cp_billing_title:before {
+    content: "";
+	position: absolute;
+	border-top: 5px solid #1d5977;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50% , 0);
+}
+.rt_cp_payment_summary_cont .rt_cp_ps_listing_li{
+    background: transparent;
+}
+.rt_cp_ps_color{
+    color: #062c3f;
+}
+.rt_cp_ps_listing_title{
+    font-size: 16px;
+}
+.rt_cp_ps_listing_subtitle{
+    font-size: 14px;
+    color: #062c3f;
+}
+.rt_cp_ps_listing_price{
+    color: #062c3f;
+}
+.rt_cp_ps_panel_footer, .rt_cp_ps_panel_footer span{
+    color: #062c3f;
+    background: transparent;
+}
+.rt_cp_ps_total_row{
+    color: #669900;
+}
+.rt_cp_ps_panel_footer .rt_cp_ps_total_amount{
+    color: #669900;
+}
+
+.rt_cp_shipping_panel_body {
+    color: #062c3f;
+    background: transparent;
+}
+.rt_cp_payment_info_panel_body {
+    color: #062c3f;
+    background: transparent;
+}
+.rt_cp_footer_btn {
+    text-align: center;
+}
+.rt_cp_footer_btn .rt_cp_placeorder_btn {
+    margin-top: 50px;
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #669900;
+    font-size: 16px;
+    width: 60%;
+    font-weight: 400;
+    border-radius: 100px;
+}

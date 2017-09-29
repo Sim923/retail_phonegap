@@ -1,0 +1,190 @@
+<div id="ContentPane" class="container-fluid">
+  <form id="ShippingLabelEdit" name="shippingLabelEdit" class="no-bottom-nav">
+    <div class="form-group">
+      <label for="carrier" class="control-label small">Carrier</label>
+      <select cordova-keyboard name="carrier" class="form-control input-sm" ng-required="true" ng-model="model.carrier">
+	<option></option>
+      </select>
+      <div class="form-alert" ng-messages="shippingLabelEdit.carrier.$error" ng-show="shippingLabelEdit.carrier.$touched && shippingLabelEdit.carrier.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Carrier required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="packageOption" class="control-label small">Package Option</label>
+      <select cordova-keyboard name="packageOption" class="form-control input-sm" ng-required="true" ng-model="model.packageOption">
+	<option></option>
+      </select>
+      <div class="form-alert" ng-messages="shippingLabelEdit.packageOption.$error" ng-show="shippingLabelEdit.packageOption.$touched && shippingLabelEdit.packageOption.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Package Option required.</div>
+      </div>
+    </div>
+    <fieldset>
+      <legend>Package Details</legend>
+      <div class="form-group">
+	<label for="" class="control-label small">Dimensions <span class="text-muted">(L &times; W &times; H)</span></label>
+	<div class="row tighter">
+	  <div class="col-xs-3">
+	    <input name="dimensionLength" type="number" cordova-keyboard class="form-control input-sm" placeholder="L" ng-required="true" ng-model="model.dimensions.length">
+	    <div class="form-alert" ng-messages="shippingLabelEdit.dimensionLength.$error" ng-show="shippingLabelEdit.dimensionLength.$touched && shippingLabelEdit.dimensionLength.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Required.</div>
+	    </div>
+	  </div>
+	  <div class="col-xs-3">
+	    <input name="dimensionWidth" type="number" cordova-keyboard class="form-control input-sm" placeholder="W" ng-required="true" ng-model="model.dimensions.width">
+	    <div class="form-alert" ng-messages="shippingLabelEdit.dimensionWidth.$error" ng-show="shippingLabelEdit.dimensionWidth.$touched && shippingLabelEdit.dimensionWidth.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Required.</div>
+	    </div>
+	  </div>
+	  <div class="col-xs-3">
+	    <input name="dimensionHeight" type="number" cordova-keyboard class="form-control input-sm" placeholder="H" ng-required="true" ng-model="model.dimensions.height">
+	    <div class="form-alert" ng-messages="shippingLabelEdit.dimensionHeight.$error" ng-show="shippingLabelEdit.dimensionHeight.$touched && shippingLabelEdit.dimensionHeight.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Required.</div>
+	    </div>
+	  </div>
+	  <div class="col-xs-3">
+	    <select cordova-keyboard name="dimensionUnit" class="form-control input-sm" ng-required="true" ng-model="model.dimensions.unit">
+	      <option>cm</option>
+	      <option>ft</option>
+	      <option>in.</option>
+	      <option>m</option>
+	      <option>mm</option>
+	      <option>yd</option>
+	    </select>
+	    <div class="form-alert" ng-messages="shippingLabelEdit.dimensionUnit.$error" ng-show="shippingLabelEdit.dimensionUnit.$touched && shippingLabelEdit.dimensionUnit.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Required.</div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      <div class="form-group">
+	<label for="" class="control-label small">Weight</label>
+	<div class="row tighter">
+	  <div class="col-xs-9">
+	    <input name="weightValue" type="number" cordova-keyboard class="form-control input-sm" ng-required="true" ng-required="true" ng-model="model.weight.value">
+	    <div class="form-alert" ng-messages="shippingLabelEdit.weightValue.$error" ng-show="shippingLabelEdit.weightValue.$touched && shippingLabelEdit.weightValue.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Weight required.</div>
+	    </div>
+	  </div>
+	  <div class="col-xs-3">
+	    <select cordova-keyboard name="weightUnit" class="form-control input-sm" ng-required="true" ng-model="model.weight.unit">
+	      <option>g</option>
+	      <option>kg</option>
+	      <option>lb</option>
+	      <option>oz</option>
+	    </select>
+	    <div class="form-alert" ng-messages="shippingLabelEdit.weightUnit.$error" ng-show="shippingLabelEdit.weightUnit.$touched && shippingLabelEdit.weightUnit.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Required.</div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      <div class="form-group">
+	<label for="insurance" class="control-label small">Insurance</label>
+	<div class="input-group input-group-sm">
+	  <span class="input-group-addon">$</span>
+	  <input name="insurance" type="number" cordova-keyboard class="form-control" ng-required="true" ng-model="model.insurance">
+	  <div class="form-alert" ng-messages="shippingLabelEdit.insurance.$error" ng-show="shippingLabelEdit.insurance.$touched && shippingLabelEdit.insurance.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Insurance required.</div>
+	  </div>
+	</div>
+      </div>
+      <div class="form-group">
+	<label for="submissionType" class="control-label small">Submission Type</label>
+	<select cordova-keyboard name="submissionType" class="form-control input-sm" ng-required="true" ng-model="model.submissionType">
+	  <option></option>
+	</select>
+	<div class="form-alert" ng-messages="shippingLabelEdit.submissionType.$error" ng-show="shippingLabelEdit.submissionType.$touched && shippingLabelEdit.submissionType.$error">
+	  <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Submission Type required.</div>
+	</div>
+      </div>
+      <div class="form-group">
+	<label for="submissionMonth" class="control-label small">Submission Date</label>
+	<div class="row tighter">
+	  <div class="col-xs-6">
+	    <select cordova-keyboard name="submissionMonth" class="form-control input-sm" ng-required="true" ng-model="model.submission.month">
+	      <option>January</option>
+	    </select>
+	    <div class="form-alert" ng-messages="shippingLabelEdit.submissionMonth.$error" ng-show="shippingLabelEdit.submissionMonth.$touched && shippingLabelEdit.submissionMonth.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Required.</div>
+	    </div>
+	  </div>
+	  <div class="col-xs-3">
+	    <select cordova-keyboard name="submissionDay" class="form-control input-sm" ng-required="true" ng-model="model.submission.day">
+	      <option>01</option>
+	    </select>
+	    <div class="form-alert" ng-messages="shippingLabelEdit.submissionDay.$error" ng-show="shippingLabelEdit.submissionDay.$touched && shippingLabelEdit.submissionDay.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Required.</div>
+	    </div>
+	  </div>
+	  <div class="col-xs-3">
+	    <select cordova-keyboard name="submissionYear" class="form-control input-sm" ng-required="true" ng-model="model.submission.year">
+	      <option>2016</option>
+	    </select>
+	    <div class="form-alert" ng-messages="shippingLabelEdit.submissionYear.$error" ng-show="shippingLabelEdit.submissionYear.$touched && shippingLabelEdit.submissionYear.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Required.</div>
+	    </div>
+	  </div>
+	</div>
+      </div>
+      
+      <div class="form-group">
+	<button class="btn btn-primary btn-sm">Get Rates</button>
+      </div>
+      
+    </fieldset>
+
+    <fieldset>
+      <legend>Shipping Details</legend>
+      
+      <div class="form-group">
+	<label for="shippingOption" class="control-label small">Shipping Option</label>
+	<select cordova-keyboard name="shippingOption" class="form-control input-sm" ng-required="true" ng-model="model.shippingOption">
+	  <option></option>
+	</select>
+	<div class="form-alert" ng-messages="shippingLabelEdit.shippingOption.$error" ng-show="shippingLabelEdit.shippingOption.$touched && shippingLabelEdit.shippingOption.$error">
+	  <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Shipping Option required.</div>
+	</div>
+      </div>
+      
+      <ul class="list-group">
+	<li class="list-group-item small">
+	  <div class="row">
+	    <div class="col-xs-8">
+	      <b>Amount</b>
+	    </div>
+	    
+	    <div class="col-xs-4 text-right">
+	      <span class="text-muted">$888.88</span>
+	    </div>
+	  </div>
+	</li>
+	
+	<li class="list-group-item small">
+	  <div class="row">
+	    <div class="col-xs-6">
+	      <b>Delivery Schedule</b>
+	    </div>
+	    
+	    <div class="col-xs-6 text-right">
+	      <span class="text-muted">X business days</span>
+	    </div>
+	  </div>
+	</li>
+      </ul>
+      
+    </fieldset>
+
+    <hr class="spacer">
+
+    <div class="row tighter">
+      <div class="col-xs-6">
+	<button class="btn btn-primary btn-block">Save</button>
+      </div>
+      
+      <div class="col-xs-6">
+	<button class="btn btn-warning btn-block">Cancel</button>
+      </div>
+    </div>
+  </form>
+  
+</div>

@@ -1,0 +1,102 @@
+<div id="ContentPane" class="container-fluid _ContentPane">
+	<div id="Profile">
+		<div class="profile-image-container text-center rt_profile_header">
+			<div class="loading-animation">
+				<i class="fa fa-spinner fa-pulse fa-4x"></i>
+			</div>
+			<div class="profile-image" style="background-image: url('../img/profile_img.png');"></div>
+			<!-- <div class="profile-badge"><img alt="Gold Badge" ng-src="img/badge-{{pc.model.subscription.name|lowercase}}@2x.png"></div> -->
+			<hr class="spacer spacer-xs">
+			<div class="rt_sf_name">
+				<h3>Full Real Name</h3>
+			</div>
+			<div class="rt_sf_place_time">
+				<h5>City, State</h5>
+				<h5>January 2017</h5>
+			</div>
+			<div class="profile-details">
+				<h4 class="name rt_profile_name"><span ng-bind='pc.model.firstName'></span> <span ng-bind='pc.model.lastName'></span></h4>
+				<h4 class="name rt_profile_address">
+					<span ng-bind='pc.model?.ciry'></span> 
+					<span ng-bind='pc.model?.state'></span>
+				</h4>
+				<h4 class="name rt_profile_address">
+					<span ng-bind='pc.model?.date'></span> 
+				</h4>
+				<!--<p class="summary small text-muted"><span class="location">City, State</span> &bull; <span class="date-joined">January 2016</span></p>-->
+				<div class="rating rt_profile_rating rt_sf_rating_star">
+					<div class="rating-stars">
+						<i class="fa fa-fw fa-star-o fa-2x"></i>
+						<i class="fa fa-fw fa-star-o fa-2x"></i>
+						<i class="fa fa-fw fa-star-o fa-2x"></i>
+						<i class="fa fa-fw fa-star-o fa-2x"></i>
+						<i class="fa fa-fw fa-star-o fa-2x fa_inactive_star"></i>
+						<!-- <i ng-class="{'fa fa-star-o' : pc.model.average < 2, 'fa fa-star' : pc.model.average > 1}"></i>
+						<i ng-class="{'fa fa-star-o' : pc.model.average < 3, 'fa fa-star' : pc.model.average > 2}"></i>
+						<i ng-class="{'fa fa-star-o' : pc.model.average < 4, 'fa fa-star' : pc.model.average > 3}"></i>
+						<i ng-class="{'fa fa-star-o' : pc.model.average < 5, 'fa fa-star' : pc.model.average == 5}"></i> -->
+					</div>
+					<div class="rt_sf_rating_font">88 Ratings</div>
+				</div>
+			</div>
+		</div>
+		<!--body content-->
+		<div class="rt_sf_tabs_cont">
+			<ul class="nav nav-tabs">
+			    <li class="active"><a data-toggle="tab" href="#rt_sf_sort">Sort</a></li>
+			    <li><a data-toggle="tab" href="#rt_sf_category">Category</a></li>
+		  	</ul>
+
+		  	<div class="tab-content rt_sf_tab_content">
+    			<div id="rt_sf_sort" class="tab-pane fade in active">
+					<div class="rt_sf_sort_cont">
+						<div class="row">
+							<div class="col-xs-6 rt_sf_padding_right">
+								<div class="rt_sf_sort_content_block">
+									<img src="../img/scene-field-path.jpg" alt="img">
+									<div class="rt_sf_sort_content_img_text">
+										<h6 class="rt_sf_sort_pn">NEW SNOWBOARD</h6>
+										<h6 class="rt_sf_sort_pp">$325.00+$0.00</h6>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 rt_sf_padding_left">
+								<div class="rt_sf_sort_content_block">
+									<img src="../img/scene-field-path.jpg" alt="img">
+									<div class="rt_sf_sort_content_img_text">
+										<h6 class="rt_sf_sort_pn">NEW SNOWBOARD</h6>
+										<h6 class="rt_sf_sort_pp">$325.00+$0.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+    			</div>
+    			<div id="rt_sf_category" class="tab-pane fade">
+					<div class="rt_sf_sort_cont">
+						<div class="row">
+							<div class="col-xs-6 rt_sf_padding_right">
+								<div class="rt_sf_sort_content_block">
+									<img src="../img/scene-field-path.jpg" alt="img">
+									<div class="rt_sf_sort_content_img_text">
+										<h6 class="rt_sf_sort_pn">NEW SNOWBOARD</h6>
+										<h6 class="rt_sf_sort_pp">$325.00+$0.00</h6>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 rt_sf_padding_left">
+								<div class="rt_sf_sort_content_block">
+									<img src="../img/scene-field-path.jpg" alt="img">
+									<div class="rt_sf_sort_content_img_text">
+										<h6 class="rt_sf_sort_pn">NEW SNOWBOARD</h6>
+										<h6 class="rt_sf_sort_pp">$325.00+$0.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+    			</div>
+			</div>
+		</div>
+	</div>
+</div>

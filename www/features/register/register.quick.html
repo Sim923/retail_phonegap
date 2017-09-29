@@ -1,0 +1,93 @@
+  <div class="wrapper rt_wrapper rt_register_input">
+    <div class="rt_sub_title">
+        <p class="lead text-center"><b>Create a ReelTrail Account</b></p>
+        <p class="small text-center">Your paradise for selling outdoor gear <span class="nowrap">and adventure trips!</span></p>
+      </div>
+  <div class="rt_well">
+
+  <form id="Register" name="registerForm" class="no-bottom-nav" novalidate>
+  <div class="rt_first_three_input">
+    <div class="rt_input_field">
+      <input id="firstName" name="entityNameFirst" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" placeholder="First Name" ng-model='rqc.model.firstName' autocomplete='off'>
+      <div class="form-alert" ng-messages="registerForm.entityNameFirst.$error" ng-show='registerForm.entityNameFirst.$touched'>
+        <div ng-message='required' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> First Name required.</div>
+      </div>
+    </div>
+    
+    <div class="rt_input_field">
+      <input type="text" cordova-keyboard name="entityNameLast" class="form-control input-sm" ng-required="true" placeholder="Last Name" ng-model='rqc.model.lastName' autocomplete='off'>
+    <div class="form-alert" ng-messages="registerForm.entityNameLast.$error" ng-show='registerForm.entityNameLast.$touched'>
+        <div ng-message='required' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i>  Last Name required.</div>
+      </div>
+    </div>
+    
+    <div class="rt_input_field">
+      <input id="email" name="email" type="email" cordova-keyboard class="form-control input-sm" placeholder="Email Address" autocomplete="off" ng-model='rqc.model.email' email-availability-validator='https://reeltrail.com/rtapi/v1/users/check/email' ng-required='true'>
+        <div class="form-alert" ng-messages='registerForm.email.$error' ng-show='registerForm.email.$touched'>
+            <div ng-message='required' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Email Address required.</div>
+            <div ng-message='email' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i>Email is not valid.</i></div>
+            <div ng-message="emailLoading" class="smaller text-muted">Checking database&hellip;</div>
+            <div ng-message='emailAvailable' class="smaller text-danger"><i class="fa fa-exclamation-triangle"></i>The email is already in use.</i></div>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="rt_input_field">
+      <input id="username" name="username" type="text" cordova-keyboard class="form-control input-sm" autocomplete='off' placeholder="Username" ng-required="true" ng-model="rqc.model.username" ng-minlength='5' ng-maxlength='16' username-availability-validator="https://reeltrail.com/rtapi/v1/users/check/username">
+      <div class="form-alert" ng-messages='registerForm.username.$error' ng-show='registerForm.username.$touched'>
+        <div ng-message='required' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Username required.</div>
+        <div ng-message='minlength' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Username too short.</div>
+        <div ng-message='maxlength' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Username too long.</div>
+        <div ng-message='usernameLoading' class="smaller text-muted">Checking database&hellip;</div>
+        <div ng-message='usernameAvailable' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> The username is already in use.</div>
+      </div>
+    </div>
+
+    <div class="rt_input_field">
+        <input id="password" name="password" type="password" cordova-keyboard class="form-control input-sm" placeholder="Password" ng-required="true" ng-model='rqc.model.password' ng-minlength='8' ng-maxlength='24' ng-model-options="{updateOn: 'blur'}">
+
+        <div class="form-alert" ng-messages='registerForm.password.$error' ng-show='registerForm.password.$touched && registerForm.password.$error'>
+          <div ng-message='required' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Password required.</div>
+          <div ng-message='minlength' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Password too short.</div>
+          <div ng-message='maxlength' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Password too long.</div>
+        </div>
+    </div>
+
+      <div class="rt_input_field">
+          <input id="passwordConfirm" name="confirmPassword" type="password" cordova-keyboard class="form-control input-sm" placeholder="Confirm Password" ng-model="rqc.model.confirmPassword" ng-minlength='8' ng-maxlength='24' compare-to="rqc.model.password" ng-model-options="{updateOn: 'blur'}" ng-required="true">
+          <div class="form-alert" ng-messages="registerForm.confirmPassword.$error" ng-show='registerForm.confirmPassword.$touched && registerForm.confirmPassword.$error'>
+            <div ng-message="required" class="smaller text-danger"><i class="fa fa-exclamation-triangle"></i> Confirm Password required.</div>
+            <div ng-message='compareTo' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Doesn't match.</div>
+            <!-- <div ng-message='minlength' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Password too short.</div>
+                <div ng-message='maxlength' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> Password too long.</div> -->
+          </div>
+      </div>
+  </div>
+  <!--
+  <div class="form-group">
+  <label for="referrer" class="control-label small">Referrer Username</label> <em class="text-muted small">(optional)</em>
+  <input id="referrer" name="referrer" type="text" cordova-keyboard class="form-control input-sm" autocomplete='off' ng-model="rqc.model.referrer" ng-required="false" ng-minlength='5' ng-maxlength='16' username-availability-validator="https://reeltrail.com/rtapi/v1/users/check/username">
+  <div class="form-alert" ng-messages='registerForm.referrer.$error' ng-show='registerForm.referrer.$touched'>
+  <div ng-message='' class="smaller text-muted">Checking database&hellip;</div>
+  <div ng-message='' class='smaller text-danger'><i class="fa fa-exclamation-triangle"></i> The username does not exist.</div>
+  </div>
+  </div>
+  -->
+  <div class="rt_i_agree_div"> 
+    <div class="form-group">
+      <div class="checkbox">
+        <label for="terms" class="small rt_I_agree_lbl">
+          <input id="terms" type="checkbox" ng-model="rqc.agreedToTerms.value">
+          I agree to ReelTrail's <strong><a class="term_policies" href="/files/terms-and-conditions.pdf" target="_blank">Terms &</a></strong> <strong><a class="term_policies" href="/files/privacy-policy.pdf" target="_blank">Policies</a></strong>.</a>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="rt_sing_up_btn_center">
+    <button class="rt_sing_up_btn" ng-click='rqc.register()' ng-disabled="!rqc.agreedToTerms.value || registerForm.$invalid" value='Sign Up'>SIGN UP</button>
+  </div>
+  </form>
+  </div>
+  </div>

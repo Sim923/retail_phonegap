@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js" class-route lang="" ng-app='RTMobileApp'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ReelTrail</title>
+    <meta name="description" content="">
+    <!-- @if NODE_ENV == 'EXPRESS' -->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
+    <!-- @endif -->
+    <!-- @if NODE_ENV == 'CORDOVA' -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
+    <meta http-equiv="Content-Security-Policy"
+      content="img-src * blob: android-webview-video-poster: cdvphotolibrary: 'self' data: ws: wss://*; default-src * blob: 'self' gap: wss: ws: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.zendesk.com https://maps.google.com https://maps.googleapis.com https://maps.gstatic.com https://assets.zendesk.com; object-src 'self'; connect-src * http: https: ws: wss://*;">
+    <script type='text/javascript'>
+      var APP_CORDOVA=true;
+    </script>
+    <!-- @endif -->
+    <link rel="stylesheet" type="text/css" href="css/darkroom.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/ng-sortable.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/jk-carousel.css" />
+    <link rel="stylesheet" type="text/css" href="css/angular-material.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <ui-view name='topNav'></ui-view>
+    <ui-view name='content' autoscroll='false'></ui-view>
+    <ui-view name='bottomNav'></ui-view>
+    <script type='text/javascript'>
+      window.onGoogleReady = function() {
+      console.log(arguments);
+      };
+    </script>
+    <script type='text/javascript' src='https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places&key=AIzaSyC9ZS8OtX2pY3inf8pecocumqJjjUB44Ns&callback=onGoogleReady'></script>
+    <script type='text/javascript' src='vendors/client.js'></script>
+    <script type='text/javascript' src='vendors/hosted-fields.js'></script>
+    <script type="text/javascript" src="vendors/moment.min.js"></script>
+    <script type='text/javascript' src='vendors/underscore-min.js'></script>
+    <script type="text/javascript" src="vendors/angular.js"></script>
+    <script type="text/javascript" src="vendors/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-messages.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-animate.min.js"></script>
+    <script type="text/javascript" src="vendors/sockjs.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-sockjs.js"></script>
+    <script type="text/javascript" src="vendors/angular-moment.min.js"></script>
+    <script type='text/javascript' src='vendors/angular-underscore.min.js'></script>
+    <script type="text/javascript" src="vendors/ui-scroll-jqlite.min.js"></script>
+    <script type="text/javascript" src="vendors/ui-scroll.min.js"></script>
+    <script type="text/javascript" src="vendors/ng-infinite-scroll.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-strap.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-strap.tpl.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-aria.min.js"></script>
+    <script type="text/javascript" src="vendors/angular-material.min.js"></script>
+    <script type="text/javascript" src="vendors/jk-carousel.js"></script>
+    <script type="text/javascript" src="vendors/ng-pinch-zoom.min.js"></script>
+    <script type="text/javascript" src="vendors/flow.min.js"></script>
+    <script type="text/javascript" src="vendors/ng-flow.min.js"></script>
+    <script type="text/javascript" src="vendors/ng-sortable.js"></script>
+    <script type="text/javascript" src="vendors/fabric.all.min.js"></script>
+    <script type="text/javascript" src="vendors/darkroom.js"></script>
+    <script type="text/javascript" src="vendors/angular-darkroom.min.js"></script>
+    <script type="text/javascript" src="vendors/ng-map.debug.js"></script>
+    <script type="text/javascript" src="vendors/angular-zendesk-widget.min.js"></script>
+    <script type="text/javascript" src="vendors/ng-cordova.min.js"></script>
+    <script type="text/javascript" src="optimized.min.js"></script>
+    <script type="text/javascript" src="templates.js"></script>
+    <!-- @if NODE_ENV == 'CORDOVA' -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!-- @endif -->
+  </body>
+</html>

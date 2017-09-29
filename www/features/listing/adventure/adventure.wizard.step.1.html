@@ -1,0 +1,78 @@
+<div class="bg_container">
+    <div class="first_section adventure_section">
+      <div class="first_content rt_content adventure_content boxItem"  ng-class="{'active' : as1c.activeview == 1}">1</div>
+      <div class="second_content adventure_content boxItem">2</div>
+      <div class="third_content adventure_content boxItem">3</div>
+      <div class="fourth_content adventure_content boxItem">4</div>
+    </div>
+    <div class="ad_stage_buttons ad_first_stage_btn">
+      <a href="#">What's your adventure called?</a>
+    </div>
+    <!-- <div class="stage_buttons second_stage_btn">
+      <a href="#">Upload images of your item</a>
+    </div>
+    <div class="stage_buttons third_stage_btn">
+      <a href="#">Describe your item</a>
+    </div>
+    <div class="stage_buttons fourth_stage_btn">
+      <a href="#">Set price and other details</a>
+    </div>
+    <div class="stage_buttons fifth_stage_btn">
+      <a href="#">Choose Listing option</a>
+    </div> -->
+  </div>
+
+<div id="ContentPane" class="container-fluid rt_adventure_contain">
+  <form id="AdventureWizard" name="step1AdventureListingForm" class="no-bottom-nav">
+    <!-- <div class="progress wizard-progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" style="width: 25%">
+	<em>1 of 4</em>
+      </div>
+    </div> 
+    <p class="lead text-center">What's your adventure called?</p>
+    <hr class="spacer">-->
+    <div class="form-group rt_adventure_group rt_profile_detail_main_div">
+      <label for="adventureName" class="control-label rt_label_common_color">Adventure Name</label>
+      <br>
+      <input name="adventureName" type="text" placeholder="Enter Adventure Name" cordova-keyboard class="form-control input-sm _inputelemtnt" ng-required="true" ng-model="as1c.model.title">
+      <div class="form-alert" ng-messages="step1AdventureListingForm.adventureName.$error" ng-show="step1AdventureListingForm.adventureName.$touched && step1AdventureListingForm.adventureName.$error">
+        <div ng-message="required" class="smaller text-danger">
+          <i class="fa fa-fw fa-exclamation-triangle"></i> Adventure name required.
+        </div>
+      </div>
+    </div>
+    <hr class="spacer"/>
+    <div class="form-group">
+      <label for="category" class="control-label rt_label_common_color">Category</label>
+      <br>
+      <div class="row tighter">
+        <div class="col-xs-12 col-sm-6">
+
+          <select cordova-keyboard id="subcategory1" name="subcategory1" class="form-control input-sm rt_option_color _inputelemtnt" ng-required="true" data-ng-model="as1c.model.category1" data-ng-options="idx as choice.name for (idx, choice) in as1c.categories[as1c.model.category0].subcategories">
+            <option>&mdash;</option>
+          </select>
+          
+          <div class="form-alert" ng-messages="step1AdventureListingForm.category.$error" ng-show="step1AdventureListingForm.category.$touched && step1AdventureListingForm.category.$error">
+            <div ng-message="required" class="smaller text-danger">
+              <i class="fa fa-fw fa-exclamation-triangle"></i> Category required.
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6" ng-show='as1c.model.category1'>
+            <br>
+          <select cordova-keyboard id="subcategory2" name="subcategory2" class="form-control input-sm rt_option_color _inputelemtnt" ng-required="true" data-ng-model="as1c.model.category2" data-ng-options="idx as choice.name for (idx, choice) in as1c.categories[as1c.model.category0].subcategories[as1c.model.category1].subcategories">
+            <option value="">Select Category</option>
+          </select>
+        </div>
+        <div class="form-alert" ng-messages="step1AdventureListingForm.subCategory.$error" ng-show="step1AdventureListingForm.subCategory.$touched && step1AdventureListingForm.subCategory.$error">
+          <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Sub Category required.</div>
+        </div>
+      </div>
+    </div>
+    <hr class="spacer"/>
+    <div class="rt_wizard_btn_div">
+      <button class="btn rt_wizard_btn" ng-click="as1c.next()">Next</button>
+      <!-- ng-disabled='step1AdventureListingForm.$invalid' -->
+    </div>
+  </form>
+</div>

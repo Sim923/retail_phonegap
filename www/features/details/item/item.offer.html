@@ -1,0 +1,149 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ListingOffers">
+    <div class="listing-preview rt_item_offer well well-sm clearfix">
+      <div class="image" ng-style="{'background-image':'url('+occ.model.images[0].url + ')'}"></div>
+      <div class="name rt_item_offer_name"><strong><span data-ng-bind="occ.model.title"></span></strong></div>
+      <div class="category rt_item-offer_category small"><span data-ng-bind="occ.model.categories[0].name"></span>
+				<i class="fa fa-angle-right"></i> <span data-ng-bind="occ.model.categories[1].name"></span>
+				<i class="fa fa-angle-right"></i> <span data-ng-bind="occ.model.categories[2].name"></span>
+			</div>
+			<div class="price rt_item_offer_price small text-muted">
+				<strong><span><span data-ng-bind="occ.model.ourPrice*0.01|currency:'$'"></span></span></strong>
+			</div>
+		</div>
+		
+    <div class="panel panel-default" ng-hide='occ.model.seller._id==occ.userId'>
+      <div class="panel-heading small rt_item_offer_header">
+					<strong>
+							<i class="fa fa-chevron-down rt_item_offer_chevron" aria-hidden="true"></i>
+						Current Offer &nbsp; 
+						</strong>
+						<span class="rt_header_price" data-ng-bind="occ.model.offers[0].offerPrice*0.01 | currency:'$'"></span>
+					<span class="label rt_item_offer_label label-info text-uppercase" ng-if="!occ.model.offers[0].isAccepted && !occ.model.offers[0].isExpired && occ.model.offers[0].offerNumber % 2 == 1">Pending</span>
+					<span class="label rt_item_offer_label label-warning text-uppercase" ng-if="!occ.model.offers[0].isAccepted && !occ.model.offers[0].isRejected && ((occ.model.offers[0].offerNumber % 2)===0) && ((occ.model.offers[0].offerNumber%8)!==0)">Countered</span>
+					<span class="label rt_item_offer_label label-success text-uppercase" ng-if="occ.model.offers[0].isAccepted">Accepted</span>
+					<span class="label rt_item_offer_label label-danger text-uppercase" ng-if="occ.model.offers[0].isRejected">Rejected</span>
+					<span class="label rt_item_offer_label label-warning text-uppercase" ng-if="occ.model.offers[0].isExpired">Expired</span>
+					<span class="label rt_item_offer_label label-warning text-uppercase" ng-if="occ.model.offers[0].isOneMore">One More Offer</span>
+					<span class="label rt_item_offer_label label-warning text-uppercase" ng-show="occ.error" ng-bind='occ.error'></span>
+			</div>
+			<div class="panel-body small" ng-if="occ.model.offers | isEmpty">
+				<em>Make an initial offer for the seller to consider.</em>
+			</div>
+			<div class="list-group small" ng-repeat='oh in occ.model.offers[0].history'>
+				<div class="list-group-item rt_item_offered text-info" ng-if='oh.wasOffer'>
+					<div class="rt_item_with_offer">You offered <span data-ng-bind="occ.convert(oh.amount)|currency:'$'"></span></div>
+					<div class="text-muted rt_decucted_data small"><span data-ng-bind='oh.dateCreated'></span></div>
+				</div>
+				<div class="list-group-item rt_item_offered text-warning" ng-if='oh.wasCounter'>
+						<!--  -->
+					<div class="rt_item_with_offer"><span data-ng-bind="oh.userId.username"></span> countered with a <span data-ng-bind="occ.convert(oh.amount)|currency:'$'"></span> offer.</div>
+					<div class="text-muted rt_decucted_data small"><span data-ng-bind='oh.dateCreated'></span></div>
+				</div>
+				<div class="list-group-item rt_item_offered text-danger" ng-if='oh.wasAccepted'>
+					<div class="rt_item_with_offer">Congratulations, <em data-ng-bind='oh.userId.username'></em> your offer of <strong><span data-ng-bind="occ.convert(oh.amount)|currency:'$'"></span></strong> has been <strong>accepted</strong>!</div>
+					<div class="text-muted rt_decucted_data small"><span data-ng-bind='oh.dateCreated'></span></div>
+				</div>
+				<div class="list-group-item rt_item_offered text-danger" ng-if='oh.wasRejected'>
+						<div class="rt_item_with_offer">
+					Sorry, <em data-ng-bind='oh.userId.username'></em> <strong>rejected</strong> your offer of <strong><span data-ng-bind="occ.convert(oh.amount)|currency:'$'"></span></strong>.
+						</div>
+					<div class="text-muted rt_decucted_data small"><span data-ng-bind='oh.dateCreated'></span></div>
+				</div>
+				<div class="list-group-item rt_item_offered text-danger" ng-if='oh.wasOneMore'>
+						<div class="rt_item_with_offer">
+					<em data-ng-bind='occ.model.seller.username'></em> <strong>allowed one more offer</strong>.
+						</div>
+					<div class="text-muted rt_decucted_data small"><span data-ng-bind='oh.dateCreated'></span></div>
+				</div>
+      </div>
+      <div class="panel-footer rt_item_offer_footer">
+				<div ng-if="((occ.model.offers|isEmpty) || ((occ.model.offers[0].offerNumber % 2)===0) && ((occ.model.offers[0].offerNumber % 6)!==0) && ((occ.model.offers[0].offerNumber % 8)!==0) && !occ.model.offers[0].isAccepted && !occ.model.offers[0].isRejected) || occ.model.offers[0].isOneMore">
+						
+					<form id="makeOfferForm" name="makeOfferForm" class="rt_offer_form">
+						<div class="input-group input-group-sm">
+							<span class="input-group-addon rt_item_offer_addon">$</span>
+							<input name="offerPrice" type="number" cordova-keyboard class="form-control _inputelement" ng-model="occ.offer.offerPrice">
+							<span class="input-group-btn" ng-show="occ.model.offers|isEmpty">
+								<button class="btn rt_item_oofer_button rt_success_buttonx" ng-click="occ.offers.offer()" ng-disabled="occ.offer.offerPrice >= occ.model.ourPrice*0.01 || occ.offer.offerPrice <= occ.model.lowestOffer*0.01">Offer</button>
+							</span>
+							<span class="input-group-btn" ng-hide="occ.model.offers|isEmpty">
+								<button class="btn rt_item_oofer_button rt_success_buttonx" ng-click="occ.offers.counter(occ.model.offers[0]._id)">Counter</button>
+							</span>
+						</div>
+						<div ng-hide="(occ.model.offers|isEmpty) || ((occ.model.offers[0].offerNumber % 2)!==0) || occ.model.offers[0].isAccepted===true || occ.model.offers[0].isRejected===true || occ.model.offers[0].isExpired===true">
+							<button class="btn btn-primary" ng-click="occ.offers.accept(occ.model.offers[0]._id)">Accept</button>
+							<button class="btn btn-danger" ng-click="occ.offers.reject(occ.model.offers[0]._id)">Reject</button>
+						</div>	      
+					</form>
+				</div>
+			</div>
+		</div>
+    <div >
+      <div class="alert alert-info" ng-show="occ.model.offers | isEmpty">There are no offers on this item at this time.</div>
+      <div class="panel-group" id="offerAccordion" ng-repeat='thisOffer in occ.model.offers' bs-collapse>
+				<div class="panel panel-default">
+					<div class="panel-heading rt_item_offer_header rt_second_offer_pannel_header small">
+						<a role="button" bs-dropdown aria-haspopup="true" aria-expanded="false" bs-collapse-toggle>
+							<!-- <span class="fa fa-caret-down small"></span> -->
+							<span class="user-image img-circle" style="display: inline-block; width: 20px" ng-style="{'background-image':'url(' + thisOffer.fromUserId.profileImage  + ')'}"></span>
+							<strong>
+									<i class="fa fa-chevron-right rt_item_offer_chevron" aria-hidden="true"></i>
+								<span data-ng-bind='thisOffer.fromUserId.username'></span> <span ng-if='occ.model.offers'><span data-ng-bind="occ.convert(thisOffer.offerPrice) | currency:'$'"></span></span></strong>
+						</a>
+						<span class="label rt_item_offer_label label-info text-uppercase" ng-if="!thisOffer.isAccepted && !thisOffer.isExpired && thisOffer.offerNumber % 2 == 1">Pending</span>
+						<span class="label rt_item_offer_label label-warning text-uppercase" ng-if="!thisOffer.isAccepted && !thisOffer.isRejected && ((thisOffer.offerNumber % 2)===0) && ((thisOffer.offerNumber%8)!==0)">Countered</span>
+						<span class="label rt_item_offer_label label-success text-uppercase" ng-if="thisOffer.isAccepted">Accepted</span>
+						<span class="label rt_item_offer_label label-danger text-uppercase" ng-if="thisOffer.isRejected">Rejected</span>
+						<span class="label rt_item_offer_label label-danger text-uppercase" ng-if="thisOffer.isExpired">Expired</span>
+						<span class="label rt_item_offer_label label-danger text-uppercase" ng-if="thisOffer.isOneMore">One More Offer</span>
+					</div>
+					<div class="panel-collapse collapse" role="tabpanel" bs-collapse-target>
+						<div id="" ng-repeat='oh in thisOffer.history'>
+							<ul class="list-group rt_ul_item" role="menu"  class=" dropdown-menu">
+					<li class="list-group-item small text-info " ng-if='oh.wasOffer'>
+						<span class="rt_label_common_color" data-ng-bind='thisOffer.fromUserId.username'></span>offered
+						<strong class="rt_label_common_color"><span><span data-ng-bind="occ.convert(oh.amount) | currency:'$'"></span></span></strong>.
+						<div class="text-muted rt_option_color small"><span data-ng-bind='oh.dateCreated'></span></div>
+					</li>
+					<li class="list-group-item small text-warning" ng-if='oh.wasCounter'>
+						<span class="rt_label_common_color" ng-bind="oh.userId.username"></span> countered with a <strong class="rt_label_common_color"><span data-ng-bind="occ.convert(oh.amount)|currency:'$'"></span></strong> offer.
+						<div class="text-muted rt_option_color small"><span data-ng-bind='oh.dateCreated'></span></div>
+					</li>
+					<li class="list-group-item small text-success" ng-if='oh.wasAccepted'>
+						<span class="rt_label_common_color" ng-bind="oh.userId.username"></span> <strong class="rt_label_common_color">accepted</strong> <span data-ng-bind='thisOffer.fromUserId.username'></span>'s offer of <strong><span data-ng-bind="occ.convert(oh.amount)|currency:'$'"></span></strong>.
+						<div class="text-muted rt_option_color small"><span data-ng-bind='oh.dateCreated'></span></div>
+					</li>
+					<li class="list-group-item small text-danger" ng-if='oh.wasRejected'>
+						<span class="rt_label_common_color" ng-bind="oh.userId.username"></span> <strong class="rt_label_common_color">rejected</strong> <span data-ng-bind='thisOffer.fromUserId.username'></span>'s offer of <strong><span data-ng-bind="occ.convert(oh.amount)|currency:'$'"></span></strong>.
+						<div class="text-muted rt_option_color small"><span data-ng-bind='oh.dateCreated'></span></div>
+					</li>
+							</ul>
+						</div>
+						<div class="panel-footer">
+							<div class="" ng-if="((thisOffer.offerNumber % 2)!==0) && (thisOffer.offerNumber % 6)!==0 && !thisOffer.isAccepted && !thisOffer.isRejected && !thisOffer.isExpired">
+					<form name="acceptOfferForm" id="acceptOfferForm" class="rt_offer_form">
+						<div class="input-group input-group-sm">
+							<span class="input-group-addon rt_item_offer_addon">$</span>
+							<input name="offerPrice_{{$index}}" id="offerPrice_{{$index}}" type="number" cordova-keyboard placeholder="" class="form-control _inputelement" step="0.1" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-required="true" ng-model="occ.offer.offerPrice">
+							<span class="input-group-btn">
+								<button class="btn rt_item_oofer_button rt_success_buttonx" ng-click="occ.offers.counter(thisOffer._id)">Counter</button>
+							</span>
+						</div>
+					</form>
+							</div>
+							<div class="col-sm-6" ng-show="((thisOffer.offerNumber % 2)!==0) && thisOffer.isAccepted===false && thisOffer.isRejected===false && thisOffer.isExpired===false">
+					<button class="btn btn-sm rt_item_oofer_button rt_success_buttonx" ng-click="occ.offers.accept(thisOffer._id)">Accept</button>
+					<button class="btn btn-sm rt_item_oofer_button rt_success_buttonx" ng-click="occ.offers.reject(thisOffer._id)">Reject</button>
+							</div>
+							<div class="col-sm-6"  ng-show='thisOffer.offerNumber % 6===0'>
+					<!--button class="btn btn-sm btn-danger" ng-click="occ.offers.more(thisOffer._id)">One More Offer</button-->
+							</div>
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>
+

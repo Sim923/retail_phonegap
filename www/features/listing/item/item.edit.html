@@ -1,0 +1,377 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ImageCropper" class="full-overlay" ng-show="iec.cropper.visible===true">
+    <button class="btn btn-link btn-lg text-danger close-overlay" ng-click='iec.cropper.close()'><i class="fa fa-ban"></i></button>
+    <nc-darkroom 
+      image='iec.cropper.image.base64data' 
+      max-width='600' 
+      max-height='600' 
+      on-crop='iec.cropper.crop(image)' 
+      history='true' 
+      crop='{}' 
+      rotate='true' 
+      save='false'>
+    </nc-darkroom>
+    <button ng-click="iec.cropper.upload()">SAVE IMAGE</button>
+  </div>
+  <!-- CAMERA MODAL -->
+  <div id="CameraModal" ng-show="iec.cameraSelector">
+    <div class="wrapper panel panel-default">
+      <div class="panel-heading">
+	<a href="" class="pull-right" ng-click="iec.closeSelector()">
+	  <i class="fa fa-remove fa-lg"></i>
+	</a>
+	<h4 class="panel-title">Add an Image</h4>
+      </div>
+      <div class="panel-body">
+	<hr class="spacer spacer-xs" />
+	<div class="options row text-center">
+	  <div class="col-xs-6">
+	    <a href="" class="text-primary" ng-click="iec.getPhoto($event)">
+	      <i class="fa fa-camera fa-5x"></i><br>
+	      <span class="smaller">Take Photo</span>
+	    </a>
+	  </div>
+	  <div class="col-xs-6">
+	    <a href="" class="text-warning" ng-click="iec.getFromGallery($event)">
+	      <i class="fa fa-image fa-5x"></i><br>
+	      <span class="smaller">Upload Existing</span>
+	    </a>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+  <!-- /CAMERA MODAL -->  
+  <form id="ListingEdit" name="listingEdit" class="no-bottom-nav">
+    <!-- ITEM NAME -->
+    <div class="form-group rt_item_edit_page_div">
+      <label for="title" class="control-label small">Item Name</label>
+      <input name="title" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" placeholder="Brand and/or model of your item&hellip;" ng-model="iec.model.title">
+      <div class="form-alert" ng-messages="listingEdit.title.$error" ng-show="listingEdit.title.$touched && listingEdit.title.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Item Name required.</div>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label class="control-label small">Item ID</label>
+      <p class="form-control-static input-sm" data-ng-bind="iec.model._id"></p>
+    </div> -->
+		<!-- CATEGORY -->
+		
+    <div class="form-group rt_item_edit_page_div">
+      <label for="mainCategory" class="control-label small">Category</label>
+      <div class="row tighter">
+	<div class="col-xs-12 col-sm-4">
+	  <select cordova-keyboard id="mainCategory" name="mainCategory" class="form-control input-sm" ng-required="true" data-ng-model="iec.model.category0" data-ng-options="idx as choice.name for (idx, choice) in iec.categories | filter:{name:'!Adventures'}">
+	    <option>&mdash;</option>
+	  </select>
+	  <div class="form-alert" ng-messages="listingEdit.mainCategory.$error" ng-show="listingEdit.mainCategory.$touched && listingEdit.mainCategory.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Main Category required.</div>
+	  </div>
+	</div>
+	<div class="col-xs-12 col-sm-4">
+	  <hr class="spacer spacer-xs visible-xs">
+	  <select cordova-keyboard id="subcategory1" name="subcategory1" class="form-control input-sm" ng-required="true" data-ng-model="iec.model.category1" data-ng-options="idx as choice.name for (idx, choice) in iec.categories[iec.model.category0].subcategories">
+	    <option>&mdash;</option>
+	  </select>
+	  <div class="form-alert" ng-messages="listingEdit.subcategory1.$error" ng-show="listingEdit.subcategory1.$touched && listingEdit.subcategory1.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Sub Category required.</div>
+	  </div>
+	</div>
+	<div class="col-xs-12 col-sm-4">
+	  <hr class="spacer spacer-xs visible-xs">
+	  <select cordova-keyboard id="subcategory2" name="subcategory2" class="form-control input-sm" ng-required="true" data-ng-model="iec.model.category2" data-ng-options="idx as choice.name for (idx, choice) in iec.categories[iec.model.category0].subcategories[iec.model.category1].subcategories">
+	    <option>&mdash;</option>
+	  </select>
+	  <div class="form-alert" ng-messages="listingEdit.subcategory2.$error" ng-show="listingEdit.subcategory2.$touched && listingEdit.subcategory2.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Sub Sub Category required.</div>
+	  </div>
+	</div>
+      </div>
+		</div>
+		
+    <div class="form-group rt_item_edit_page_div">
+      <label for="uploadImage" class="control-label small">Images</label>
+      <div class="row tighter image-grid" data-as-sortable="iec.dragControlListeners" data-ng-model="iec.images._images">
+	<div class="col-xs-4" ng-repeat="image in iec.images._images" data-as-sortable-item="iec.images._images">
+	  <div class="image"  ng-style="{'background-image':'url(' + image.url + ')'}" ng-click="iec.images.edit(image)">
+	    <div class="frosting" ng-show="image.progress<100"></div>
+	    <div class="progress" ng-show="image.progress<100">
+	      <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: {{image.progress}}%">
+	      </div>
+	    </div>
+	    <button class="delete" ng-show="true" ng-click="iec.images.remove(image)">
+	      <span class="delete-icon fa-stack fa-lg text-danger">
+		<i class="fa fa-circle fa-stack-2x"></i>
+		<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+	      </span>
+	    </button>
+            <div class="drag-handle" data-as-sortable-item-handle>
+	      <span ng-bind="image.id"></span>
+	    </div>	    
+	  </div>
+	</div>
+	<div class="col-xs-4" ng-hide="iec.isCordova" flow-name="iec.control.flow" flow-init flow-attrs="{'accept':'image/*','capture':true}" flow-object="existingFlowObject" flow-files-submitted="iec.flow.filesSubmitted($files, $event, $flow)" flow-file-success="iec.flow.fileSuccess($file, $message, $flow)" flow-file-progress="iec.flow.fileProgress($file, $event, $flow)" flow-file-added="iec.flow.fileAdded($file, event)" flow-files-added="iec.flow.filesAdded($files, $event, $flow)" flow-file-retry="iec.flow.fileRetry($file, $flow)" flow-file-error="iec.flow.fileError($file, $message, $flow)" flow-error="iec.flow.error($file, $message, $flow)" flow-complete="iec.flow.complete($file, $message, $flow)" flow-upload-started="iec.flow.uploadStarted()" flow-progress="iec.flow.progress()">
+	  <span class="image">
+	    <span class="camera-icon fa-stack fa-3x" flow-btn>
+	      <i class="fa fa-circle fa-stack-2x"></i>
+	      <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+	    </span>
+	  </span>
+	</div>
+	<div class="col-xs-4" ng-show="iec.isCordova">
+          <span class='image'>
+	    <span class="camera-icon fa-stack fa-3x" ng-click="iec.openSelector()">
+	      <i class="fa fa-circle fa-stack-2x"></i>
+	      <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+	    </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-alert" ng-messages="" ng-show="iec.images._images.length===0">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Upload at least one (1) image of the item you're selling.</div>
+      </div>
+		</div>
+
+		<div class="rt_wizard_Page2_UploadPhotos_div">
+			<div class="rt_wizard_subtitle"><strong>Upload Photo</strong></div>
+			<div class="wrapper panel panel-default">
+					<div class="panel-body">
+							<div class="col-xs-12 rt_wizard_camera_img_div">
+								<ul class="list-inline">
+									<li class="rt_cam_icon">
+										<a href="" class="text-primary" ng-click="is2c.getPhoto($event)">
+											<img src="icon/camera_icon.png">
+										</a>
+								</li>
+								<li class="rt_gallery_icon">
+									<a href="" class="text-warning" is2c.getFromGallery($event)>
+											<img src="icon/gallery_icon.png">
+									</a>
+								</li>
+							</ul>
+							</div>
+					</div>
+				</div>
+		</div>
+		
+    <fieldset>
+			<legend class="rt_item_edit_details_btn">Item Details</legend>
+			
+      <div class="form-group rt_item_edit_page_div">
+				<label for="condition" class="control-label small">Condition</label>
+				<select cordova-keyboard id="condition" name="condition" class="form-control input-sm" ng-required="true" ng-model="iec.model.condition">
+					<option value="New">New</option>
+					<option value="New (Special)">New (Special)</option>
+					<option value="Used">Used</option>
+					<option value="For Parts, Not Working">For Parts, Not Working</option>
+					<option value="Other">Other</option>
+				</select>
+				<div class="form-alert" ng-messages="listingEdit.condition.$error" ng-show="listingEdit.condition.$touched && listingEdit.condition.$error">
+					<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Condition required.</div>
+				</div>
+			</div>
+
+			<div class="form-group rt_item_edit_page_div">
+				<label for="countryOfManufacture" class="control-label small">Country of Manufacture</label>
+				<select cordova-keyboard id="countryOfManufacture" name="countryOfManufacture" class="form-control input-sm" ng-required="true" ng-model="iec.model.countryOfManufacture" ng-options='country.code as country.name for country in iec.countries' ng-required="false">
+				</select>
+				<div class="form-alert" ng-messages="listingEdit.countryOfManufacture.$error" ng-show="listingEdit.countryOfManufacture.$touched && listingEdit.countryOfManufacture.$error">
+					<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Country of Manufacture required.</div>
+				</div>
+			</div>
+			
+      <!-- <div class="form-group rt_item_edit_page_div" ng-show="iec.model.condition==='Used'">
+				<label for="conditionDetails" class="control-label small">Condition Details</label>
+				<textarea cordova-keyboard id="conditionDetails" name="conditionDetails" class="form-control input-sm" rows="5" ng-required="true" ng-model="iec.model.conditionDetails"></textarea>
+				<div class="form-alert" ng-messages="listingEdit.conditionDetails.$error" ng-show="listingEdit.conditionDetails.$touched && listingEdit.conditionDetails.$error">
+					<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Condition Details required.</div>
+				</div>
+			</div> -->
+			
+			<div class="form-group rt_item_edit_page_div">
+				<label for="description" class="control-label small">Description</label>
+				<textarea cordova-keyboard id="description" name="description" class="form-control input-sm" rows="5" ng-required="true" placeholder="Provide additional details of your item&hellip;" ng-model="iec.model.description"></textarea>
+				<div class="form-alert" ng-messages="listingEdit.description.$error" ng-show="listingEdit.description.$touched && listingEdit.description.$error">
+					<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Description required.</div>
+				</div>
+      </div>
+
+      <div class="form-group rt_item_edit_page_check_box_div_right">
+				<div class="checkbox">
+					<label for="handcrafted" class="small">
+						<input id="handcrafted" name="handcrafted" type="checkbox" ng-model="iec.model.isHandcrafted">
+						Handcrafted?
+					</label>
+				</div>
+			</div>
+
+      <div class="form-group rt_item_edit_page_div">
+	<label for="youtubeLink" class="control-label small">YouTube Link</label> <em class="rt_wizard_lbl_optional text-muted">(Optional)</em>
+	<input id="youtubeLink" name="youtubeLink" type="url" cordova-keyboard class="form-control input-sm" placeholder="ex: youtube.com/watch?v=dQw4w9WgXcQ" ng-model="iec.model.youtubeLink">
+			</div>
+			
+    </fieldset>
+    <fieldset>
+
+			<legend class="rt_item_edit_details_btn">Sale Details</legend>
+			
+      <!-- <div class="form-group rt_item_edit_page_div">
+				<label for="ourPrice" class="control-label small">Selling Price</label>
+				<div class="input-group input-group-sm">
+					<span class="input-group-addon">$</span>
+					<input id="ourPrice" name="ourPrice" type="number" cordova-keyboard class="form-control" ng-required="true" ng-min="0.01" ng-max="8000" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model="iec.model.ourPrice">
+				</div>
+				<div class="form-alert" ng-messages="listingEdit.ourPrice.$error" ng-show="listingEdit.ourPrice.$touched && listingEdit.ourPrice.$error">
+					<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must specify your Selling Price.</div>
+					<div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Selling Price is too low.</div>
+					<div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Selling Price is too high.</div>
+					<div ng-message="pattern" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Selling Price should contain only numerals, no more than one period, and no more than two decimal places.</div>
+				</div>
+			</div> -->
+			
+      <div class="form-group rt_item_edit_page_div rt_ie_original_lbl">
+					<!-- <em class="rt_wizard_lbl_optional text-muted">(Optional)</em> -->
+				<label for="originalPrice" class="control-label small">Original Price</label>
+				<div class="input-group input-group-sm rt_ie_inputgroup">
+					<span class="input-group-addon rt_ie_custom_inputgroup_addon">$</span>
+					<input id="originalPrice" name="originalPrice" type="number" cordova-keyboard class="form-control input-sm" ng-min="0.01" ng-max="8000" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model="iec.model.originalPrice">
+				</div>
+				<div class="form-alert" ng-messages="listingEdit.originalPrice.$error" ng-show="listingEdit.originalPrice.$touched && listingEdit.originalPrice.$error">
+					<div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Original Price is too low.</div>
+					<div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Original Price is too high.</div>
+					<div ng-message="pattern" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Original Price should contain only numerals, no more than one period, and no more than two decimal places.</div>
+				</div>
+			</div>
+			
+      <div class="form-group rt_item_edit_page_check_box_div_left">
+				<div class="checkbox">
+					<label for="isAcceptingOffers" class="small">
+						<input id="isAcceptingOffers" name="isAcceptingOffers" type="checkbox" ng-model="iec.model.isAcceptingOffers">
+						Accept Offers?
+					</label>
+				</div>
+			</div>
+			
+      <div class="form-group rt_item_edit_page_div" ng-show="iec.model.isAcceptingOffers">
+				<label for="lowestOffer" class="control-label small">Lowest Offer</label>
+				<div class="input-group input-group-sm rt_ie_inputgroup">
+					<span class="input-group-addon rt_ie_custom_inputgroup_addon">$</span>
+					<input id="lowestOffer" name="lowestOffer" type="number" cordova-keyboard class="form-control" ng-required="acceptingOffers" ng-min="0.01" ng-max="100000" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model="iec.model.lowestOffer">
+				</div>
+				<small class="help-block smaller">Offers lower than the specified value will be automatically rejected.</small>
+				<div class="form-alert" ng-messages="listingEdit.lowestOffer.$error" ng-show="listingEdit.lowestOffer.$touched && listingEdit.lowestOffer.$error">
+					<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must specify your Lowest Offer.</div>
+					<div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Lowest Offer is too low.</div>
+					<div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Lowest Offer is too high.</div>
+					<div ng-message="pattern" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Lowest Offer should contain only numerals, no more than one period, and no more than two decimal places.</div>
+				</div>
+			</div>
+			
+      <div class="form-group rt_item_edit_page_div">
+				<div class="row tighter">
+					<div class="col-xs-6">
+						<label for="stock" class="control-label small">Stock</label>
+						<div class="input-group input-group-sm" min='1' max='1000' ng-model='iec.model.inStock' rt-stepper>
+						</div>
+						<div class="form-alert" ng-messages="listingEdit.inStock.$error" ng-show="listingEdit.inStock.$touched && listingEdit.inStock.$error">
+							<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must specify your number of items in Stock.</div>
+							<div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Stock is too low.</div>
+							<div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Stock is too high.</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<label for="sku" class="control-label small">SKU</label> <em class="rt_wizard_lbl_optional text-muted">(optional)</em>
+						<input id="sku" name="sku" type="text" cordova-keyboard class="form-control input-sm" ng-model="iec.model.sku">
+					</div>
+				</div>
+			</div>
+			
+      <div class="form-group rt_item_edit_page_check_box_div_left">
+				<div class="checkbox">
+					<label for="isFreeShipping" class="small">
+						<input id="isFreeShipping" name="isFreeShipping" type="checkbox" ng-model="iec.model.isFreeShipping">
+						Free Shipping?
+					</label>
+				</div>
+			</div>
+			
+      <div class="form-group rt_item_edit_page_div" ng-show="!iec.hasFreeShipping">
+				<label for="shippingFee" class="control-label small">Shipping Fee</label>
+				<div class="input-group input-group-sm rt_ie_inputgroup">
+					<span class="input-group-addon rt_ie_custom_inputgroup_addon">$</span>
+					<input id="shippingFee" name="shippingFee" type="number" cordova-keyboard class="form-control" ng-required="!iec.model.isFreeShipping" ng-model="iec.model.flatShippingRate" ng-min="0.01" ng-max="100000" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+				</div>
+				
+				<div class="form-alert" ng-messages="listingEdit.flatShippingRate.$error" ng-show="listingEdit.flatShippingRate.$touched && listingEdit.flatShippingRate.$error">
+					<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must specify your Shipping Fee.</div>
+					<div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Shipping Fee is too low.</div>
+					<div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Shipping Fee is too high.</div>
+					<div ng-message="pattern" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Shipping Fee should contain only numerals, no more than one period, and no more than two decimal places.</div>
+				</div>
+			</div>
+			
+      <div class="form-group rt_item_edit_page_div">
+				<label for="returnPeriod" class="control-label small">Return Period</label>
+				<select cordova-keyboard id="returnPeriod" name="returnPeriod" class="form-control input-sm" ng-required="true" ng-model="iec.model.returnPolicy" ng-options="r.id as r.name for r in iec.returnPolicies">
+				</select>
+			</div>
+			
+    </fieldset>
+    <fieldset>
+
+			<legend class="rt_item_edit_details_btn">Listing Options</legend>
+			
+      <div class="panel panel-default rt_ie_item_div">
+					<ul class="list-group rt_ie_list">
+						<li class="list-group-item small rt_ie_list_items">
+							<label>
+								<input type="checkbox" name="optionShowcaseListing" ng-model="iec.model.options.showcase" ng-disabled="iec.options.options.showcase.paymentGateways">
+								<strong>Showcase Listing</strong>
+							</label>
+							<em class="text-muted">+</em><em class='text-muted' ng-disabled="iec.options.showcase.paymentGateways" ng-bind='iec.optionsPrices.showcase|currency:"$"'></em>
+							<div>Listing is randomly shown on the ReelTrail home page</div>
+						</li>
+						<li class="list-group-item small rt_ie_list_items">
+							<label>
+								<input type="checkbox" name="optionHighlight" ng-model="iec.model.options.highlight" ng-disabled="iec.options.options.highlight.paymentGateways">
+								<strong>Highlight</strong>
+							</label>
+							<em class="text-muted">+</em><em class='text-muted' ng-bind='iec.optionsPrices.highlight|currency:"$"'></em>
+							<div>Listing has highlighted color in lists</div>
+						</li>
+						<li class="list-group-item small rt_ie_list_items">
+							<label>
+								<input type="checkbox" name="optionBoldfaceTitle" ng-model="iec.model.options.boldface" ng-disabled="iec.options.options.boldface.paymentGateways">
+								<strong>Boldface Title</strong>
+							</label>
+							<em class="text-muted">+</em><em class='text-muted' ng-bind='iec.optionsPrices.boldface|currency:"$"'></em>
+							<div>Listing title is <strong>boldfaced</strong> in lists</div>
+						</li>
+						<li class="list-group-item small rt_ie_list_items">
+							<label>
+								<input type="checkbox" name="optionViewCounter" ng-model="iec.model.options.viewCounter" ng-disabled="iec.options.options.viewCounter.paymentGateways">
+								<strong>View Counter</strong>
+							</label>
+							<em class="text-muted">+</em><em class='text-muted' ng-bind='iec.optionsPrices.viewCounter|currency:"$"'></em>
+							<div>See how many times your listing has been viewed</div>
+						</li>
+					</ul>
+					<!-- <div class="panel-footer">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="agreeListingOptionsNoRefund" name="agreeListingOptionsNoRefund" ng-model="iec.agreeListingOptionsNoRefund" />
+								I understand that Listing Options are non-refundable.
+							</label>
+						</div>
+					</div> -->
+      </div>
+    </fieldset>
+    <hr class="spacer"/>
+      <div class="rt_ie_update_btn_div">
+				<button class="btn " ng-disabled="iec.agreeListingOptionsNoRefund===false"  ng-click="iec.update()">Update</button>
+      </div>
+      <div class="rt_ie_cancel_btn_div">
+				<button class="btn " ng-click="iec.cancel()">Cancel</button>
+      </div>
+  </form>
+</div>

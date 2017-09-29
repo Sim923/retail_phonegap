@@ -1,0 +1,78 @@
+.rt_editprofile_image_div{
+    background: #072c3f !important
+}
+
+.rt_editprofile_image_div .profile-image{
+    padding-bottom: 75px;
+    width: 75px;
+}
+
+.rt_editprofile_image_div.profile-image-container {
+    padding-top: 20px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.rt_editprofile_image_div .rt_success_button, .rt_editprofile_primary .rt_success_button{
+    font-size: 12px;
+    border-radius: 20px !important;
+    width: 35%;
+    margin-left: 0%;
+    margin-top: 0px;
+    height: 25px;
+    margin-bottom: 20px;
+}
+.rt_editprofile_image_div .rt_profile_photo_change_btn{
+    width: 25%;
+}
+
+.rt_profile_details_btn{
+    text-align: center;
+}
+.rt_profile_details_btn .rt_success_button , .rt_profile_details_btn .rt_cancel_button{
+    margin-bottom: 10px;
+    width: 60%;
+}
+.rt_cancel_button
+
+._inputelemtnt.form-control:focus{
+    box-shadow: none;
+    border-color: #d0d7da;
+}
+.rt_paddingelement .form-group{
+    margin: 10px 0;
+}
+.form-group .rt_editprofile_label{
+    font-size: 16px;
+}
+.rt_editprofile_label{
+    font-size: 16px;
+}
+
+.rt_editprofile_label.rt_label_common_color{
+    margin-left: 10px;
+}
+
+.rt_help_text_color.help-block{
+    color: #072c3f;
+    padding-left: 10px;
+}
+
+._lable-profile_detail_color{
+    color: #669803;
+}
+
+.rt_profile_detail_main_div input._inputelemtnt{
+    color: #072c3f;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.rt_profile_detail_main_div input._inputelemtnt::-webkit-input-placeholder {
+    color: #072c3f !important;
+}
+
+.rt_profile_detail_main_div input._inputelemtnt::-moz-placeholder {  /* Firefox 19+ */
+    color: #072c3f !important;
+}
+

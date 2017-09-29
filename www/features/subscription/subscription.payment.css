@@ -1,0 +1,71 @@
+.lead.rt_payment_text_color{
+    color: #072c3f;
+    text-align: center;
+}
+
+.rt_payment_subscription .rt_success_button{
+    width:100% !important;
+    margin-left: 0% !important;
+    margin-top: 0px;
+    font-size: 12px !important;
+}
+
+.rt_content_subscription .rt_gold_name{
+    color: #f1c40f;
+}
+
+.list-group.stretch.rt_listgroup.rt_payment_group {
+    margin-bottom: 40px !important;
+}
+
+.list-group.stretch.rt_listgroup.rt_payment_group .subscription-item{
+    margin-top: -15px;
+}
+
+.rt_payment_panel .rt_panel_body{
+    background: #f1f1f1;
+    border-bottom: 1px solid #d0d7da;
+}
+
+.rt_payment_panel .rt_panel_body strong{
+    color: #04202d;
+}
+
+.rt_payment_panel .rt_panel_body span{
+    color: #072c3f;
+}
+
+.rt_payment_panel .rt_payment_footer{
+    background: #ffffff;
+}
+
+.rt_payment_panel .rt_panel_body.panel-body{
+    padding: 8px;
+    margin-top: 10px;
+}
+
+.rt_payment_footer .rt_payment_tax{
+    color: #072c3f;
+}
+
+.rt_payment_footer .rt_payment_total{
+    color: #669803;
+}
+
+.rt_payment_footer.panel-footer{
+    border-top: 0px;
+    border-bottom: 1px solid #d0d7da;
+    padding: 8px 15px;
+}
+
+.rt_paddingelement.rt_payment_fields{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.rt_btn_labelbar.rt_subscription{
+    width: 275px;
+}
+.rt_subscription_pay_btn_div button {
+    width: 150px;
+}

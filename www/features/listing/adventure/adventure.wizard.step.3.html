@@ -1,0 +1,180 @@
+<div class="bg_container">
+    <div class="first_section adventure_section">
+      <div class="first_content adventure_content boxItem">1</div>
+      <div class="second_content adventure_content boxItem" ng-class="{'active' : as3c.activeview == 3}">2</div>
+      <div class="third_content rt_content adventure_content boxItem" ng-class="{'active' : as3c.activeview == 3}">3</div>
+      <div class="fourth_content adventure_content boxItem">4</div>
+    </div>
+   <!-- <div class="stage_buttons first_stage_btn">
+      <a href="#">What's your adventure called?</a>
+    </div> 
+     <div class="stage_buttons second_stage_btn">
+      <a href="#">Upload images of your adventure</a>
+    </div> -->
+    <div class="ad_stage_buttons ad_third_stage_btn">
+      <a href="#">Describe your adventure</a>
+    </div>
+  <!-- <div class="stage_buttons fourth_stage_btn">
+      <a href="#">Set price and other details</a>
+    </div>
+    <div class="stage_buttons fifth_stage_btn">
+      <a href="#">Choose Listing option</a>
+    </div> -->
+  </div>
+<div id="ContentPane" class="container-fluid">
+  <form id="AdventureWizard" name="step3AdventureListingForm" class="no-bottom-nav rt_step_three">
+    <!-- <div class="progress wizard-progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" style="width: 75%">
+	<em>3 of 4</em>
+      </div>
+    </div>
+    <p class="lead text-center">Describe your adventure</p>
+    <hr class="spacer" /> -->
+    <div class="well-sm clearfix rt_adventure_stepthree">
+      <!-- <div class="image" ng-style="{'background-image':'url(' + as3c.model.thumbnails[0].url  + ')'}"></div> -->
+      <div class="name rt_option_color rt_adventure_name"><strong>Adventure Name </strong></div>
+      <div class="category rt_label_common_color small rt_adventure_type small"><span ng-bind='as3c.model.category.sub'></span>
+	      <i class="fa fa-angle-right"></i><span ng-bind='as3c.model.category.subsub'></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="price" class="control-label rt_label_common_color small">Price</label>
+      <div class="rt_profile_detail_main_div">
+        <!-- <span class="input-group-addon">$</span> -->
+        <input name="price" type="number" cordova-keyboard class="form-control rt_profile_detail_main_div _inputelemtnt" ng-required="true" placeholder="$" ng-model='as3c.model.price'>
+        <div class="form-alert" ng-messages="step3AdventureListingForm.price.$error" ng-show="step3AdventureListingForm.price.$touched && step3AdventureListingForm.price.$error">
+          <div ng-message="required" class="smaller text-danger">
+            <i class="fa fa-fw fa-exclamation-triangle"></i> Price required.
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="spacer"/>
+    <div class="form-group">
+      <div class="rt_step_three_duration">
+          <div class="rt_step_duration">
+              <label for="duration" class="control-label rt_label_common_color small">Duration (Days)</label>
+              <div class="input-group input-group-sm rt_profile_detail_main_div">
+               
+                <span class="input-group-btn">
+                    <button class="btn rt_transparent_elemnt rt_plusbutton btn-default" ng-disabled="as3c.canIncrement('days')" type="button" ng-click="as3c.increment('days')">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </span>
+                <input name="days" type="text" class="form-control rt_input_item rt_transparent_elemnt _inputelement text-center" readonly="readonly" ng-model="as3c.model.days">
+                  <span class="input-group-btn">
+                    <button class="btn rt_transparent_elemnt rt_plusbutton btn-default" ng-disabled="as3c.canDecrement('days')" type="button" ng-click="as3c.decrement('days')">
+                      <i class="fa fa-minus"></i>
+                    </button>
+                  </span>
+              </div>
+              <div class="form-alert" ng-messages="step3AdventureListingForm.duration.$error" ng-show="step3AdventureListingForm.duration.$touched && step3AdventureListingForm.duration.$error">
+                <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Duration required.</div>
+              </div>
+          </div>
+          <div class="rt_step_groupsize_duration">
+              <label for="groupSizeMin" class="control-label rt_label_common_color small">Group Size</label>
+              <div class="input-group input-group-sm rt_profile_detail_main_div">
+                
+                <span class="input-group-btn">
+                    <button class="btn btn-default rt_plusbutton rt_transparent_elemnt" ng-disabled="as3c.canIncrement('groupSizeMin')" type="button" ng-click="as3c.increment('groupSizeMin')">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                </span>
+                <input name="listingDays" type="text" class="form-control rt_input_item rt_transparent_elemnt text-center" readonly="readonly" ng-model="as3c.model.groupSizeMin">
+                <span class="input-group-btn">
+                  <button class="btn btn-default rt_plusbutton rt_transparent_elemnt" ng-disabled="as3c.canDecrement('groupSizeMin')" type="button" ng-click="as3c.decrement('groupSizeMin')">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </span>
+              </div>
+              <div class="form-alert" ng-messages="step3AdventureListingForm.groupSizeMin.$error" ng-show="step3AdventureListingForm.groupSizeMin.$touched && step3AdventureListingForm.groupSizeMin.$error">
+                <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Group Size required.</div>
+              </div>
+          </div>
+      </div>     
+    </div>
+    <hr class="spacer"/>
+    <div class="form-group">
+      <label for="intensity" class="control-label rt_label_common_color small">Intensity</label>
+      <div>
+        <div class="btn-group btn-group-justified rt_custom_btn_group_container" data-toggle="buttons" ng-model='as3c.model.intensity' bs-radio-group>
+          <label class="btn btn-blue active" ng-class="{'active': as3c.step == 1 }" ng-click='as3c.makeActive()'>
+            <input type="radio" name="intensity" id="intensity1" autocomplete="off" checked value="1"> 1
+          </label>
+          <label class="btn btn-green" ng-class="{'active': as3c.step == 2 }" ng-click='as3c.makeActive()'>
+            <input type="radio" name="intensity" id="intensity2" autocomplete="off" value="2"> 2
+          </label>
+          <label class="btn btn-saffron" ng-class="{'active': as3c.step == 3 }" ng-click='as3c.makeActive()'>
+            <input type="radio" name="intensity" id="intensity3" autocomplete="off" value="3"> 3
+          </label>
+          <label class="btn btn-dark-saffron" ng-class="{'active': as3c.step == 4 }" ng-click='as3c.makeActive()'>
+            <input type="radio" name="intensity" id="intensity4" autocomplete="off" value="4"> 4
+          </label>
+          <label class="btn btn-red" ng-class="{'active': as3c.step == 5 }" ng-click='as3c.makeActive()'>
+            <input type="radio" name="intensity" id="intensity5" autocomplete="off" value="5"> 5
+          </label>
+        </div>
+      </div>
+      <div class="help-block rt_rate_text smaller">Drag slider to rate your adventure in terms of difficulty and threll factor.</div>
+        <div class="form-alert" ng-messages="step3AdventureListingForm.intensity.$error" ng-show="step3AdventureListingForm.intensity.$touched && step3AdventureListingForm.intensity.$error">
+        <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Intensity required.</div>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+     
+    </div> -->
+    <div class="form-group rt_profile_detail_main_div">
+      <label for="location" class="control-label rt_label_common_color small">Location</label>
+      <ng-map map-initialized='as3c.mapInit(map)'></ng-map>
+      <input places-auto-complete size='80' placeholder="Enter place name" on-place-changed='as3c.placeChanged()' name='location' id='location' type='text' cordova-keyboard class='form-control _inputelemtnt' ng-required='true' ng-model='as3c.model.location.address'/>
+      <div class="form-alert" ng-messages="step3AdventureListingForm.locationMap.$error" ng-show="step3AdventureListingForm.locationMap.$touched && step3AdventureListingForm.locationMap.$error">
+        <div ng-message="required" class="smaller text-danger">
+          <i class="fa fa-fw fa-exclamation-triangle"></i> Location required.
+        </div>
+      </div>
+    </div>
+    <hr class="spacer"/>
+    <div class="form-group rt_profile_detail_main_div">
+      <label for="description" class="control-label rt_label_common_color small">Description</label>
+      <textarea cordova-keyboard name="description" class="form-control _inputelemtnt input-sm" rows="5" ng-required="true" placeholder="Provide additional details of your adventure&hellip;" ng-model='as3c.model.description'></textarea>
+      <div class="form-alert" ng-messages='step3AdventureListingForm.description.$error' ng-show="step3AdventureListingForm.description.$touched && step3AdventureListingForm.description.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Description required.</div>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label for="listingDuration" class="control-label small">Listing Duration</label> <em class="small text-muted">($1.00 per day)</em>
+      <div class="input-group input-group-sm">
+        <span class="input-group-btn">
+          <button class="btn btn-default" ng-disabled="as3c.canDecrement('listingDays')" type="button" ng-click="as3c.decrement('listingDays')">
+            <i class="fa fa-minus"></i>
+          </button>
+        </span>
+        <input name="listingDays" type="text" class="form-control text-center" readonly="readonly" ng-model="as3c.model.listingDays">
+        <span class="input-group-btn">
+          <button class="btn btn-default" ng-disabled="as3c.canIncrement('listingDays')" type="button" ng-click="as3c.increment('listingDays')">
+            <i class="fa fa-plus"></i>
+          </button>
+        </span>
+      </div>
+      <div class="form-alert" ng-messages="step3AdventureListingForm.listingDuration.$error" ng-show="step3AdventureListingForm.listingDuration.$touched && step3AdventureListingForm.listingDuration.$error">
+	      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Duration required.</div>
+      </div>
+    </div> -->
+    <!-- <div class="form-group">
+      <label for="youtubeLink" class="control-label small">YouTube Link</label> <em class="small text-muted">(optional)</em>
+      <input id="youtubeLink" name="youtubeLink" type="url" cordova-keyboard class="form-control input-sm" placeholder="ex: youtube.com/watch?v=dQw4w9WgXcQ" ng-model="as3c.model.youtubeLink">
+    </div> -->
+    <hr class="spacer">
+    <!-- <div class="row tighter">
+      <div class="col-xs-7">
+	<button class="btn btn-link" ng-click="as3c.back()"><i class="fa fa-arrow-left"></i> Back</button>
+      </div>
+      <div class="col-xs-5"> -->
+        <div class="rt_wizard_btn_div">
+          <button class="btn rt_wizard_btn" ng-disabled="step3AdventureListingForm.$invalid" ng-click="as3c.next()">Next</button>
+        </div>
+      <!-- </div>
+    </div> -->
+  </form>
+</div>

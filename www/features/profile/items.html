@@ -1,0 +1,35 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ProfileListings">
+    <div id="alerts-container"></div>
+    <div ng-show="pic.output.list.length===0" class="alert alert-info">You have no items yet.</div>
+    <div class="listings-list list-group stretch">
+      <div infinite-scroll='pic.loadMore()' infinite-scroll-disabled='pic.output.loading' infinite-scroll-distance='1'>
+	<a ng-repeat='listing in pic.output.list' ui-sref="home.item({id:listing.id})" class="listing-preview list-group-item clearfix" md-swipe-left="pic.model.swipe.left(listing)" md-swipe-right="pic.model.swipe.right(listing)">
+	  <div class="image" ng-style="{'background-image': 'url(' + listing.images[0] + ')'}"></div>
+	  <div class="name"><strong ng-bind='listing.title'></strong></div>
+	  <div class="category small">
+	    <span ng-bind='pic.category.get(listing.cat[0], listing.cat[1], listing.cat[2]).main.name'></span>
+	    <i class="fa fa-angle-right"></i> <span ng-bind='pic.category.get(listing.cat[0], listing.cat[1], listing.cat[2]).sub.name'></span>
+	    <i class="fa fa-angle-right"></i> <span ng-bind='pic.category.get(listing.cat[0], listing.cat[1], listing.cat[2]).subsub.name'></span>
+	  </div>
+	  <div class="price small text-muted">
+	    <em><span ng-bind='listing.ourPrice|currency:"$"'></span></em>
+	  </div>
+	  <div class="quick-actions rt_items_slide_btns_cont" ng-show="listing.visible">
+	    <div class="wrapper rt_items_slide_edit_button" ng-click='pic.model.edit(listing)'>
+	      <!-- <button type="button" class="btn btn-info btn-sm" title="Edit Item" ng-click='pic.model.edit(listing)'>Edit</button> -->
+	      <span>Edit</span>
+      	</div>
+      	<div class="wrapper rt_items_slide_remove_button" ng-click='pic.model.remove(listing)'>
+              <!-- <button type="button" class="btn btn-danger btn-sm" title="Delete Item" ng-click='pic.model.remove(listing)'>Remove</button> -->
+          	<span>Delete</span>
+	    </div>
+	  </div>
+	</a>
+      </div>
+    </div>
+    <div class="loading-animation text-center" ng-show='pic.output.loading'>
+      <i class="fa fa-spinner fa-pulse fa-2x fa-fw text-muted"></i>
+    </div>
+  </div>
+</div>

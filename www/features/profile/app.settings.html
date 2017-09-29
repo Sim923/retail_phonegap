@@ -1,0 +1,145 @@
+<!-- <div id="ContentPane" class="container-fluid">
+  <div id="AppSettings">
+		 NOTIFICATIONS MENU
+		<legend class="rt_appsetting_PN_head">Push Notifications</legend>
+
+    <div class="list-group stretch">
+      <div class="list-group-item with-toggle clearfix">
+				<div class="item-toggle">
+					<input type="checkbox" name="optionAllNotifications" checked data-toggle="toggle" data-size="small" ng-model="model.option.allNotifications">
+				</div>
+				<b>All Notifications</b>
+				<div class="smaller text-muted">Toggle all push notifications on or off.</div>
+			</div>
+			
+      <div class="list-group-item with-toggle clearfix">
+				<div class="item-toggle">
+					<input type="checkbox" name="optionPrivateMessages" checked data-toggle="toggle" data-size="small" ng-model="model.option.privateMessages">
+				</div>
+				Private Messages
+				<div class="smaller text-muted">Notify when you receive a new message.</div>
+			</div>
+			
+      <div class="list-group-item with-toggle clearfix">
+				<div class="item-toggle">
+					<input type="checkbox" name="optionOffersCounters" checked data-toggle="toggle" data-size="small" ng-model="model.option.offersCounters">
+				</div>
+				Offers &amp; Counters
+				<div class="smaller text-muted">Notify when an offer is made on your listing, or when a counter is made to your previous offer.</div>
+			</div>
+			
+      <div class="list-group-item with-toggle clearfix">
+				<div class="item-toggle">
+					<input type="checkbox" name="optionWatchList" checked data-toggle="toggle" data-size="small" ng-model="model.option.watchList">
+				</div>
+				Watch List
+				<div class="smaller text-muted">Notify when a watched item is updated.</div>
+			</div>
+			
+      <div class="list-group-item with-toggle clearfix">
+				<div class="item-toggle">
+					<input type="checkbox" name="optionReelBucksRewards" checked data-toggle="toggle" data-size="small" ng-model="model.option.reelBucksRewards">
+				</div>
+				ReelBucks Rewards
+				<div class="smaller text-muted">Notify when you receive a reward for a successful referral.</div>
+			</div>
+			
+      <div class="list-group-item with-toggle clearfix">
+				<div class="item-toggle">
+					<input type="checkbox" name="optionSubscriptionNotice" checked data-toggle="toggle" data-size="small" ng-model="model.option.subscriptionNotice">
+				</div>
+				Subscription Notice
+				<div class="smaller text-muted">Notify when your subscription is up for renewal.</div>
+      </div>
+    </div>
+     NOTIFICATIONS MENU 
+  </div>
+</div> -->
+
+<div id="ContentPane" class="container-fluid">
+		<div id="AppSettings">
+			<!-- NOTIFICATIONS MENU -->
+			<legend class="rt_appsetting_PN_head">Push Notifications</legend>
+	
+			<div class="rt_as_main_div">
+				<div class="rt_as_list_div row">
+					<div class="col-xs-9 rt_as_list_txt">
+							<b class="rt_as_list_title">All Notifications</b>
+							<div class="rt_as_list_subtitle text-muted">Toggle all push notifications on or off.</div>
+					</div>
+					<div class="col-xs-3 rt_as_list_checkbox">
+						<label class="switch">
+							<input type="checkbox" name="optionAllNotifications" checked data-toggle="toggle" data-size="small" ng-model="model.option.allNotifications">
+							<span class="slider round"></span>
+						</label>
+					</div>				
+				</div>
+				
+				<div class="rt_as_list_div row">
+					<div class="col-xs-9 rt_as_list_txt">
+						<b class="rt_as_list_title">Private Messages</b>
+						<div class="rt_as_list_subtitle text-muted">Notify when you receive a new message.</div>
+					</div>
+					<div class="col-xs-3 rt_as_list_checkbox">
+							<label class="switch">
+									<input type="checkbox" name="optionPrivateMessages" checked data-toggle="toggle" data-size="small" ng-model="model.option.privateMessages">
+									<span class="slider round"></span>
+								</label>
+						</div>
+				</div>
+				
+				<div class="rt_as_list_div row">
+					<div class="col-xs-9 rt_as_list_txt">
+						<b class="rt_as_list_title">Offers &amp; Counters</b>
+						<div class="rt_as_list_subtitle text-muted">Notify when an offer is made on your listing, or when a counter is made to your previous offer.</div>
+					</div>
+					<div class="col-xs-3 rt_as_list_checkbox">
+							<label class="switch">
+									<input type="checkbox" name="optionOffersCounters" checked data-toggle="toggle" data-size="small" ng-model="model.option.offersCounters">
+									<span class="slider round"></span>
+								</label>
+					</div>
+				</div>
+				
+				<div class="rt_as_list_div row">
+					<div class="col-xs-9 rt_as_list_txt">
+						<b class="rt_as_list_title">Watch List</b>
+						<div class="rt_as_list_subtitle text-muted">Notify when a watched item is updated.</div>
+					</div>
+					<div class="col-xs-3 rt_as_list_checkbox">
+							<label class="switch">
+									<input type="checkbox" name="optionWatchList" checked data-toggle="toggle" data-size="small" ng-model="model.option.watchList">
+									<span class="slider round"></span>
+								</label>
+					</div>
+				</div>
+				
+				<div class="rt_as_list_div row">
+					<div class="col-xs-9 rt_as_list_txt">
+							<b class="rt_as_list_title">ReelBucks Rewards</b>
+						<div class="rt_as_list_subtitle text-muted">Notify when you receive a reward for a successful referral.</div>
+					</div>
+					<div class="col-xs-3 rt_as_list_checkbox">
+							<label class="switch">
+									<input type="checkbox" name="optionReelBucksRewards" checked data-toggle="toggle" data-size="small" ng-model="model.option.reelBucksRewards">
+									<span class="slider round"></span>
+								</label>
+					</div>
+				</div>
+				
+				<div class="rt_as_list_div row">
+					<div class="col-xs-9 rt_as_list_txt">
+							<b class="rt_as_list_title">Subscription Notice</b>
+						<div class="rt_as_list_subtitle text-muted">Notify when your subscription is up for renewal.</div>
+					</div>
+					<div class="col-xs-3 rt_as_list_checkbox">
+							<label class="switch">
+									<input type="checkbox" name="optionSubscriptionNotice" checked data-toggle="toggle" data-size="small" ng-model="model.option.subscriptionNotice">
+									<span class="slider round"></span>
+								</label>
+					</div>
+				</div>
+			</div>
+			<!-- /NOTIFICATIONS MENU -->
+		</div>
+	</div>

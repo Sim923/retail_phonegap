@@ -1,0 +1,49 @@
+.rt_adventures_select_box_div{
+    background: #062C40;
+    padding: 20px;
+    margin-top: -20px;
+}
+.rt_adventures_select_box{
+    color: #2E87BF;
+    background: #062C40;
+    font-size: 18px;
+    font-weight: 500;
+    border: 0px;
+    border-bottom: 2px solid #fff;
+}
+
+/*Product swipe btns css*/
+.rt_adventure_slide_btns_cont {
+    margin: 0 15px;
+    background: transparent;
+}
+.rt_adventure_slide_btns_cont .rt_adventure_slide_edit_button {
+    width: 50%;
+    float: left;
+    text-align: center;
+    background: rgba(51,122,183,0.75);
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+.rt_adventure_slide_btns_cont .rt_adventure_slide_edit_button span {
+    position: relative;
+    top: 35%;
+    text-transform: uppercase;
+}
+.rt_adventure_slide_btns_cont .rt_adventure_slide_remove_button {
+    width: 50%;
+    float: left;
+    text-align: center;
+    background: rgba(217,83,79,0.75);
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+.rt_adventure_slide_btns_cont .rt_adventure_slide_remove_button span {
+    position: relative;
+    top: 35%;
+    text-transform: uppercase;
+}

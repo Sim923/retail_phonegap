@@ -1,0 +1,13 @@
+.rt_adventures_select_box_div{
+    background: #062C40;
+    padding: 20px;
+    margin-top: -20px;
+}
+.rt_adventures_select_box{
+    color: #2E87BF;
+    background: #062C40;
+    font-size: 18px;
+    font-weight: 500;
+    border: 0px;
+    border-bottom: 2px solid #fff;
+}

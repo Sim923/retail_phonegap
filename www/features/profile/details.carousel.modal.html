@@ -1,0 +1,32 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Image Preview</h4>
+      </div>
+      <div class="modal-body">
+        <img ng-click="dcmc.cropper.open()" ng-src="{{dcmc.cropper.image.url}}" draggable="false" style="height: 100%;width: 100%" ng-pinch-zoom max-scale=“4” alt="">
+        <div id="ImageCropper" class="full-overlay" ng-show="dcmc.cropper.visible===true">
+          <button class="btn btn-link btn-lg text-danger close-overlay" ng-click='dcmc.cropper.close()'><i class="fa fa-ban"></i></button>
+          <nc-darkroom
+            image='dcmc.cropper.image.url'
+            max-width='300'
+            max-height='300'
+            on-crop='dcmc.cropper.crop(image)'
+            history='true'
+            crop='{}'
+            rotate='true'
+            save='false'>
+          </nc-darkroom>
+          <button ng-click="dcmc.cropper.upload()" ng-disable="!dcmc.cropper.done">SAVE IMAGE</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+      <button style="float:left" type="button" class="btn btn-danger" ng-click="dcmc.cropper.deleteImage(dcmc.cropper.image)">Delete Image</button>
+        <button type="button" class="btn btn-primary" ng-click="dcmc.cropper.setProfileImage()">Set as Profile Image</button>
+        <button type="button" class="btn btn-warning" ng-click="$hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

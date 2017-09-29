@@ -1,0 +1,19 @@
+<div id="ContentPane" class="container-fluid">
+  <form id="ProfileAccount">
+    <div class="rt_subscription_title_div">
+      <p class="rt_subscription_title">Current Subscription</p>
+    </div>
+
+    <div class="subscription-preview well well-sm clearfix rt_subscription_cell">
+      <img alt="{{sc.model.title}}" class="subscription-badge img-circle" ng-src="{{sc.model.logo}}">
+      <div class="name rt_subscription_name_lbl"><strong ng-bind="sc.model.name"></strong></div>
+      <div class="price small rt_subscription_price_lbl"><span ng-bind="sc.model.price|currency:'$'"></span>/month</div>
+      <div class="fee small rt_subscription_fee_lbl text-muted"><em><span ng-bind="sc.model.percentage"></span>% fee</em></div>
+    </div>
+    <div class="form-group text-center" ng-hide="sc.model.name==='Bronze'">
+      <label for="nextBillingDate" class="control-label small">Next Billing Date</label>
+      <p name="nextBillingDate" class="form-control-static input-sm" ng-bind="sc.model.active_until | date:'MM/dd/yyyy'"></p>
+    </div>
+    <button class="btn btn-primary btn-block rt_subscription_btn" ui-sref="profile.subscription.select">Change Subscription</button>
+  </form>
+</div>

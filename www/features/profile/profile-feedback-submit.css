@@ -1,0 +1,98 @@
+/*Profile feedback submit Custom css*/
+
+.rt_pfs_listing_preview {
+	padding-bottom: 10px;
+    border-bottom: 1px solid #aeaeae;	
+}
+.rt_pfs_listing_preview .image {
+	border-radius: 50px;
+}
+.rt_pfs_title {
+	font-weight: bold;
+	font-size: 16px;
+	color: #669900;
+    text-transform: capitalize;
+}
+.rt_pfs_subtitle {
+	font-size: 16px;
+	font-weight: normal;
+	color: #062c3f;
+    text-transform: capitalize;
+}
+.rt_pfs_listing_preview_right_img {
+	text-align: right;
+}
+.rt_pfs_listing_preview_right_img img {
+    width: 60px;
+    height: 60px;
+}
+.rt_pfs_body_cont {
+	padding: 0 25px;
+}
+.rt_pfs_title_btn {
+	position: relative;
+	padding: 5px;
+	margin: 20px auto;
+	background: #1d5977;
+	display: block;
+	width: 100%;
+	color: #fff;
+	border-radius: 50px;
+}
+.rt_pfs_title_btn:before {
+	content: "";
+	position: absolute;
+	border-top: 5px solid #1d5977;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50% , 0);
+}
+.rt_pfs_label {
+	font-size: 16px;
+	font-weight: bold;
+	color: #669900;
+}
+.rt_pfs_ratingstar_block {
+    font-size: 10px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    color: #062c3f;
+}
+.rt_pfs_ratingstar_block span .fa-3x {
+	margin: 0 10px 0 0px;
+}
+.rt_pfs_textarea {
+	border-bottom: 1px solid #aeaeae;
+	color: #062c3f;
+	font-size: 16px;
+}
+.rt_pfs_textarea::-webkit-input-placeholder {
+	color: #062c3f;
+}
+.rt_pfs_textarea::-moz-placeholder {
+	color: #062c3f;
+}
+.rt_pfs_textarea:focus {
+	outline: none;
+	border-color: none;
+	box-shadow: none;
+}
+.rt_pfs_send_feedback_button {
+	text-align: center;
+}
+.rt_pfs_send_feedback_button .rt_pfs_sendfeedback_btn {
+	height: 45px;
+    display: block;
+    margin: 25px auto;
+    color: #fff;
+    background: #669900;
+    font-size: 16px;
+    width: 60%;
+    font-weight: bold;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}

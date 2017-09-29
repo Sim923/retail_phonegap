@@ -1,0 +1,173 @@
+<div id="ContentPane" class="container-fluid">
+  <form id="ShoppingCart" class="no-bottom-nav">
+    <fieldset>
+				<button class="btn rt_btn_labelbar">Payment summary</button>
+			<!-- <legend>Shipping Details</legend> -->
+			<label for="itemType" class="control-label small _lable-color">Items</label>
+      <div class="panel panel-default">
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="item in csc.cart">
+						<div class="row rt_checkout_items">
+							<div class="col-xs-8">
+					<span ng-bind="item.listingId.title" ng-click="csc.goToListing(item);"></span> <span class="quantity smaller text-muted nowrap">&times; <span data-ng-bind="item.quantity"></span></span>
+							</div>
+							<div class="col-xs-4 text-right">
+								<div class="rt_item_price"><span ng-bind="item.price*item.quantity*0.01|currency:'$'"></span></div>
+					<!-- <div class="smaller text-muted" ng-show="item.listingId.flatShippingRate>0">Shipping: +<span ng-bind="item.listingId.flatShippingRate*item.quantity*0.01|currency:'$'"></span></div> -->
+							</div>
+						</div>
+					</li>
+					
+				</ul>
+				<div class="panel-footer rt_cart_subtotal">
+						<div class="row small">
+							<div class="col-xs-8">
+								<em>Item Subtotal</em>
+							</div>
+							<div class="col-xs-4 text-right">
+								<em class="text-muted"><span data-ng-bind="csc.subtotal()|currency:'$'"></span></em>
+							</div>
+						</div>
+						<div class="row small">
+							<div class="col-xs-8">
+								<em>Shipping</em>
+							</div>
+							<div class="col-xs-4 text-right">
+								<em class="text-muted" ng-show="csc.shippingFee()>0"><span ng-bind="csc.shippingFee()|currency:'$'"></span></em>
+								<em class="text-muted" ng-hide="csc.shippingFee()>0">(free)</em>
+							</div>
+						</div>
+						<div class="row small">
+							<div class="col-xs-8">
+								<em>Tax <span class="small text-muted"></span></em>
+							</div>
+							<div class="col-xs-4 text-right">
+								<em class="text-muted" ng-bind="csc.processingFee()|currency:'$'"></em>
+							</div>
+						</div>
+				</div>
+				<div class="panel-footer rt_cart_total">						
+						<div class="row">
+							<div class="col-xs-8">
+								<strong>Total</strong>
+							</div>
+							<div class="col-xs-4 text-right">
+								<strong><span data-ng-bind="csc.total()|currency:'$'"></span></strong>
+							</div>
+						</div>					
+				</div>
+      </div>
+		</fieldset>
+		<button class="btn rt_btn_labelbar">Payment Information</button>
+    <fieldset>
+				
+      <!-- <h3 class="panel-title">Shipping Address</h3> -->
+      <form ng-show="csc.addresses">
+        <div class="form-group">
+          <label for="itemType" class="control-label small _lable-color">Shipping Address</label>
+					<select cordova-keyboard class="form-control input-sm" name="savedAddresses" data-ng-model="csc.model" data-ng-options="address.line1 for address in csc.addresses track by address._id" ng-change="csc.savedAddressChange(csc.model)">
+						<option value="">New Address</option>
+						<option value="{{address._id}}" data-ng-options="address.line1 for address in csc.addresses track by address._id">{{address.label}}</option>
+					</select>
+        </div>
+      </form>
+      <form name='addressForm' >
+				<div class="form-group rt_address_fields_div">
+          <label class="control-label small _lable-color">Name</label>
+          <input name='contact' id='contact' class="form-control rt_option_color input-sm" ng-model='csc.model.contact' ng-disabled="csc.model._id" type='text' cordova-keyboard placeholder='First and Last Name' ng-required='true' />
+					<div ng-messages="addressForm.contact.$error" ng-show="addressForm.contact.$touched" class="form-alert">
+						<div ng-message="required" class="smaller text-danger">Name cannot be blank.</div>
+						<div ng-message="minlength" class="smaller text-danger">Name must be at least 8 characters in length.</div>
+						<div ng-message="maxlength" class="smaller text-danger">Name cannot be over 24 characters in length.</div>
+					</div>
+        </div>
+        <div class="form-group rt_address_fields_div">
+          <label class="control-label small _lable-color">Address</label>
+          <input name='line1' id='line1' class="form-control input-sm" ng-model='csc.model.line1' ng-disabled="csc.model._id" type='text' cordova-keyboard placeholder='Address' ng-required='true' />
+					<div ng-messages="addressForm.line1.$error" ng-show="addressForm.line1.$touched" class="form-alert">
+						<div ng-message="required" class="smaller text-danger">Address cannot be blank.</div>
+						<div ng-message="minlength" class="smaller text-danger">Address must be at least 12 characters in length.</div>
+						<div ng-message="maxlength" class="smaller text-danger">Address cannot be over 32 characters in length.</div>
+					</div>
+        </div>
+        <div class="form-group rt_address_fields_div">
+          <label class="control-label small _lable-color">Apartment, Suite</label>
+          <input name='line2' id='line2' class="form-control input-sm" ng-model='csc.model.line2' ng-disabled="csc.model._id" type='text' cordova-keyboard placeholder='Apt, Suite, etc. (Optional)' />
+        </div>
+        <div class="form-group rt_address_fields_div">
+          <label class="control-label small _lable-color">City</label>
+          <input name='city' id='city' class="form-control input-sm" ng-model='csc.model.city' ng-disabled="csc.model._id" type='text' cordova-keyboard placeholder='City' ng-required='true' />
+					<div ng-messages="addressForm.city.$error" ng-show="addressForm.city.$touched" class="form-alert">
+						<div ng-message="required" class="smaller text-danger">City cannot be blank.</div>
+						<div ng-message="minlength" class="smaller text-danger">City must be at least 3 characters in length.</div>
+						<div ng-message="maxlength" class="smaller text-danger">City cannot be over 24 characters in length.</div>
+					</div>
+        </div>
+        <div class="form-group rt_address_fields_div">
+          <label class="control-label small _lable-color">State</label>
+          <select cordova-keyboard ng-model="csc.model.state" ng-disabled="csc.model._id" class="form-control input-sm rt_option_color _inputelemtnt" ng-required='true'>
+						<option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option>
+						<option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option>
+						<option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option>
+						<option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option>
+						<option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option>
+						<option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option>
+						<option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option>
+						<option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option>
+						<option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option>
+						<option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option>
+						<option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option>
+						<option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option>
+						<option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option>
+						<option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option>
+						<option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option>
+						<option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option>
+						<option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+          </select>
+        </div>
+        <div class="form-group rt_address_fields_div">
+          <label class="control-label small _lable-color">Zip Code</label>
+          <input name='zip' id='zip' class="form-control input-sm" ng-model='csc.model.zipCode' ng-disabled="csc.model._id" type='text' cordova-keyboard placeholder='Zip Code' ng-required='true'/>
+					<div ng-messages='addressForm.zip.$error' ng-show='addressForm.zip.$touched' class="form-alert">
+						<div ng-message="required" class="smaller text-danger">Zip code cannot be blank.</div>
+						<div ng-message="minlength" class="smaller text-danger">Zip code must be at least 5 characters in length.</div>
+						<div ng-message="maxlength" class="smaller text-danger">Zip code cannot be over 10 characters in length.</div>
+					</div>
+        </div>
+        <div class="form-group rt_address_fields_div">
+          <label class="control-label small _lable-color">Phone</label>
+          <input name='phone' id='phone' class="form-control input-sm" ng-model='csc.model.phone' ng-disabled="csc.model._id" type='text' cordova-keyboard placeholder='Phone' ng-required='true' />
+					<div ng-messages="addressForm.phone.$error" ng-show="addressForm.phone.$touched" class="form-alert">
+						<div ng-message="required" class="smaller text-danger">Phone cannot be blank.</div>
+						<div ng-message="minlength" class="smaller text-danger">Phone must be at least 10 characters in length.</div>
+						<div ng-message="maxlength" class="smaller text-danger">Phone cannot be over 24 characters in length.</div>
+					</div>
+        </div>
+        <div class="form-group rt_address_fields_div">
+          <label class="control-label small _lable-color">Email</label>
+          <input name='email' id='email' class="form-control input-sm" ng-model='csc.model.email' ng-disabled="csc.model._id" type='email' cordova-keyboard placeholder='Email' ng-required='true' />
+					<div ng-messages="addressForm.email.$error" ng-show="addressForm.email.$touched" class="form-alert">
+						<div ng-message="required" class="smaller text-danger">Email cannot be blank.</div>
+						<div ng-message="email" class="smaller text-danger">Email not valid format.</div>
+						<div ng-message="minlength" class="smaller text-danger">Email must be at least 10 characters in length.</div>
+						<div ng-message="maxlength" class="smaller text-danger">Email cannot be over 64 characters in length.</div>
+					</div>
+        </div>
+      </form>
+		</fieldset>
+		<hr class="spacer" />
+		<hr class="spacer" />
+		<hr class="spacer" />
+		<hr class="spacer" />
+		<hr class="spacer" />
+		<h4 class="rt_totalas_amount" data-ng-bind="csc.total()|currency:'$'"></h4>
+    <!-- <div class="alert alert-danger" ng-show="csc.cartShippingError" ng-bind='csc.cartShippingError'></div>
+    <hr class="spacer" />
+    <div class="row tighter">
+      <div class="col-xs-12">
+	<button class="btn btn-success btn-block" ng-show="csc.model._id || addressForm.$valid" ng-click="csc.save()">Continue</button>
+      </div>
+    </div> -->
+	</form>
+	<button class="btn rt_success_button" ng-click="csc.save()">Place Order</button>
+</div>

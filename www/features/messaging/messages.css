@@ -1,0 +1,73 @@
+.rt_message_write_box{
+    background: #f1f1f1;
+    border-bottom: 0px;
+    border-radius: 20px;
+}
+
+input[required="required"].rt_message_write_box{
+    background: #d7d7d7;
+    border-bottom: 0px solid #f1f1f1;
+    font-size: 12px;
+}
+
+input.rt_message_write_box::-webkit-input-placeholder {
+    color: #6e6e6e !important;
+}
+
+input.rt_message_write_box::-moz-placeholder { 
+    color: #6e6e6e !important;
+}
+
+.rt_message_write_box.form-control:focus{
+    box-shadow: none;
+    border-color: #f1f1f1;
+}
+
+.rt_message_send_btn i{
+    font-size: 22px;
+    padding: 7px 5px;
+    color: #072c3f;
+}
+
+.messaging-compose.rt_messaging_compose {
+    bottom: 10px;
+    left: 10px;
+    margin: 0;
+    position: fixed;
+    right: 10px;
+}
+
+.rt_listgroup.rt_messaging_selected_USer .subscription-item{
+    background: #072c3f;
+    margin-top: -10px;
+}
+
+.rt_listgroup.rt_messaging_selected_USer .list-group-item {
+    position: relative;
+    display: block;
+    padding: 0px 0px;
+    margin-bottom: -1px;
+    border: 0px solid #ddd;
+}
+
+
+.rt_listgroup.rt_messaging_selected_USer .rt_usename_name {
+    color: #669803;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.rt_listgroup.rt_messaging_selected_USer span.rt_light_text_color{
+        color: #fff;
+        font-size: 12px;  
+        font-family: sans-serif;      
+}
+
+
+.rt_message_item {
+    border-bottom: 0px solid #d0d7da;
+    padding: 20px;
+}
+img.rt_messaging_enable_con{
+    width: 10px;
+}

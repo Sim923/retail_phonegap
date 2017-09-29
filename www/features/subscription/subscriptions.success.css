@@ -1,0 +1,53 @@
+.rt_success_lbl{
+    font-size: 18px;
+    color: #1D3B49;
+    font-weight: 900;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+.rt_plane_lbl{
+    font-size: 20px;
+    color: #1D3B49;
+    font-weight: 900;
+}
+.rt_start_lbl{
+    font-size: 18px;
+    color: #1D3B49;
+    font-weight: 100;
+}
+.rt_subscription_img_div{
+    text-align: center;
+}
+.rt_subscription_img{
+    height: 180px;
+}
+.rt_btn_div{
+    text-align: center;
+}
+.rt_sell_out_btn{
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #669900;
+    font-size: 16px;
+    width: 60%;
+    font-weight: 600;
+    border-radius: 100px;
+    height: 40px;
+    text-transform: uppercase;
+    border: 0px;    
+}
+.rt_my_profile_btn{
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    color: #fff;
+    background: #062C40;
+    width: 60%;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 100px;
+    height: 40px;
+    text-transform: uppercase;
+    border: 0px;
+}

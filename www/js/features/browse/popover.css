@@ -1,0 +1,15 @@
+.dropdown-menu{
+    margin-left: 10px;
+    background: #669900;
+    margin-top: 10px;
+}
+.dropdown-menu .ng-scope{
+    background: #669900;
+    color: #fff;
+    height: 35px;
+    font-weight: 700;
+    border-bottom: 1px solid #96D814;
+}
+.ng-binding{
+
+}

@@ -1,0 +1,75 @@
+<div id="ContentPane" class="container-fluid">
+  <form id="Register" name='step1RegisterForm' class="no-bottom-nav" novalidate>
+    <div class="progress wizard-progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" style="width: 33%">
+	<em>1 of 3</em>
+      </div>
+    </div>
+    <p class="lead text-center">Tell us a bit about yourself&hellip;</p>
+    <hr/>
+    <div class="form-group">
+      <label for="firstName" class="control-label small">Full Name</label>
+      <div class="row tighter">
+	<div class="col-xs-6">
+	  <input id="firstName" name='firstName' type="text" class="form-control input-sm" ng-required="true" placeholder="First Name" ng-model='rs1c.model.firstName'>
+	  <div class="form-alert" ng-messages="step1RegisterForm.firstName.$error" ng-show="step1RegisterForm.firstName.$touched && step1RegisterForm.firstName.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> First Name required.</div>
+	  </div>
+	</div>
+	<div class="col-xs-6">
+	  <input type="text" name='lastName' class="form-control input-sm" ng-required="true" placeholder="Last Name" ng-model='rs1c.model.lastName'>
+	  <div class="form-alert" ng-messages="step1RegisterForm.lastName.$error" ng-show="step1RegisterForm.lastName.$touched && step1RegisterForm.lastName.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Last name required.</div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="entityType" class="control-label small">Entity Type</label>
+      <select id="entityType" class="form-control input-sm" ng-model='rs1c.model.type'>
+	<option value="individual">Individual</option>
+	<option value="company">Company</option>
+      </select>
+    </div>
+    <div class="form-group" ng-show="rs1c.model.type==='company'">
+      <label for="businessName" class="control-label small">Business Name</label>
+      <input id="businessName" name='businessName' type="text" class="form-control input-sm" ng-required="rs1c.entityType==='company'" ng-model='rs1c.model.businessName'>
+      <div class="form-alert" ng-messages="step1RegisterForm.businessName.$error" ng-show="step1RegisterForm.businessName.$touched && step1RegisterForm.businessName.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Business Name required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="monthOfBirth" class="control-label small">Date of Birth</label>
+      <div class="row tighter">
+	<div class="col-xs-3">
+	  <select name='yearOfBirth' class="form-control input-sm" ng-model='rs1c.model.yearOfBirth' ng-options='obj.text for obj in rs1c.years track by obj.value'></select>
+	</div>
+	<div class="col-xs-6">
+	  <select name='monthOfBirth' id="monthOfBirth" class="form-control input-sm" ng-model='rs1c.model.monthOfBirth' ng-change='rs1c.updateDays(rs1c.model.monthOfBirth.value)' ng-options='obj.text for obj in rs1c.months track by obj.value'></select>
+	</div>
+	<div class="col-xs-3">
+	  <select name='dayOfBirth' class="form-control input-sm" ng-model='rs1c.model.dayOfBirth' ng-options='obj.text for obj in rs1c.days track by obj.value'></select>
+	</div>
+      </div>
+      <div class="form-alert" ng-messages="" ng-show="">
+	<div ng-message="" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must be X years old to register.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="control-label small">Email Address</label>
+      <input id="email" name='email' type="email" class="form-control input-sm" ng-required="true" autocomplete='off' ng-model='rs1c.model.email' email-availability-validator='https://reeltrail.com/rtapi/v1/users/check/email'>
+      <div class="form-alert" ng-messages="step1RegisterForm.email.$error" ng-show="step1RegisterForm.email.$touched">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Email Address required.</div>
+	<div ng-message="email" class="smaller alert-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Email is not valid.</div>
+	<div ng-message="emailLoading" class="smaller text-muted"><i class="fa fa-fw fa-spinner fa-pulse"></i> Checking&hellip;</div>
+	<div ng-message="emailAvailable" class="smaller alert-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> The email is already in use.</div>
+      </div>
+    </div>
+    <hr class="spacer"/>
+    <div class="row tighter">
+      <div class="col-xs-5 col-xs-offset-7">
+	<button class="btn btn-info btn-block" ng-disabled="step1RegisterForm.$invalid" ng-click='rs1c.next()'>Next <i class="fa fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </form>
+</div>

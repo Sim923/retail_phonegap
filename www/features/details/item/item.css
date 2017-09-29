@@ -1,0 +1,192 @@
+.rt_imagetitle{
+    z-index: 9999;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    top: 65px;
+}
+
+.jk-carousel .radio-buttons-container md-radio-button .md-off{
+    background: #fff;
+}
+
+md-radio-button.md-checked .md-on{
+    background: #55bedd;
+}
+
+#ListingDetails .listing-price .listing-item-price {
+    font-size: 16px;
+    color: #072B3F;
+    float: left;
+}
+
+#ListingDetails .listing-price .listing-shipping-price{
+    font-size: 12px;
+    color: #55bedd;
+    float: left;
+    text-align: left;
+    margin-left: -72px;
+    display: inline;
+    font-style: normal;
+}
+
+label.rt_label{
+    color: #669803;
+}
+
+.input-group .form-control.rt_input_item{
+    background: transparent;
+    color: #072c3f;
+}
+
+.btn.rt_transparent_elemnt{
+    background: #669803;
+    border-radius: 20px !important;
+    color: #fff;
+}
+
+.form-group.rt_quantity_btn{
+    border-bottom: 1px solid #d0d7da;
+}
+
+.rt_quantity_btn .input-group{
+    margin-bottom: 5px;
+}
+
+.md-button.md-icon-button md-icon{
+    display: none !important;
+}
+
+.rt_addcart_makeoffer{
+    width: 100%;
+    display: table;
+}
+
+.rt_addcart_makeoffer .rt_addcart_makeoffer_col{
+    width: 50%;
+    float: left;
+    margin: auto;
+}
+
+.rt_addcartbutton{
+    background: #669803;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 35px;
+    letter-spacing: 0.5px;
+}
+
+.rt_makeofferbutton{
+    background: #072c3f;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 35px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.rt_spacewithitemname{
+    margin-right: 15px;
+}
+
+.rt_addcart_makeoffer_col img{
+    vertical-align: middle;
+    width: 26px;
+    margin-right: 15px;
+    margin-top: -2px;
+}
+.jk-carousel .radio-buttons-container md-radio-button .md-off {
+    border-color: transparent;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+}
+.rt_id_body_content {
+    padding: 0 25px;
+}
+.rt_id_mid_buttons {
+    padding: 25px 0;
+}
+.rt_messagesellor_btn {
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #072c3f;
+    font-size: 16px;
+    width: 60%;
+    border-radius: 100px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+.rt_watchlisting_button {
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    color: #fff;
+    background: #072c3f;
+    font-size: 16px;
+    width: 60%;
+    border-radius: 100px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+#ListingDetails .rt_id_content dl.rt_paddingelement dt{
+    color: #669803;
+    font-size: 16px;
+    letter-spacing: 0;
+}
+#ListingDetails .rt_id_content dl.rt_paddingelement dd{
+    color:#072c3f;
+    font-size: 16px;
+}
+#ListingDetails .rt_id_content dd.listing-information-seller span {
+    color: #072c3f;
+}
+.rt_id_edit_button {
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #3498db;
+    font-size: 16px;
+    width: 60%;
+    border-radius: 100px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.rt_refund_button {
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    color: #fff;
+    background: #f39c12;
+    font-size: 16px;
+    width: 60%;
+    border-radius: 100px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.rt_remove_button {
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    color: #fff;
+    background: #e74c3c;
+    font-size: 16px;
+    width: 60%;
+    border-radius: 100px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}

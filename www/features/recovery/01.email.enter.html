@@ -1,0 +1,18 @@
+<div class="rt_subtitle_div">
+    <p class="lead text-center rt_letus_lbl">Let us help you remember&hellip;</p>
+  </div>
+<div id="ContentPane" class="container-fluid">
+  <div class="rt_forgot_main_div">
+  <form id="ForgotPassword" class="no-bottom-nav">
+    <div class="form-group rt_forgot_input">
+      <label for="usernameEmail" class="control-label small rt_usename_lbl">Username or Email</label>
+      <input class="rt_forgot_email_input" name="usernameEmail" type="text" cordova-keyboard class="form-control input-sm" placeholder="Enter Username or Email" ng-required="true" ng-model="rec.email">
+      <small class="help-block rt_provideus_lbl">Provide us with either your username or email, and we'll send you an email with instructions to recover your password.</small>
+    </div>
+    <hr class="spacer"/>
+      <div class="rt_send_email_btn_div">
+        <button class="btn rt_send_email_btn" ng-click='rec.send($event)'>SEND EMAIL</button>
+      </div>
+  </form>
+  </div>
+</div>

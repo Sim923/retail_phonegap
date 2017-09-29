@@ -1,0 +1,51 @@
+/*About Custom css*/
+.rt_about_main_div{
+    padding: 0 15px;
+}
+
+.rt_about_list_div{
+    text-align: center;
+}
+.rt_about_list_div a {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px;
+    font-size: 16px;
+    padding-bottom: 18px;
+    color: black;
+}
+.rt_about_support_head {
+    position: relative;
+    padding: 5px;
+    margin: 20px auto;
+    background: #1d5977;
+    display: block;
+    width: 100%;
+    height: 35px;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    text-transform: none;
+    font-size: 15px;
+    letter-spacing: normal;
+}
+.rt_about_support_head:before {
+	content: "";
+	position: absolute;
+	border-top: 5px solid #1d5977;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50% , 0);
+}
+.rt_about_img_list{
+    height: 40px;
+}
+.rt_about_img_list img {
+    height: 34px;
+}
+.rt_about_copyright_lbl{
+    font-size: 14px;
+    color: #000027;
+}

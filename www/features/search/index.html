@@ -1,0 +1,125 @@
+<div id="ContentPane" class="_ContentPane">
+  <div id="SearchResults" bs-collapse start-collapsed='true'>
+    <div class="rt_seachheader rt_paddingelement">
+			<div class="input-group">
+				<input type="search" cordova-keyboard class="form-control rt_searchinput _inputelemtnt rt_transparent_elemnt" ng-model='sc.model.term' placeholder="Enter Search Phrase">
+				<span class="input-group-btn">
+					<button class="btn rt_search_button" type="button" ng-click='sc.search()'>
+						<i class="fa fa-search rt_search_icon"></i>
+					</button>
+				</span>
+			</div>
+			<div class="search-results-count">
+				<hr class="spacer spacer-xs">
+				<p class="small text-muted">
+					<span class="count" ng-bind='sc.results.count'></span> matches for <em class="phrase">&ldquo;<span ng-bind='sc.model.term'></span>&rdquo;</em>
+				</p>
+			</div>
+		</div>
+    
+    <!-- <hr class="spacer spacer-sm"/> -->
+    <div class="filter-bar btn-group btn-group-justified" role="group">
+      <div class="btn-group" role="group">
+				<button type="button" class="btn rt_search_button _default-button-color" ng-class="{'active': sc.step == 0}" ng-click="sc.makeactive(0)" bs-dropdown="sc.sort.options">
+					<!-- <i class="fa fa-bookmark-o text-muted"></i>  -->
+					Sort</button>
+						</div>
+						<div class="btn-group" role="group">
+				<button type="button" class="btn rt_search_button _default-button-color" ng-class="{'active': sc.step == 1}" ng-click="sc.makeactive(1)" bs-collapse-toggle>
+					<!-- <i class="fa fa-filter text-muted"></i> -->
+					Filter
+				</button>
+      </div>
+    </div>
+    <div id="SearchFilterCollapse ">
+      <div class="well well-sm rt_transparent_elemnt rt_paddingelement" bs-collapse-target>
+				<div class="form-group ">
+					<label for="itemType" class="control-label small _lable-color">Listing Type</label>
+					<select cordova-keyboard id="itemType" class="form-control input-sm rt_option_color _inputelemtnt" ng-model='sc.model.type'>
+						<option value="">All Listing</option>
+						<option value="Listing">Outdoor Gear</option>
+						<option value="Adventure">Adventures</option>
+					</select>
+				</div>
+				<div class="form-group " ng-show='sc.model.type=="Listing"'>
+					<label for="mainCategory" class="control-label _lable-color small rt_transparent_elemnt">Category</label>
+					<select cordova-keyboard id="mainCategory" class="form-control input-sm rt_option_color _inputelemtnt" ng-model='sc.model.category[0]' data-ng-options="idx as choice.name for (idx, choice) in sc.categories | filter:{name:'!Adventures'}">
+						<option value="" selected>Select Category</option>
+					</select>
+					<hr class="spacer spacer-xs"/>
+					<select cordova-keyboard class="form-control input-sm rt_option_color _inputelemtnt" ng-model='sc.model.category[1]' data-ng-options="idx as choice.name for (idx, choice) in sc.categories[sc.model.category[0]].subcategories" ng-show='sc.model.category[0]'>
+						<option value="" selected>Select Category</option>
+					</select>
+					<hr class="spacer spacer-xs"/>
+					<select cordova-keyboard class="form-control input-sm rt_option_color _inputelemtnt" ng-model='sc.model.category[2]' data-ng-options="idx as choice.name for (idx, choice) in sc.categories[sc.model.category[0]].subcategories[sc.model.category[1]].subcategories" ng-show='sc.model.category[1]'>
+						<option value="" selected>Select Category</option>
+					</select>
+				</div>
+				<div class="form-group " ng-show='sc.model.type=="Adventure"'>
+					<label for="mainCategory" class="control-label small _lable-color rt_transparent_elemnt">Category</label>
+					<select cordova-keyboard class="form-control input-sm rt_option_color _inputelemtnt" data-ng-model='sc.model.category[1]' data-ng-options="idx as choice.name for (idx, choice) in sc.categories[5].subcategories">
+						<option value="" selected>Select Category</option>
+					</select>
+					<hr class="spacer spacer-xs"/>
+					<select cordova-keyboard class="form-control input-sm rt_option_color _inputelemtnt" data-ng-model='sc.model.category[2]' data-ng-options="idx as choice.name for (idx, choice) in sc.categories[5].subcategories[sc.model.category[1]].subcategories" ng-show='sc.model.category[1]'>
+						<option value="" selected>Select Category</option>
+					</select>
+				</div>  
+				<div class="form-group " ng-show='sc.model.type=="Listing"'>
+					<label for="handcrafted" class="control-label small _lable-color rt_transparent_elemnt">Handcrafted?</label>
+					<select cordova-keyboard id="handcrafted" class="form-control input-sm rt_option_color _inputelemtnt" ng-model='sc.model.handcrafted'>
+						<option value=''>Either Way</option>
+						<option value='Yes'>Yes</option>
+						<option value='No'>No</option>
+					</select>
+				</div>
+				<div class="form-group " ng-show='sc.model.type==="Listing"'>
+					<label for="freeShipping" class="control-label small _lable-color rt_transparent_elemnt">Free Shipping?</label>
+					<select cordova-keyboard id="freeShipping" class="form-control input-sm rt_option_color _inputelemtnt" ng-model='sc.model.shipping'>
+						<option value=''>Either Way</option>
+						<option value='Yes'>Yes</option>
+						<option value='No'>No</option>
+					</select>
+				</div>
+				<button type="submit" class="btn rt_success_button btn-md" ng-click="sc.filter()" bs-collapse-toggle>Filter</button>
+				<button type="submit" class="btn rt_cancel_button btn-md " ng-click="sc.reset()">Reset</button>
+      </div>
+    </div>
+    <hr class="spacer spacer-sm"/>
+    <div class="tab-content rt_transparent_elemnt rt_paddingelement">
+      <div role="tabpanel" class="tab-pane fade in active" id="tabOutdoorGear">
+				<div class="listing-grid row">
+					<div infinite-scroll='sc.loadMore()' infinite-scroll-disabled="sc.results.loading" infinite-scroll-distance="1">
+						<div ng-repeat="item in sc.results.items | filter:sc.filter | orderBy:sc.sort.selected" class="listing-grid-item col-xs-6 col-sm-4">
+										<a ui-sref='home.item({id:item.id})'>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="listing-thumbnail" ng-style="{'background-image':'url('+item.images[0]+')'}"></div>
+						</div>
+						<div class="panel-footer">
+							<div class="listing-description">
+														<div class="item-name">
+						<span ng-bind='item.title'></span>
+														</div>
+														<div class="item-price">
+						<span ng-show="item.ourPrice" ng-bind="item.ourPrice|currency:'$'"></span><span ng-show="item.price" ng-bind="item.price|currency:'$'"></span>
+						<em class="item-shipping-price text-muted" ng-show="item.flatShippingRate">+ <span ng-bind="item.flatShippingRate|currency:'$'"></span></em>
+														</div>
+							</div>
+						</div>
+					</div>
+										</a>
+						</div>
+					</div>
+				</div>
+				<hr class="spacer">
+				<div class="loading-animation text-center" ng-show='sc.results.loading'>
+					<i class="fa fa-spinner fa-pulse fa-2x fa-fw text-muted"></i>
+				</div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="tabAdventures">
+	(Adventures)
+      </div>
+    </div>
+  </div>
+</div>

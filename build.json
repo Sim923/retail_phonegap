@@ -1,0 +1,28 @@
+{
+    "android" : {
+	"debug" : {
+            "keystore": "RTKeyStore",
+            "storePassword": "aoyoh8phaivaer6I",
+            "alias": "key0",
+            "password" : "eewi1eiGhaix3sai",
+            "keystoreType": ""	    
+	},
+	"release" : {
+            "keystore": "RTKeyStore",
+            "storePassword": "aoyoh8phaivaer6I",
+            "alias": "key0",
+            "password" : "eewi1eiGhaix3sai",
+            "keystoreType": ""
+	}
+    },
+    "ios" : {
+	"debug": {
+	    "developmentTeam":"523H63KV2Z"
+	},
+	"release":{
+	    "developmentTeam":"523H63KV2Z",
+	    "codeSignIdentity":"iPhone Developer",
+	    "packageType":"app-store"
+	}
+    }
+}

@@ -1,0 +1,127 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="SubscriptionSelect" name="subscriptionSelectForm" class="no-bottom-nav">
+		<div class="rt_info_purched_div rt_select_sub">
+				<label class="rt_purched_info">Current Subscription</label>
+			</div>
+    <div class="subscription-list list-group stretch rt_listgroup">
+      <div class="subscription-item list-group-item ">
+				<div class="wrapper rt_subscription_item">
+					<div class="subscription-badge">
+						<img alt="{{ssc.plan.title}}" ng-src="{{ssc.plan.logo}}" class="img-circle" width="50">
+					</div>
+					<div class="subscription-summary rt_content_subscription">
+						<h5 class="name rt_bronze_name"><span ng-bind="ssc.account.subscription.name"></span></h5>
+						<div class="details small rt_bold_text_color">
+							<strong class="price" ng-show="ssc.plan.price">
+								<span ng-bind="ssc.plan.price|currency:'$'"></span>/month</strong>
+							<strong class="price" ng-hide="ssc.plan.price">No Monthly Fee</strong><br>
+							<span class="rt_light_text_color" ng-bind="ssc.plan.percentage"></span><span class="rt_light_text_color" >% transaction fee</span>
+						</div>
+						<!-- <a ui-sref="profile.fees" class="text-info smaller">Learn More &hellip;</a> -->
+					</div>
+					<div class="subscription-actions">
+						<img class="rt_select_icon" src="icon/check_icon.png">
+						<!-- <button class="btn btn-sm btn-primary" ng-click="" ui-sref="profile.subscription.payment">Select</button> -->
+					</div>
+				</div>
+      </div>
+    </div>
+    <!-- <hr class="spacer spacer-sm"/> -->
+    <h6 class="text-center rt_available_text rt_label_common_color">Available Subscriptions</h6>
+    <div class="subscription-list list-group stretch rt_listgroup">
+      <div class="subscription-item list-group-item" ng-repeat="subscription in ssc.subscriptions | filter:{name:'!'+ssc.account.subscription.name} | orderBy: 'ssc.subscriptions.order':true">
+				<div class="wrapper rt_subscription_item">
+					<div class="subscription-badge"><img alt="{{subscription.title}}" ng-src="{{subscription.logo}}" class="img-circle" width="50"></div>
+					<div class="subscription-summary rt_content_subscription">
+						<h5 class="name rt_silver_name"><span ng-bind="subscription.name"></span></h5>
+						<div class="details small rt_bold_text_color">
+							<strong class="price">
+								<span ng-show="subscription.price"><span ng-bind="subscription.price|currency:'$'"></span>/month</span>
+								<span ng-hide="subscription.price">No Monthly Fee</span>
+							</strong><br>
+							 <span class="rt_light_text_color" ng-bind="subscription.percentage"></span><span class="rt_light_text_color">% transaction fee</span>
+						</div>
+						<!-- <a ui-sref="profile.fees" class="text-info smaller">Learn More&hellip;</a> -->
+					</div>
+					<div class="subscription-actions rt_subscriptin">
+						<button class="btn btn-md rt_cancel_button btn-block" ng-click="ssc.model.select(subscription.name)">Select</button>
+					</div>
+				</div>
+      </div>
+      <!-- <hr class="spacer"> -->
+      <div class="panel panel-default">
+		<!-- <div class="panel-heading text-center">Compare Subscription Plans</div> -->
+		<button class="btn rt_btn_labelbar rt_subscription">Selling Feature</button>
+		<hr class="spacer"> 
+		<table class="table rt_subscription_featureds">
+			<tr>
+				<td><img src="icon/check_icon1.png" /></td>
+				<td class="align_right">ReelTrail Guarantee</td>
+			</tr>
+			<tr>
+					<td>
+							<img src="icon/check_icon1.png" />
+					</td>
+					<td class="align_right">
+							List Unlimited Items
+					</td>
+				</tr>
+				<tr>
+					<td>
+							<img src="icon/check_icon1.png" />
+					</td>
+					<td class="align_right">
+							Direct Transfers to Bank Account
+					</td>
+				</tr>
+				<tr>
+					<td>
+							<img src="icon/check_icon1.png" />
+					</td>
+					<td class="align_right">
+							Print Shipping Labels
+					</td>
+				</tr>
+				<tr>
+					<td>
+							<img src="icon/check_icon1.png" />
+					</td>
+					<td class="align_right">
+							Email Marketing
+					</td>
+				</tr>
+				<tr>
+					<td>
+							<img src="icon/check_icon1.png" />
+					</td>
+					<td class="align_right">
+							Optional Listing Fees to Make Your Item Stand Out
+					</td>
+				</tr>
+				<tr>
+					<td>
+							<img src="icon/check_icon1.png" />
+					</td>
+					<td class="align_right">
+							Easy Price Negotiating
+					</td>
+				</tr>
+				<tr>
+					<td>
+							<img src="icon/check_icon1.png" />
+					</td>
+					<td class="align_right">
+							First-class Customer Support
+					</td>
+				</tr>
+		</table>
+		<br>
+		<br>
+		<br>
+		<!-- <div class="panel-footer smaller text-center">
+		<a ui-sref="profile.fees" class="text-uppercase text-info">Learn more &nbsp;<i class="fa fa-external-link"></i></a>
+		</div> -->
+      </div>
+    </div>
+  </div>
+</div>

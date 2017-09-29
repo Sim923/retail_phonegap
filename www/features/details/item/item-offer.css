@@ -1,0 +1,127 @@
+.listing-preview.well.rt_item_offer{
+    background: transparent;
+}
+
+.name.rt_item_offer_name{
+    color: #072c3f;
+}
+.category.rt_item-offer_category{
+    color: #669803;
+}
+
+.price.rt_item_offer_price{
+    color: #072c3f;
+    margin-top: 10px;
+    margin-left: -70px;
+}
+
+i.rt_item_offer_chevron{
+    color: #669803;
+    margin-left: -8px;
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+.panel-heading.small.rt_item_offer_header{
+    color: #072c3f;
+    background: transparent;
+    font-size: 14px;
+    border-color: #fff;
+}
+
+.panel-heading.small.rt_item_offer_header{
+
+}
+
+.label.rt_item_offer_label{
+    border: 1px solid #f39c12;
+    float: right;
+    height: 23px;
+    padding: 12px;
+    border-radius: 15px;
+    line-height: 3px;
+    color: #f39c12;
+    background: transparent;
+}
+
+.rt_item_offered .rt_item_with_offer{
+    color: #669803;
+    font-size: 14px;
+}
+
+.rt_item_offered .rt_decucted_data{
+    color: #072c3f;
+}
+
+.panel-footer.rt_item_offer_footer{
+    background: transparent;
+}
+
+.input-group-addon.rt_item_offer_addon{
+    background: transparent;
+    color: #072c3f;
+}
+
+.rt_item_oofer_button.rt_success_buttonx {
+    background: #669803;
+    color: #fff;
+    height: 25px !important;
+    padding: 13px !important;
+    line-height: 4px !important;
+    text-transform: uppercase;
+    border-radius: 20px !important;
+}
+
+.rt_offer_form{
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 4px;
+}
+
+.list-group-item.rt_item_offered{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-width: 1px 0 !important;
+    border-color: #fff;
+}
+
+.rt_item_offer .listing-preview .image, .item-preview .image {
+    float: left;
+    margin: 0 10px 0 -70px;
+    padding-bottom: 60px;
+    width: 55px;
+    /* height: 56px; */
+}
+
+.panel-heading.rt_item_offer_header.rt_second_offer_pannel_header{
+    padding: 0px 20px 10px 0px !important;
+    color: #669803;
+}
+
+.rt_second_offer_pannel_header strong{
+    color: #072c3f;
+}
+
+.label.rt_item_offer_label.label-info{
+    border: 1px solid #3498db;    
+    color: #3498db;
+}
+
+.label.rt_item_offer_label.label-warning{
+    border: 1px solid #f39c12;
+    color: #f39c12;
+}
+
+.label.rt_item_offer_label.label-success{
+    border: 1px solid #062c3f;    
+    color: #062c3f;    
+}
+.label.rt_item_offer_label.label-danger{
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+}
+
+.list-group.rt_ul_item{
+    padding-right: 10px;
+}
+
+

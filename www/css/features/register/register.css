@@ -1,0 +1,185 @@
+.rt_register_input input::-webkit-input-placeholder{
+    color: black !important;
+    font-size: 16px;
+    padding-bottom: 20px;
+}
+.rt_wrapper{
+    margin-top: -20px;
+    padding: 0;
+}
+.rt_sub_title{
+    background: #062C40;
+    padding: 15px 0;
+}
+.rt_sub_title .lead {
+    color: #389BDC;
+    font-size: 18px;
+}
+.rt_sub_title .small{
+    color: #fff;
+    font-size: 16px;
+}
+.rt_well{
+    background: #fff;
+    padding: 0 20px;
+}
+.rt_first_three_input{
+    margin: 25px 0;
+}
+.rt_input_field{
+    padding: 10px;
+}
+.rt_input_field input {
+    font-weight: 350;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.rt_sing_up_btn_center{
+    margin-top: 40px;
+    text-align: center;
+}
+
+rt_register_input_checkbox{
+    border: 1px solid black !important;
+}
+
+.rt_sing_up_btn{
+    width: 180px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 100px;
+    background-color: #669900;
+    color: #fff;
+    height: 40px;
+    border: none;
+}
+
+.rt_i_agree_div{
+    margin-top: -10px;
+}
+.rt_I_agree_lbl{
+    font-size: 16px;
+}
+
+.term_policies{
+    color: black;
+    font-weight: 400;
+}
+
+
+/*Register Success page css*/
+.rt_register_success_head {
+    text-align: center;
+    background: #062C40;
+    padding: 15px 0 30px 0;
+    margin-top: -20px;
+}
+.rt_register_success_head .rt_success_title {
+    color: #399DDE;
+    margin: 10px 0px;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+.rt_register_success_head .rt_success_subtitle {
+    color: #fff;
+    margin: 5px 0px;
+    font-size: 18px;
+}
+.rt_rs_body_content {
+    text-align: center;
+    padding: 25px 0 0 0;
+}
+.rt_rs_body_content .rt_rs_body_title{
+    font-size: 22px;
+    font-weight: bold;
+    color: #062C40;
+}
+.rt_rs_body_content .rt_rs_body_subtitle {
+    font-size: 20px;
+    color: #062C40;
+    line-height: 20px;
+}
+.rt_rs_body_content .rt_rs_body_img  img{
+    width: 250px;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+.rt_rs_footer_btn {
+    padding: 0px;
+    text-align: center;
+}
+.rt_rs_footer_btn .rt_rs_browse_listing_btn  button {
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #669900;
+    font-size: 18px;
+    width: 60%;
+    font-weight: bold;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.rt_rs_footer_btn .rt_rs_browse_myprofile_btn button {
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    color: #fff;
+    background: #062C40;
+    width: 60%;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/*Register Confirmation Page CSS*/
+.rt_rc_head {
+    text-align: center;
+    background: #062C40;
+    padding: 15px 55px 30px;
+    margin-top: -20px;
+}
+.rt_rc_head .rt_rc_title {
+    color: #399DDE;
+    margin: 10px 0px;
+    font-size: 18px;
+}
+.rt_rc_head .rt_rc_subtitle {
+    color: #fff;
+    margin: 5px 0px;
+    font-size: 16px;
+}
+.rt_rc_body_content {
+    text-align: center;
+    padding: 50px 0 0 0;    
+}
+.rt_rc_body_content .rt_rc_image img {
+    width: 250px;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+.rt_rc_footer_btn_cont {
+    text-align: center;
+}
+.rt_rc_footer_btn_cont button {
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #669900;
+    font-size: 20px;
+    width: 60%;
+    font-weight: bold;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

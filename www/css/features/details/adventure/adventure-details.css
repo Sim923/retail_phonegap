@@ -1,0 +1,85 @@
+/*Adventure Details page CSS*/
+.text-center {
+	text-align: center;
+}
+.rt_ad_content_pane {
+	padding: 0 30px;
+}
+.rt_ad_price_title_cont {
+	background: #f1f1f1;
+    padding: 8%;	
+}
+.rt_ad_price_title_cont .listing-item-price {
+	font-size: 20px;
+	font-weight: bold;
+	color: #062c3f;
+}
+.rt_ad_message_seller_btn_cont {
+	text-align: center;
+    padding: 20px 0 40px 0;
+}
+.rt_ad_message_seller_btn_cont button {
+	height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #062c3f;
+    font-size: 16px;
+    width: 60%;
+    font-weight: bold;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+#ListingDetails .listing-information .rt_ad_title {
+	color: #669900;
+	font-weight: bold;
+	font-size: 16px;
+	text-transform: none;
+	padding-left: 10px;
+}
+#ListingDetails .listing-information .rt_ad_value {
+	color: #062c3f;
+	font-size: 16px;
+	padding-left: 10px;
+}
+.rt_ad_custom_inputfiels {
+	border:0px;
+	border-bottom: 1px solid #aeaeae;
+	color: #062c3f;
+	font-size: 16px;
+}
+.rt_ad_custom_inputfiels::-webkit-input-placeholder {
+	color: #062c3f;
+}
+.rt_ad_custom_inputfiels::-moz-placeholder {
+	color: #062c3f;
+}
+.rt_ad_custom_inputfiels:focus {
+	outline: none;
+	border-color: none;
+	box-shadow: none;
+}
+.rt_ad_custom_btn_code {
+	height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 16px;
+    width: 60%;
+    font-weight: bold;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.rt_ad_edit_btn {
+	background: #3498db;
+}
+.rt_ad_refund_btn {
+    margin-top: 15px;
+    background: #f39c12;
+}
+.rt_ad_remove_btn {
+    margin-top: 15px;
+    background: #e74c3c;
+}

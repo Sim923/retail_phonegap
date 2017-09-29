@@ -1,0 +1,40 @@
+/*Email check custom css*/
+
+.rt_ec_img_cont img {
+	width: 250px;
+	margin: 0 auto;
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+.rt_ec_body_cont {
+	text-align: center;
+	padding: 20px 25px 0px;
+}
+.rt_ec_body_cont .rt_ec_page_title {
+	font-size: 18px;
+	font-weight: bold;
+	color: #062c3f;
+	margin-bottom: 10px;
+}
+.rt_ec_body_cont .rt_ec_page_subtitle {
+	font-size: 18px;
+	color: #062c3f;
+    line-height: 20px;
+}
+.rt_ec_footer_btn {
+	text-align: center;
+}
+.rt_ec_footer_btn .rt_ec_backlogin_btn {
+	height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #669900;
+    font-size: 16px;
+    width: 60%;
+    font-weight: bold;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

@@ -1,0 +1,287 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ImageCropper" class="full-overlay" ng-show="aec.cropper.visible===true">
+    <button class="btn btn-link btn-lg text-danger close-overlay" ng-click='aec.cropper.close()'><i class="fa fa-ban"></i></button>
+    <nc-darkroom
+      image='aec.cropper.image.base64data'
+      max-width='600'
+      max-height='600'
+      on-crop='aec.cropper.crop(image)'
+      history='true'
+      crop='{}'
+      rotate='true'
+      save='false'>
+    </nc-darkroom>
+    <button ng-click="aec.cropper.upload()">SAVE IMAGE</button>
+  </div>
+  <!-- CAMERA MODAL -->
+  <div id="CameraModal" ng-show="aec.cameraSelector">
+    <div class="wrapper panel panel-default">
+      <div class="panel-heading">
+	<a href="" class="pull-right" ng-click="aec.closeSelector()">
+	  <i class="fa fa-remove fa-lg"></i>
+	</a>
+	<h4 class="panel-title">Add an Image</h4>
+      </div>
+      <div class="panel-body">
+        <hr class="spacer spacer-xs" />
+        <div class="options row text-center">
+          <div class="col-xs-6">
+            <a href="" class="text-primary" ng-click="aec.getPhoto($event)">
+              <i class="fa fa-camera fa-5x"></i><br>
+              <span class="smaller">Take Photo</span>
+            </a>
+          </div>
+          <div class="col-xs-6">
+            <a href="" class="text-warning" ng-click="aec.getFromGallery($event)">
+              <i class="fa fa-image fa-5x"></i><br>
+              <span class="smaller">Upload Existing</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /CAMERA MODAL -->    
+  <form id="AdventureEdit" name="adventureEdit" class="no-bottom-nav">
+    <div class="form-group">
+      <label for="adventureName" class="control-label small">Adventure Name</label>
+      <input name="adventureName" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" ng-model="aec.model.title" cordova-keyboard/>
+      <div class="form-alert" ng-messages="adventureEdit.adventureName.$error" ng-show="adventureEdit.adventureName.$touched && adventureEdit.adventureName.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Adventure Name required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label small">Adventure ID</label>
+      <p class="form-control-static input-sm" data-ng-bind="aec.model._id"></p>
+    </div>
+    <div class="form-group">
+      <label for="category" class="control-label small">Category</label>
+      <div class="row tighter">
+	<div class="col-xs-12 col-sm-6">
+	  <select cordova-keyboard name="category" class="form-control input-sm" ng-required="true" data-ng-model="aec.model.category1" data-ng-options="idx as choice.name for (idx, choice) in aec.categories[aec.model.category0].subcategories">
+	  </select>
+	  <div class="form-alert" ng-messages="adventureEdit.category.$error" ng-show="adventureEdit.category.$touched && adventureEdit.category.$error">
+	    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Category required.</div>
+	  </div>
+	</div>
+	<div class="col-xs-12 col-sm-6">
+	  <hr class="spacer spacer-xs visible-xs">
+	  <select cordova-keyboard name="subCategory" class="form-control input-sm" data-ng-model="aec.model.category2" data-ng-options="idx as choice.name for (idx, choice) in aec.categories[aec.model.category0].subcategories[aec.model.category1].subcategories" ng-required="true">
+	  </select>
+	</div>
+	<div class="form-alert" ng-messages="adventureEdit.subCategory.$error" ng-show="adventureEdit.subCategory.$touched && adventureEdit.subCategory.$error">
+	  <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Sub Category required.</div>
+	</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="uploadImage" class="control-label small">Images</label>
+      <div class="row tighter image-grid" data-as-sortable='aec.dragControlListeners' data-ng-model='aec.images._images'>
+	<div class="col-xs-4 col-sm-3 col-md-2"  ng-repeat='image in aec.images._images' data-as-sortable-item='aec.images._images'>
+	  <div class="image"  ng-style="{'background-image':'url(' + image.url + ')'}" ng-click="aec.images.edit(image)">
+	    <div class="frosting" ng-show="image.progress<100"></div>
+	    <div class="progress" ng-show='image.progress<100'>
+		 <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: {{image.progress}}%">
+		 </div>
+	  </div>
+	  <button class="delete" ng-show='image.progress===100' ng-click='aec.images.remove(image)'>
+	    <span class="delete-icon fa-stack fa-lg text-danger">
+	      <i class="fa fa-circle fa-stack-2x"></i>
+	      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+	    </span>
+	  </button>
+          <div class="drag-handle" data-as-sortable-item-handle>
+	    <span ng-bind='image.id'></span>
+	  </div>
+	</div>
+      </div>
+      <div class="col-xs-4 col-sm-3 col-md-2" ng-hide="aec.isCordova" flow-name="aec.control.flow" flow-init flow-object='existingFlowObject' flow-files-submitted='aec.flow.filesSubmitted($files, $event, $flow)' flow-file-success='aec.flow.fileSuccess($file, $message, $flow)' flow-file-progress='aec.flow.fileProgress($file, $event, $flow)' flow-file-added='aec.flow.fileAdded($file, event)' flow-files-added='aec.flow.filesAdded($files, $event, $flow)' flow-file-retry='aec.flow.fileRetry($file, $flow)' flow-file-error='aec.flow.fileError($file, $message, $flow)' flow-error='aec.flow.error($file, $message, $flow)' flow-complete='aec.flow.complete($file, $message, $flow)' flow-upload-started='aec.flow.uploadStarted()' flow-progress='aec.flow.progress()'>
+	<span class="image">
+	  <span class="camera-icon fa-stack fa-3x" flow-btn>
+	    <i class="fa fa-circle fa-stack-2x"></i>
+	    <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+	  </span>
+	</span>
+      </div>
+      <div class="col-xs-6 col-sm-4 col-md-3" ng-show="aec.isCordova">
+        <span class='image'>
+	  <span class="camera-icon fa-stack fa-3x" ng-click="aec.openSelector($event)">
+	    <i class="fa fa-circle fa-stack-2x"></i>
+	    <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+	  </span>
+        </span>
+      </div>      
+    </div>
+    <div class="form-alert" ng-messages="" ng-show="aec.images._images.length===0">
+      <div ng-message="required" class="smaller text-danger">
+	<i class="fa fa-fw fa-exclamation-triangle"></i> Upload at least one (1) image of the item you're selling.
+      </div>
+    </div>
+</div>
+<fieldset>
+  <legend>Adventure Details</legend>
+  <div class="form-group">
+    <label for="price" class="control-label small">Price</label>
+    <div class="input-group input-group-sm">
+      <span class="input-group-addon">$</span>
+      <input name="price" type="number" cordova-keyboard class="form-control" ng-required="true" ng-model="aec.model.price" cordova-keyboard/>
+      <div class="form-alert" ng-messages="adventureEdit.price.$error" ng-show="adventureEdit.price.$touched && adventureEdit.price.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Price required.</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="duration" class="control-label small">Adventure Duration (Days)</label>
+    <div class="input-group input-group-sm">
+      <span class="input-group-btn">
+	<button class="btn btn-default" ng-disabled="aec.canDecrement('days')" type="button" ng-click="aec.decrment('days')">
+	  <i class="fa fa-minus"></i>
+	</button>
+      </span>
+      <input name="days" type="text" cordova-keyboard class="form-control text-center" readonly="readonly" ng-model="aec.model.days" cordova-keyboard/>
+      <span class="input-group-btn">
+	<button class="btn btn-default" ng-disabled="aec.canIncrement('days')" type="button" ng-click="aec.increment('days')">
+	  <i class="fa fa-plus"></i>
+	</button>
+      </span>
+    </div>
+    <div class="form-alert" ng-messages="step3AdventureListingForm.duration.$error" ng-show="step3AdventureListingForm.duration.$touched && step3AdventureListingForm.duration.$error">
+      <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Duration required.</div>
+    </div>
+    <div class="form-group">
+      <label for="intensity" class="control-label small">Intensity</label>
+      <div>
+  	<div class="btn-group btn-group-justified" data-toggle="buttons" ng-model='aec.model.intensity' bs-radio-group>
+  	  <label class="btn btn-default active">
+  	    <input type="radio" name="intensity" id="intensity1" autocomplete="off" checked value="1"> 1
+  	  </label>
+  	  <label class="btn btn-default">
+  	    <input type="radio" name="intensity" id="intensity2" autocomplete="off" value="2"> 2
+  	  </label>
+  	  <label class="btn btn-default">
+  	    <input type="radio" name="intensity" id="intensity3" autocomplete="off" value="3"> 3
+  	  </label>
+  	  <label class="btn btn-default">
+  	    <input type="radio" name="intensity" id="intensity4" autocomplete="off" value="4"> 4
+  	  </label>
+  	  <label class="btn btn-default">
+  	    <input type="radio" name="intensity" id="intensity5" autocomplete="off" value="5"> 5
+  	  </label>
+  	</div>
+      </div>
+      <div class="help-block smaller">Rate your adventure in terms of difficulty <span class="nowrap">and thrill factor.</span></div>
+      <div class="form-alert" ng-messages="step3AdventureListingForm.intensity.$error" ng-show="step3AdventureListingForm.intensity.$touched && step3AdventureListingForm.intensity.$error">
+  	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Intensity required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="groupSize" class="control-label small">Group Size</label>
+      <!-- div class="input-group input-group-sm"  min='1' max='100' ng-model='aec.model.groupSizeMin' rt-stepper></div -->
+      
+      <div class="input-group input-group-sm">
+	<span class="input-group-btn"><button class="btn btn-default" ng-disabled="adventureEdit.groupSizeMin <= 1" type="button" ng-click="adventureEdit.groupSizeMin=adventureEdit.groupSizeMin-1"><i class="fa fa-minus"></i></button></span>
+	<input name="groupSizeMin" type="text" cordova-keyboard class="form-control text-center" readonly="readonly" ng-model="aec.model.groupSizeMin" cordova-keyboard />
+	<span class="input-group-btn"><button class="btn btn-default" ng-disabled="adventureEdit.groupSizeMin >= 100" type="button" ng-click="adventureEdit.groupSizeMin=adventureEdit.groupSizeMin+1"><i class="fa fa-plus"></i></button></span>
+      </div>
+      
+      <div class="form-alert" ng-messages="adventureEdit.groupSize.$error" ng-show="adventureEdit.groupSize.$touched && adventureEdit.groupSize.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Group Size required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="locationMap" class="control-label small">Location Map</label>
+      <ng-map map-initialized='aec.mapInit(map)' center='[{{aec.model.location.lat}}, {{aec.model.location.lng}}]'></ng-map>
+      <input places-auto-complete size='80' on-place-changed='aec.placeChanged()' name='location' id='location' type='text' cordova-keyboard class='form-control' ng-required='true' ng-model='aec.model.location.address' cordova-keyboard/>
+      <div class="form-alert" ng-messages="adventureEdit.locationMap.$error" ng-show="adventureEdit.locationMap.$touched && adventureEdit.locationMap.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Location required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="control-label small">Description</label>
+      <textarea cordova-keyboard name="description" class="form-control input-sm" rows="5" ng-required="true" placeholder="Provide additional details of your adventure&hellip;" ng-model="aec.model.description" cordova-keyboard></textarea>
+      <div class="form-alert" ng-messages="adventureEdit.description.$error" ng-show="adventureEdit.description.$touched && adventureEdit.description.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Description required.</div>
+      </div>
+    </div>
+    <div class="form-group" ng-hide="aec.adventure._id">
+      <label for="listingDuration" class="control-label small">Listing Duration</label> <em class="small text-muted">($1.00 per day)</em>
+      <div class="input-group input-group-sm">
+	<span class="input-group-btn">
+	  <button class="btn btn-default" ng-disabled="aec.canDecrement('listingDays')" type="button" ng-click="aec.decrement('listingDays')">
+	    <i class="fa fa-minus"></i>
+	  </button>
+	</span>
+	<input name="listingDays" type="text" cordova-keyboard class="form-control text-center" readonly="readonly" ng-model="aec.model.listingDays" cordova-keyboard/>
+	<span class="input-group-btn">
+	  <button class="btn btn-default" ng-disabled="aec.canIncrement('listingDays')" type="button" ng-click="aec.increment('listingDays')">
+	    <i class="fa fa-plus"></i>
+	  </button>
+	</span>
+      </div>
+      <div class="form-alert" ng-messages="step3AdventureListingForm.listingDuration.$error" ng-show="step3AdventureListingForm.listingDuration.$touched && step3AdventureListingForm.listingDuration.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Duration required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="youtubeLink" class="control-label small">YouTube Link</label> <em class="small text-muted">(optional)</em>
+      <input id="youtubeLink" name="youtubeLink" type="url" cordova-keyboard class="form-control input-sm" placeholder="ex: youtube.com/watch?v=dQw4w9WgXcQ" ng-model="aec.model.youtubeLink">
+    </div>
+</fieldset>
+<fieldset>
+  <legend>Listing Options</legend>
+  <div class="panel panel-default">
+    <ul class="list-group">
+      <li class="list-group-item small">
+	<label>
+	  <input type="checkbox" name="optionShowcaseListing" ng-model="aec.model.options.showcase" ng-disabled="aec.options.options.showcase.paymentGateways">
+	  <strong>Showcase Listing</strong>
+	</label>
+	<em class="text-muted">+</em><em class='text-muted' ng-bind="aec.adventuresOptionsPrices.showcase | currency:'$'"></em>
+	<div>Listing is randomly shown on the ReelTrail home page</div>
+      </li>
+      <li class="list-group-item small">
+	<label>
+	  <input type="checkbox" name="optionHighlight" ng-model="aec.model.options.highlight" ng-disabled="aec.options.options.highlight.paymentGateways">
+	  <strong>Highlight</strong>
+	</label>
+	<em class="text-muted">+</em><em class='text-muted' ng-bind="aec.adventuresOptionsPrices.highlight|currency:'$'"></em>
+	<div>Listing has highlighted color in lists</div>
+      </li>
+      <li class="list-group-item small">
+	<label>
+	  <input type="checkbox" name="optionBoldfaceTitle" ng-model="aec.model.options.boldface" ng-disabled="aec.options.options.boldface.paymentGateways">
+	  <strong>Boldface Title</strong>
+	</label>
+	<em class="text-muted">+</em><em class='text-muted' ng-bind="aec.adventuresOptionsPrices.boldface|currency:'$'"></em>
+	<div>Listing title is <strong>boldfaced</strong> in lists</div>
+      </li>
+      <li class="list-group-item small">
+	<label>
+	  <input type="checkbox" name="optionViewCounter" ng-model="aec.model.options.viewCounter" ng-disabled="aec.options.options.viewCounter.paymentGateways">
+	  <strong>View Counter</strong>
+	</label>
+	<em class="text-muted">+</em><em class='text-muted' ng-bind="aec.adventuresOptionsPrices.viewCounter|currency:'$'"></em>
+	<div>See how many times your listing has been viewed</div>
+      </li>
+    </ul>
+    <div class="panel-footer">
+      <div class="checkbox">
+	<label>
+	  <input type="checkbox" id="agreeListingOptionsNoRefund" name="agreeListingOptionsNoRefund" ng-model="aec.agreeListingOptionsNoRefund" />
+	  I understand that Listing Options are non-refundable.
+	</label>
+      </div>
+    </div>
+  </div>
+</fieldset>
+<hr class="spacer"/>
+<div class="row tighter">
+  <div class="col-xs-6">
+    <button class="btn btn-primary btn-block" ng-disabled="aec.agreeListingOptionsNoRefund===false" ng-click='aec.update()'>Update</button>
+  </div>
+  <div class="col-xs-6">
+    <button class="btn btn-warning btn-block" ng-click='aec.cancel()'>Cancel</button>
+  </div>
+</div>
+</form>
+</div>

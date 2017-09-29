@@ -1,0 +1,37 @@
+/*Items page Custom Css*/
+
+/*Edit, delete swipe btn css*/
+.rt_items_slide_btns_cont {
+    margin: 0 15px;
+    background: transparent;
+}
+.rt_items_slide_btns_cont .rt_items_slide_edit_button {
+    width: 50%;
+    float: left;
+    text-align: center;
+    background: rgba(51,122,183,0.75);
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+.rt_items_slide_btns_cont .rt_items_slide_edit_button span {
+    position: relative;
+    top: 35%;
+    text-transform: uppercase;
+}
+.rt_items_slide_btns_cont .rt_items_slide_remove_button {
+    width: 50%;
+    float: left;
+    text-align: center;
+    background: rgba(217,83,79,0.75);
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+.rt_items_slide_btns_cont .rt_items_slide_remove_button span {
+    position: relative;
+    top: 35%;
+    text-transform: uppercase;
+}

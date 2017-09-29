@@ -1,0 +1,48 @@
+<!-- PERSISTENT ALERTS -->
+<div class="persistent-alerts list-group">
+	
+	<!-- ALERT -->
+	<!--
+		IF information, add class="list-group-item-info"
+		IF warning, add class="list-group-item-warning"
+		IF critical, add class="list-group-item-danger"
+	-->
+	<div class="alert-item list-group-item list-group-item-warning">
+		
+		<!-- ICON -->
+		<div class="alert-icon">
+			<!--
+				IF information, add class="fa-info-circle"
+				IF warning, add class="fa-exclamation-circle"
+				IF critical, add class="fa-exclamation-triangle"
+			-->
+			<i class="fa fa-exclamation-circle fa-fw"></i>
+		</div>
+		
+		<!-- Tappable message (links to primary action) -->
+		<a href="" class="alert-content small">
+			
+			<!-- MESSAGE -->
+			<span class="alert-message">Message goes here.</span>
+			
+			<i class="nowrap">Swipe for options.</i>
+		</a>
+		
+		<!-- IF an actionable alert, show me -->
+		<div class="alert-caret text-right">
+			<i class="fa fa-angle-right fa-lg"></i>
+		</div>
+		
+		<!-- SWIPE-ACTIVATED QUICK ACTIONS -->
+		<!-- IF swiped, add class="in" to toggle visibility -->
+		<div class="quick-actions fade">
+			<div class="wrapper">
+				<button class="btn btn-info btn-sm">Action</button>
+				<button class="btn btn-warning btn-sm">Dismiss</button>
+			</div>
+		</div>
+	</div>
+	<!-- ALERT -->
+	
+</div>
+<!-- /PERSISTENT ALERTS -->

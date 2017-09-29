@@ -1,0 +1,109 @@
+<div id="ContentPane" class="container-fluid">
+  <form id="ListingOptionsPayment" class="no-bottom-nav">
+    <p class="lead text-center">Options Payment</p>
+    <p class="small text-muted text-center">Listing an item is free, but listing options require payment.</p>
+    <hr/>
+    <div class="listing-preview well well-sm clearfix">
+      <div class="image" ng-style="{'background-image':'url(' + iopc.model.images[0].url  + ')'}"></div>
+      <div class="name"><strong ng-bind="iopc.model.title"></strong></div>
+      <div class="category small"><span ng-bind="iopc.model.category.main"></span>
+	<i class="fa fa-angle-right"></i> <span ng-bind="iopc.model.category.sub"></span>
+	<i class="fa fa-angle-right"></i> <span ng-bind="iopc.model.category.subsub"></span>
+      </div>
+      <div class="price small text-muted"><em><span ng-bind="iopc.model.ourPrice|currency:'$'"></span></em></div>
+    </div>
+    <fieldset>
+      <legend>Selected Options</legend>
+      <div class="panel panel-default">
+	<ul class="list-group">
+	  <li class="list-group-item small" ng-show="iopc.model.options.showcase && !iopc.options.options.showcase.paymentGateways.braintree.paymentMethod">
+	    <div class="row">
+	      <div class="col-xs-8">
+		<strong>Showcase Listing</strong>
+	      </div>
+	      <div class="col-xs-4 text-right">
+		<span class="text-muted"></span><em class="text-muted" ng-bind="iopc.prices.showcase | currency:'$'"></em>
+	      </div>
+	    </div>
+	  </li>
+	  <li class="list-group-item small" ng-show="iopc.model.options.highlight && !iopc.options.options.highlight.paymentGateways.braintree.paymentMethod">
+	    <div class="row">
+	      <div class="col-xs-8">
+		<strong>Highlight</strong>
+	      </div>
+	      <div class="col-xs-4 text-right">
+		<span class="text-muted"></span><em class="text-muted" ng-bind="iopc.prices.highlight | currency:'$'"></em>
+	      </div>
+	    </div>
+	  </li>
+	  <li class="list-group-item small" ng-show="iopc.model.options.boldface && !iopc.options.options.boldface.paymentGateways.braintree.paymentMethod">
+	    <div class="row">
+	      <div class="col-xs-8">
+		<strong>Boldface Title</strong>
+	      </div>
+	      <div class="col-xs-4 text-right">
+		<span class="text-muted"></span><em class="text-muted" ng-bind="iopc.prices.boldface | currency:'$'"></em>
+	      </div>
+	    </div>
+	  </li>
+	  <li class="list-group-item small" ng-show="iopc.model.options.viewCounter && !iopc.options.options.viewCounter.paymentGateways.braintree.paymentMethod">
+	    <div class="row">
+	      <div class="col-xs-8">
+		<strong>View Counter</strong>
+	      </div>
+	      <div class="col-xs-4 text-right">
+		<span class="text-muted"></span><em class="text-muted" ng-bind="iopc.prices.viewCounter | currency:'$'"></em>
+	      </div>
+	    </div>
+	  </li>
+	</ul>
+	<div class="panel-footer">
+	  <div class="row small">
+	    <div class="col-xs-8">
+	      <em>Reeltrail Processing Fee <span class="small text-muted">(2.99% + $0.45)</span></em>
+	    </div>
+	    <div class="col-xs-4 text-right">
+	      <em class="text-muted" ng-bind="iopc.processingFee()|currency:'$'"></em>
+	    </div>
+	  </div>
+	  <hr class="spacer spacer-xs"/>
+	  <div class="row">
+	    <div class="col-xs-8">
+	      <strong>Total</strong>
+	    </div>
+	    <div class="col-xs-4 text-right">
+	      <strong><span ng-bind="iopc.calcTotal()+iopc.processingFee() | currency:'$'"></span></strong>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Payment Information</legend>
+      <div class="braintree-payment-information">
+	<div class='form-group'>
+          <label class='control-label col-sm-4' for='card_number'>Card Number</label>
+          <div id='card_number' class='col-sm-8'></div>
+	</div>
+	<div class="form-group">
+          <label class='control-label col-sm-4' for='expiration_date'>Expiration Date</label>
+          <div id='expiration_date' class='col-sm-4'></div>
+	</div>
+	<div class="form-group">
+          <label class='control-label col-sm-4' for='cvv'>CVV</label>
+          <div id='cvv' class="col-sm-8"></div>
+	</div>
+	<div class="form-group">
+          <label class='control-label col-sm-4' for='postal_code'>Postal Code</label>
+          <div id='postal_code' class='col-sm-8'></div>
+	</div>
+      </div>
+    </fieldset>
+    <hr class="spacer"/>
+    <div class="row tighter">
+      <div class="col-xs-5">
+	<button class="btn btn-primary btn-block" ng-click='iopc.pay()'>Pay</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+.rt_empty_cart_main_div{
+    margin-top: 40px;
+}
+.rt_cartempty_lbl{
+    font-size: 20px;
+    color: #1D3B49;
+    font-weight: 700;
+    line-height: 1.0;
+}
+.rt_letfix_lbl{
+    font-size: 17px;
+    color: #1D3B49;
+    font-weight: 500;
+}
+.rt_cart_img{
+    text-align: center;
+}
+.rt_empty_cart_img{
+    height: 180px;
+}
+.rt_btn_div{
+    text-align: center;
+}
+.rt_browse_listing_btn{
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background: #669900;
+    font-size: 16px;
+    width: 60%;
+    font-weight: 600;
+    border-radius: 100px;
+    border: 0;
+    text-transform: uppercase;
+}
+.rt_view_watch_list_btn{
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    color: #fff;
+    background: #062C40;
+    width: 60%;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 100px;
+    border: 0;
+    text-transform: uppercase;
+}

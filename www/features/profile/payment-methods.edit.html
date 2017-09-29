@@ -1,0 +1,137 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="PaymentMethodEdit" name="paymentMethodEdit" class="no-bottom-nav rt_pme_cont">
+    <div class="form-group rt_pme_form_group">
+      <label for="paymentMethod" class="control-label small">Payment Method</label>
+      <select cordova-keyboard id="paymentMethod" name="paymentMethod" class="form-control" ng-model="model.paymentMethod">
+		<option value="bank">Bank Account</option>
+		<option value="creditcard" selected>Credit Card</option>
+      </select>
+    </div>
+    <!-- <hr/> -->
+    <!-- IF CREDIT CARD... -->
+    <div ng-show="paymentMethod==='creditcard'">
+	    <div class="row tighter rt_pme_row">
+	      <div class="col-xs-12 no_padding">
+		<div class="form-group rt_pme_form_group">
+		  <label for="creditCardNumber" class="control-label small">Credit Card Number</label>
+		  <input id="creditCardNumber" name="creditCardNumber" type="number" cordova-keyboard class="form-control input-sm" ng-required="true" placeholder="Ex: 1234 5678 9012 3456" ng-model="model.creditCardNumber">
+		  
+		  <div class="form-alert" ng-messages="paymentMethodEdit.creditCardNumber.$error" ng-show="paymentMethodEdit.creditCardNumber.$touched && paymentMethodEdit.creditCardNumber.$error">
+		    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Credit Card Number required.</div>
+		  </div>
+		</div>
+	      </div>
+	      <div class="col-xs-12 no_padding">
+		<div class="form-group rt_pme_form_group">
+		  <label for="cvc" class="control-label small">CVV Number</label>
+		  <input id="cvc" name="cvc" type="text" cordova-keyboard class="form-control input-sm" ng-required="true" placeholder="Ex: 789" ng-model="model.cvc">
+		  
+		  <div class="form-alert" ng-messages="paymentMethodEdit.cvc.$error" ng-show="paymentMethodEdit.cvc.$touched && paymentMethodEdit.cvc.$error">
+		    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> CVV Number required.</div>
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	    <div class="form-group rt_pme_form_group">
+	      <label for="monthExpires" class="control-label small">Expiration Date</label>
+	      <div class="row tighter rt_pme_row">
+		<div class="col-xs-6 no_padding_left rt_pme_form_group">
+		  <select cordova-keyboard id="monthExpires" name="monthExpires" class="form-control input-sm" ng-required="true" ng-model="model.monthExpires">
+		    <option>01</option>
+		    <option>02</option>
+		    <option>03</option>
+		    <option>04</option>
+		    <option>05</option>
+		    <option>06</option>
+		    <option>07</option>
+		    <option>08</option>
+		    <option>09</option>
+		    <option>10</option>
+		    <option>11</option>
+		    <option>12</option>
+		  </select>
+		  
+		  <div class="form-alert" ng-messages="paymentMethodEdit.monthExpires.$error" ng-show="paymentMethodEdit.monthExpires.$touched && paymentMethodEdit.monthExpires.$error">
+		    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Expiration Month required.</div>
+		  </div>
+		</div>
+		<div class="col-xs-6 no_padding_left rt_pme_form_group">
+		  <select cordova-keyboard id="yearExpires" name="yearExpires" class="form-control input-sm" ng-required="true" ng-model="model.yearExpires">
+		    <option>2016</option>
+		    <option>2017</option>
+		    <option>2018</option>
+		    <option>2019</option>
+		    <option>2020</option>
+		  </select>
+		  
+		  <div class="form-alert" ng-messages="paymentMethodEdit.yearExpires.$error" ng-show="paymentMethodEdit.yearExpires.$touched && paymentMethodEdit.yearExpires.$error">
+		    <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Expiration Year required.</div>
+		  </div>
+		</div>
+	      </div>
+	    </div>
+    </div>
+    <!-- ENDIF -->
+    
+    <!-- IF BANK ACCOUNT... -->
+    <div ng-show="paymentMethod==='bank'">
+	  <div class="form-group rt_pme_form_group">
+	    <label for="routingNumber" class="control-label small">Routing Number</label>
+	    <input name="routingNumber" class="form-control input-sm" ng-model="model.routingNumber" type="text" cordova-keyboard ng-required="true">
+	      <div class="form-alert" ng-messages="paymentMethodEdit.routingNumber.$error" ng-show="paymentMethodEdit.routingNumber.$touched && paymentMethodEdit.routingNumber.$error">
+			<span ng-message="required">Routing Number required.</span>
+			<span ng-message="validaccount">Invalid routing number format.</span>
+	      </div>
+	  </div>
+	  <div class="form-group rt_pme_form_group">
+	    <label for="accountNumber" class="control-label small">Account Number</label>
+	    <input name="accountNumber" class="form-control input-sm" ng-model="model.accountNumber" type="text" cordova-keyboard ng-required="true">
+	      <div class="form-alert" ng-messages="paymentMethodEdit.accountNumber.$error" ng-show="paymentMethodEdit.accountNumber.$touched && paymentMethodEdit.accountNumber.$error">
+			<span ng-message="required">Routing Number required.</span>
+			<span ng-message="validaccount">Invalid routing number format.</span>
+	      </div>
+	  </div>
+	  <div class="form-group rt_pme_form_group">
+	    <label for="accountName" class="control-label small">Account Name</label>
+	    <input name="accountName" class="form-control input-sm" ng-model="model.accountName" type="text" cordova-keyboard ng-required="true">
+	      <div class="form-alert" ng-messages="paymentMethodEdit.accountName.$error" ng-show="paymentMethodEdit.accountName.$touched && paymentMethodEdit.accountName.$error">
+			<span ng-message="required">Account Name required.</span>
+	      </div>
+	  </div>
+	  
+	  <div class="row tighter rt_pme_row rt_pme_form_group">
+		  <div class="col-xs-7 no_padding">
+	  <div class="form-group">
+	    <label for="accountType" class="control-label small">Account Type</label>
+	      <select cordova-keyboard name="accountType" class="form-control" ng-required="true" ng-model="model.accountType">
+		  	<option value="">-- Choose a Type --</option>
+	      </select>
+	      <div class="form-alert" ng-messages="paymentMethodEdit.accountType.$error" ng-show="paymentMethodEdit.accountType.$touched && paymentMethodEdit.accountType.$error">
+			<span ng-message="required">Account Type required.</span>
+	      </div>
+	  </div>
+		  </div>
+		  <div class="col-xs-5 no_padding">
+	  <div class="form-group">
+	      <button type="button" class="btn rt_pme_validate_btn" ng-click="">Validate</button>
+		  </div>
+		</div>
+	  </div>
+    </div>
+    <!-- ENDIF -->
+    
+    <hr class="spacer spacer-md"/>
+    <div class="rt_pme_footer_button">
+    	<button class="btn rt_pme_save_bnt">Save</button>
+    	<button class="btn rt_pme_cancel_bnt">Cancel</button>
+    </div>
+    <!-- <div class="row tighter">
+      <div class="col-xs-6 ">
+	<button class="btn btn-primary btn-block">Save</button>
+      </div>
+      <div class="col-xs-6">
+	<button class="btn btn-warning btn-block">Cancel</button>
+      </div>
+    </div> -->
+  </div>
+</div>

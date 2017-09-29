@@ -1,0 +1,168 @@
+<div class="bg_container">
+  <div class="first_section item_section">
+    <div class="first_content item_content boxItem">1</div>
+    <div class="second_content rt_content item_content boxItem" ng-class="{'active' : is4c.activeview == 4}">2</div>
+    <div class="third_content rt_content item_content boxItem" ng-class="{'active' : is4c.activeview == 4}">3</div>
+    <div class="fourth_content rt_content item_content boxItem" ng-class="{'active' : is4c.activeview == 4}">4</div>
+    <div class="fifth_content item_content boxItem">5</div>
+  </div>
+  <!-- <div class="stage_buttons first_stage_btn">
+    <a href="#">What are you selling?</a>
+  </div>
+  <div class="stage_buttons second_stage_btn">
+    <a href="#">Upload images of your item</a>
+  </div>
+  <div class="stage_buttons third_stage_btn">
+    <a href="#">Describe your item</a>
+  </div>-->
+  <div class="stage_buttons fourth_stage_btn">
+    <a href="#">Set price and other details</a>
+  </div>
+  <!-- <div class="stage_buttons fifth_stage_btn">
+    <a href="#">Choose Listing option</a>
+  </div> -->
+</div>
+
+
+<div id="ContentPane" class="container-fluid">
+<form id="ListingWizard" name="step4ItemListingForm" class="no-bottom-nav">
+  <!-- <div class="progress wizard-progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 80%">
+<em>4 of 5</em>
+    </div>
+  </div>
+  <p class="lead text-center">Set price and other sale details</p>
+  <hr> -->
+  <!-- ITEM PREVIEW -->
+  <div class="listing-preview well well-sm clearfix rt_wizard_step_4_title_div">
+    <!-- add "background-image: url();" to style attribute for image -->
+    <div class="image" ng-style="{'background-image':'url(' + is4c.model.thumbnails[0].url  + ')'}">
+      
+    </div>
+    <div class="name rt_wizard_step_4_title"><strong ng-bind='is4c.model.title'></strong></div>
+    <div class="category rt_wizard_step_4_subtitle"><span ng-bind='is4c.model.category.main'></span>
+<i class="fa fa-angle-right"></i> <span ng-bind='is4c.model.category.sub'></span>
+<i class="fa fa-angle-right"></i> <span ng-bind='is4c.model.category.subsub'></span>
+    </div>
+  </div>
+
+  <div class="rt_wizard_page4_lbl_txt_div">
+    <label for="ourPrice" class="control-label rt_wizard_lbl">Selling Price</label>
+    <div class="rt_wizard_page4_input_div">
+      <span class="rt_wizard_doller">$
+        <input id="ourPrice" name="ourPrice" type="number" cordova-keyboard class="rt_wizard_txt" ng-required="true" min="0.01" max="8000" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model="is4c.model.ourPrice">
+      </span>
+    </div>
+    <div class="form-alert" ng-messages="step4ItemListingForm.ourPrice.$error" ng-show="step4ItemListingForm.ourPrice.$touched && step4ItemListingForm.ourPrice.$error">
+<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must specify your Selling Price.</div>
+<div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Selling Price is too low.</div>
+<div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Selling Price is too high.</div>
+<div ng-message="pattern" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Selling Price should contain only numerals, no more than one period, and no more than two decimal places.</div>
+    </div>
+  </div>
+
+  <div class="rt_wizard_page4_lbl_txt_div">
+    <label for="originalPrice" class="control-label rt_wizard_lbl">Original Price</label> <em class="rt_wizard_lbl_optional">(Optional)</em>
+    <div class="rt_wizard_page4_input_div">
+      <span class="rt_wizard_doller">$</span>
+        <input id="originalPrice" name="originalPrice" type="number" cordova-keyboard class="rt_wizard_txt" min="0.0" max="8000" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model="is4c.model.originalPrice">
+      </span>
+    </div>
+    <div class="form-alert" ng-messages="step4ItemListingForm.originalPrice.$error" ng-show="step4ItemListingForm.originalPrice.$touched && step4ItemListingForm.originalPrice.$error">
+<div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Original Price is too low.</div>
+<div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Original Price is too high.</div>
+<div ng-message="pattern" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Original Price should contain only numerals, no more than one period, and no more than two decimal places.</div>
+    </div>
+  </div>
+  
+  <!-- <div class="form-group">
+    <div class="checkbox">
+      <label for="isAcceptingOffers" class="small">
+        <input id="isAcceptingOffers" name="isAcceptingOffers" type="checkbox" ng-model="is4c.model.isAcceptingOffers">
+        Accept Offers?
+      </label>
+    </div>
+  </div> -->
+
+  <div class="rt_wizard_page4_lbl_txt_div" ng-show="is4c.model.isAcceptingOffers">
+    <label for="lowestOffer" class="control-label rt_wizard_lbl">Lowest Offer</label>
+    <div class="rt_wizard_page4_input_div">
+      <span class="rt_wizard_doller">$
+        <input id="lowestOffer" name="lowestOffer" type="number" cordova-keyboard class="rt_wizard_txt" ng-required="is4c.model.isAcceptingOffers" ng-min="0.0" ng-max="100000" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model="is4c.model.lowestOffer">
+      </span>
+    </div>
+    <small class="help-block smaller">Offers lower than the specified value will be automatically rejected.</small>
+    <div class="form-alert" ng-messages="step4ItemListingForm.lowestOffer.$error" ng-show="step4ItemListingForm.lowestOffer.$touched && step4ItemListingForm.lowestOffer.$error">
+<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must specify your Lowest Offer.</div>
+<div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Lowest Offer is too low.</div>
+<div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Lowest Offer is too high.</div>
+<div ng-message="pattern" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Lowest Offer should contain only numerals, no more than one period, and no more than two decimal places.</div>
+    </div>
+  </div>
+
+  <div class="rt_wizard_page4_Stock_div">
+    <div class="col-xs-5 rt_wizard_page4_Stock_first_part">
+      <label for="stock" class="control-label rt_wizard_lbl rt_wizard_step4_stock_lbl">Stock</label>
+      <div class="rt_wizard_page4_input_div" min='1' max='1000' ng-model='is4c.model.inStock' rt-stepper></div>
+      <div class="form-alert" ng-messages="step4ItemListingForm.inStock.$error" ng-show="step4ItemListingForm.inStock.$touched && step4ItemListingForm.inStock.$error">
+        <div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must specify your number of items in Stock.</div>
+        <div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Stock is too low.</div>
+        <div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Stock is too high.</div>
+      </div>
+    </div>
+    <div class="col-xs-7 rt_wizard_page4_Stock_second_part">
+      <label for="sku" class="control-label rt_wizard_lbl">SKU</label> <em class="rt_wizard_lbl_optional">(Optional)</em>
+      <input id="sku" name="sku" type="text" cordova-keyboard class="form-control input-sm rt_wizard_txt rt_sku_optional_input_box" ng-model="is4c.model.sku">
+    </div>
+  </div>
+
+  <div class="rt_wizard_page4_checkbox_div">
+    <div class="checkbox">
+      <label for="isFreeShipping" class="small">
+        <input id="isFreeShipping" name="isFreeShipping" type="checkbox" ng-model="is4c.model.isFreeShipping">
+        Free Shipping?
+      </label>
+    </div>
+  </div>
+  <div class="rt_wizard_clear"></div>
+  
+
+  <div class="rt_wizard_page4_lbl_txt_div" ng-show="is4c.model.isFreeShipping===false">
+    <label for="shippingFee" class="control-label rt_wizard_lbl">Shipping Fee</label>
+    <div class="rt_wizard_page4_input_div">
+      <span class="rt_wizard_doller">$
+        <input id="shippingFee" name="shippingFee" type="number" cordova-keyboard class="rt_wizard_txt" ng-required="is4c.model.isFreeShipping===false" ng-model="is4c.model.flatShippingRate" ng-min="0.0" ng-max="100000" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+      </span>
+    </div>
+    <div class="form-alert" ng-messages="step4ItemListingForm.flatShippingRate.$error" ng-show="step4ItemListingForm.flatShippingRate.$touched && step4ItemListingForm.flatShippingRate.$error">
+<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must specify your Shipping Fee.</div>
+<div ng-message="min" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Shipping Fee is too low.</div>
+<div ng-message="max" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Shipping Fee is too high.</div>
+<div ng-message="pattern" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Shipping Fee should contain only numerals, no more than one period, and no more than two decimal places.</div>
+    </div>
+    <div class="rt_wizard_page4_IRP_checkbox_div">
+        <div class="checkbox">
+          <label for="isAcceptingOffers" class="small">
+            <input id="isAcceptingOffers" name="isAcceptingOffers" type="checkbox" ng-model="is4c.model.isAcceptingOffers">
+            Include Return Policy?
+          </label>
+        </div>
+      </div>
+      <div class="rt_wizard_clear"></div>
+  </div>
+
+  <div class="rt_wizard_page4_lbl_txt_div">
+    <label for="returnPeriod" class="control-label rt_wizard_lbl">Return Period</label>
+    <select cordova-keyboard id="returnPeriod" name="returnPeriod" class="form-control rt_wizard_return_period" ng-required="true" ng-model="is4c.model.returnPolicy" ng-options="r.value as r.text for r in is4c.returns" ng-init="is4c.model.returnPolicy=0">
+    </select>
+  </div>
+
+  <!-- <hr class="spacer"/> -->
+    <!-- <div class="col-xs-7">
+<button class="btn btn-link" ng-click="is4c.back()"><i class="fa fa-arrow-left"></i> Back</button>
+    </div> -->
+    <div class="rt_wizard_btn_div">
+      <button class="btn rt_wizard_btn" ng-click="is4c.next()">NEXT</button>
+    </div>
+</form>
+</div>

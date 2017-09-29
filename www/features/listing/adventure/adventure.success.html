@@ -1,0 +1,31 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="AdventureSuccess" class="no-bottom-nav">
+    <p class="text-center text-primary">
+      <span class="fa-stack fa-4x">
+	<i class="fa fa-circle fa-stack-2x">
+	<i class="fa fa-thumbs-o-up fa-stack-1x fa-inverse"></i>
+      </span>
+    </p>
+    <p class="lead text-center"><b>Success!</b> Your adventure <span class="nowrap">has been listed!</span></p>
+    <hr/>
+    <div class="listing-preview well well-sm clearfix">
+      <div class="image" ng-style="{'background-image':'url(' + asc.model.images[0].url  + ')'}"></div>
+      <div class="name"><strong>Adventures</strong></div>
+      <div class="category small"><span ng-bind='asc.model.category.sub'></span>
+	<i class="fa fa-angle-right"></i><span ng-bind='asc.model.category.subsub'></span>
+      </div>
+      <div class="price small text-muted"><em>$<span ng-bind='asc.model.price'></span></em></div>
+    </div>
+    <hr class="spacer"/>
+    <button class="btn btn-primary btn-lg btn-block" ng-click='asc.newAdventure()'>List Another Adventure</button>
+    <hr class="spacer spacer-xs">
+    <div class="row tighter">
+      <div class="col-xs-6">
+	<button class="btn btn-info btn-sm btn-block" ng-click='asc.profile()'><i class="fa fa-user"></i> Go to Profile</button>
+      </div>
+      <div class="col-xs-6">
+	<button class="btn btn-info btn-sm btn-block" ng-click='asc.browse()'><i class="fa fa-th-large"></i> Browse Listings</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="bg_container">
+	<div class="first_section item_section">
+		<div class="first_content item_content boxItem">1</div>
+		<div class="second_content rt_content item_content boxItem" ng-class="{'active' : is5c.activeview == 5}">2</div>
+		<div class="third_content rt_content item_content boxItem" ng-class="{'active' : is5c.activeview == 5}">3</div>
+		<div class="fourth_content rt_content item_content boxItem" ng-class="{'active' : is5c.activeview == 5}">4</div>
+		<div class="fifth_content rt_content item_content boxItem" ng-class="{'active' : is5c.activeview == 5}">5</div>
+	</div>
+	<!-- <div class="stage_buttons first_stage_btn">
+		<a href="#">What are you selling?</a>
+	</div>
+	<div class="stage_buttons second_stage_btn">
+		<a href="#">Upload images of your item</a>
+	</div>
+	<div class="stage_buttons third_stage_btn">
+		<a href="#">Describe your item</a>
+	</div>
+	<div class="stage_buttons fourth_stage_btn">
+		<a href="#">Set price and other details</a>
+	</div>-->
+	<div class="stage_buttons fifth_stage_btn">
+		<a href="#">Choose Listing option</a>
+	</div>
+</div>
+
+
+<div id="ContentPane" class="container-fluid">
+<form id="ListingWizard" name="step5ItemListingForm" class="no-bottom-nav">
+	<!-- <div class="progress wizard-progress">
+		<div class="progress-bar progress-bar-success" role="progressbar" style="width: 100%">
+<em>5 of 5</em>
+		</div>
+	</div>
+	<p class="lead text-center">Choose listing options</p>
+	<hr/> -->
+	<div class="listing-preview well well-sm clearfix rt_wizard_step_4_title_div">
+		<div class="image" ng-style="{'background-image':'url(' + is5c.model.thumbnails[0].url  + ')'}"></div>
+		<div class="name rt_wizard_step_4_title"><strong ng-bind='is5c.model.title'></strong></div>
+		<div class="category rt_wizard_step_4_subtitle"><span ng-bind='is5c.model.category.main'></span>
+			<i class="fa fa-angle-right"></i> <span ng-bind='is5c.model.category.sub'></span>
+			<i class="fa fa-angle-right"></i> <span ng-bind='is5c.model.category.subsub'></span>
+		</div>
+	</div>
+	<div class="price rt_wizard_step_5_pricetitle"><em class="rt_wizard_step_5_pricetitle_value">$<span ng-bind='is5c.model.ourPrice|number:2'></span></em></div>
+	
+	<div class="panel panel-default">
+		<ul class="list-group rt_wizard_page5_list_div">
+			<li class="list-group-item small rt_wizard_page5_list">
+				<label>
+					<input type="checkbox" name="optionShowcaseListing" ng-model="is5c.model.options.showcase">
+					<strong class="rt_wizard_page5_list_lbl">Showcase Listing</strong>
+				</label>
+				<em class="text-muted rt_wizard_page5_list_lbl_em">+</em><em class="text-muted rt_wizard_page5_list_lbl_em" ng-bind="is5c.prices.showcase | currency:'$'"></em>
+				<div class="rt_wizard_page5_list_lbl_sub">Listing is randomly shown on the ReelTrail home page</div>
+			</li>
+
+			<li class="list-group-item small rt_wizard_page5_list">
+				<label>
+					<input type="checkbox" name="optionHighlight" ng-model="is5c.model.options.highlight">
+					<strong class="rt_wizard_page5_list_lbl">Highlight</strong>
+				</label>
+				<em class="text-muted rt_wizard_page5_list_lbl_em">+</em><em class="text-muted rt_wizard_page5_list_lbl_em" ng-bind="is5c.prices.highlight | currency:'$'"></em>
+				<div class="rt_wizard_page5_list_lbl_sub">Listing has highlighted color in lists</div>
+			</li>
+
+			<li class="list-group-item small rt_wizard_page5_list">
+				<label>
+					<input type="checkbox" name="optionBoldfaceTitle" ng-model="is5c.model.options.boldface">
+					<strong class="rt_wizard_page5_list_lbl">Boldface Title</strong>
+				</label>
+				<em class="text-muted rt_wizard_page5_list_lbl_em">+</em><em class="text-muted rt_wizard_page5_list_lbl_em" ng-bind="is5c.prices.boldface | currency:'$'"></em>
+				<div class="rt_wizard_page5_list_lbl_sub">Listing title is <strong>boldfaced</strong> in lists</div>
+			</li>
+
+			<li class="list-group-item small rt_wizard_page5_list">
+				<label>
+					<input type="checkbox" name="optionViewCounter" ng-model="is5c.model.options.viewCounter">
+					<strong class="rt_wizard_page5_list_lbl">View Counter</strong>
+				</label>
+				<em class="text-muted rt_wizard_page5_list_lbl_em">+</em><em class="text-muted rt_wizard_page5_list_lbl_em" ng-bind="is5c.prices.viewCounter|currency:'$'"></em>
+				<div class="rt_wizard_page5_list_lbl_sub">See how many times your listing has been viewed</div>
+			</li>
+		</ul>
+		<div class="panel-footer rt_wizard_checkbox_div">
+		<div class="checkbox rt_wizard_checkbox_div">
+			<label class="rt_wizard_checkbox"><input type="checkbox" id="agreeListingOptionsNoRefund" name="agreeListingOptionsNoRefund" ng-model="is5c.agreeListingOptionsNoRefund" /> I understand that Listing Options are non-refundable.</label>
+		</div>
+		</div>
+	</div>
+	<hr class="spacer"/>
+		<!-- <div class="col-xs-7">
+<button class="btn btn-link" ng-click="is5c.back()"><i class="fa fa-arrow-left"></i> Back</button>
+		</div> -->
+		<div class="rt_wizard_btn_div">
+			<button class="btn rt_wizard_btn" ng-click="is5c.list($event)">LIST</button>
+		</div>
+</form>
+</div>
+
+<!-- ng-disabled="is5c.agreeListingOptionsNoRefund===false" -->

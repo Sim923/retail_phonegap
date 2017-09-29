@@ -1,0 +1,23 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ProfileListings">
+    <div id="alerts-container"></div>
+    <div ng-show="psc.sales.length===0" class="alert small alert-info">You have no sales yet.</div>
+    <div class="listings-list list-group stretch" ng-hide="psc.sales.length===0">
+      <div class="listing-preview list-group-item" ng-repeat="item in psc.sales" md-swipe-left="psc.model.swipe.left(item)" md-swipe-right="psc.model.swipe.right(item)">
+	<div class="image" ng-style="{'background-image':'url(' + item.listingId.images[0].url  + ')'}"></div>
+	<div class="name"><strong><span ng-bind="item.listingId.title"></span></strong></div>
+        <div class="small">
+          Sold to:  <span data-ng-bind="item.soldToUserId.username"></span> on
+      	  <span data-ng-bind="item.soldDate | date:'MM/dd/yyyy - h:mma'"></span>
+          <div class="price small text-muted"><em><span data-ng-bind="(item.total * item.quantity * 0.01)|currency:'$'"></span></em></div>
+        </div>
+	<div class="pull-right" style="margin-top: -35px!important" ng-show="item.visible">
+	  <button class="btn btn-info btn-sm" ng-click="psc.goToListing(item.listingId)"><span class="glyphicon glyphicon-eye-open"></span></button>
+          <button class="btn btn-info btn-sm" ng-click="psc.goToFeedback(item._id)"><span class="glyphicon glyphicon-share-alt flipped-h" aria-hidden="true"></button>
+	  <button class="btn btn-info btn-sm" ng-click="psc.goToShipping(item._id)"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span></button>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+

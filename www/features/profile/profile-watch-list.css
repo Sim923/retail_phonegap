@@ -1,0 +1,68 @@
+.name.rt_watch_item_name strong{
+    color: #669900;;
+    font-size: 14px;
+}
+
+.category.small.rt_watch_item_name{
+    color: #062c3f;
+    font-size: 14px;
+}
+
+.price.small.text-muted.rt_watch_item_name{
+    color: #062c3f;
+    font-size: 14px; 
+    padding-top: 10px;
+    float: right;
+    font-family: sans-serif;
+}
+
+.rt_name_watch{
+    width: 100%;
+}
+.rt_name_watch .rt_firtst_contain{
+    width: 70%;
+    float: left;
+}
+.rt_name_watch .rt_second_contain{
+    width: 30%;
+    float: left;
+}
+hr.rt_watch_hr_tag{
+    width: 90%;
+    padding: 0px;
+    margin: auto;
+    border: 1px;
+}
+hr{
+    border:1;
+}
+.listings-list.list-group.stretch.rt_profile_watch{
+    background: transparent;
+}
+.wrapper.rt_unwatchlist_watch{
+    text-align: center;
+}
+
+.wrapper.rt_unwatchlist_watch span{
+    color: #fff;
+    text-align: center;
+}
+
+.quick-actions.rt_removewatch {
+    background-color: rgba(255, 206, 16, 0.69);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0 15px;
+}
+
+.alert{
+    color: #669803;
+}
+.rt_removewatch .rt_unwatchlist_watch span {
+    font-weight: bold;
+    font-size: 16px;
+}

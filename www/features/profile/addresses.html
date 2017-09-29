@@ -1,0 +1,35 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ProfileAddresses">
+    <div id="alerts-container"></div>
+    <div class="address-list list-group stretch rt_profile_watch">
+      <div class="address-item list-group-item rt_addresses" ng-repeat="address in pac.model.address" md-swipe-left="pac.model.swipe.left(address)" md-swipe-right="pac.model.swipe.right(address)">
+        <div class="recipient small text-muted rt_addresses_content">
+	        <!-- <div style="display: inline" bs-radio-group>
+            <input type="radio" name="radioAddresses" id="radioAddress1" ng-model='pac.model.primaryAddress._id' ng-value='address._id' ng-click="pac.model.setPrimary(address._id)">
+          </div> -->
+	        <span class="rt_label_common_color" ng-bind="address.contact"></span>
+        </div>
+        <div class="line-1 rt_address_addone">
+          <strong ng-bind="address.line1"></strong>
+        </div>
+        <div class="line-1 rt_address_addtwo">
+          <strong ng-bind="address.line2"></strong>
+        </div>
+        <div class="line-2 small rt_label_common_color"><span ng-bind="address.city"></span>, <span ng-bind="address.state"></span> <span ng-bind="address.zipCode"></span>
+          <span class="is-primary" ng-show='pac.model.primaryAddress._id==address._id'>&bull; <strong class="text-success">Primary</strong></span>
+        </div>
+        <div class="quick-actions rt_removewatch" ng-show="address.visible">
+          <div class="wrapper rt_unwatchlist_watch" ng-click='pac.model.remove(address)'>
+            <!-- <button type="button" class="btn btn-info btn-sm" title="Edit Address" ng-click='pac.model.edit(address)'>Edit</button> -->
+            <!-- <button type="button" class="btn btn-danger btn-sm" title="Delete Address" ng-click='pac.model.remove(address)'>Remove</button> -->
+            <span>REMOVE </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="spacer spacer-md">
+    <div class="rt_address_btn_div">
+        <button class="btn rt_success_button_profile rt_address_button" ng-click="pac.model.add()">Add Address</button>
+    </div>
+  </div>
+</div>

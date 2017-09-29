@@ -1,0 +1,48 @@
+<div id="ContentPane" class="container-fluid">
+  <div class="no-bottom-nav">
+  <div class="listing-preview clearfix rt_pfs_listing_preview">
+      <div class="image" ng-style="{'background-image':'url(' + pfsc.sale.listingId.images[0].url + ')'}"></div>
+      <div class="name rt_pfs_title"><a ui-sref="seller-storefront"><strong><span ng-bind="pfsc.sale.soldToUserId.username">Item Name</span></strong></a></div>
+      <div class="category small rt_pfs_subtitle" ng-bind="pfsc.sale.listingId.title"></div>
+      <div class="rt_pfs_listing_preview_right_img">
+        <img src="../../img/feedback_rt.png" alt="img">
+      </div>
+    </div>
+  <div id="GiveFeedback" class="no-bottom-nav rt_pfs_body_cont" ng-hide="pfsc.success || pfsc.hasSent()">
+    <p class="lead text-center rt_pfs_title_btn">How did it go?</p>
+    <!-- <hr/> -->
+    <div class="alert alert-warning" ng-show="pfsc.user._id==pfsc.sale.soldToUserId._id"><strong>Important:</strong> Make sure you receive the item first before you leave a review.</div>    
+    <form class="give-feedback">
+      <div class="form-group">
+	<label for="rating" class="control-label small rt_pfs_label">Rating</label>
+	<div class="text-muted rt_pfs_ratingstar_block">
+          <span star-rating='0' rating='pfsc.model.value' read-only="false" max-rating="5" click="pfsc.click1(param)" mouse-hover="pfsc.mouseHover1(param)" mouse-leave="pfsc.mouseLeave1(param)"></span><br>
+          <!-- <span data-ng-bind="pfsc.model.currentRating" class="ng-class:{ 'text-danger' : pfsc.model.currentRating==='Poor', 'text-warning' : pfsc.model.currentRating==='Below Average', 'text-muted' : pfsc.model.currentRating==='Average', 'text-info' : pfsc.model.currentRating==='Good', 'text-success' : pfsc.model.currentRating==='Excellent' };"></span>  -->
+	</div>
+      </div>
+      <div class="form-group">
+	<label for="comment" class="control-label small rt_pfs_label">Comment</label>
+	<textarea cordova-keyboard name="comment" class="form-control input-sm rt_pfs_textarea" rows="5" ng-model="pfsc.model.comment" cordova-keyboard placeholder="Enter your comment here"></textarea>
+      </div>
+      <div class="rt_pfs_send_feedback_button">
+        <button class="btn rt_pfs_sendfeedback_btn" ng-disabled="pfsc.disabled()" ng-click="pfsc.submit()">Send Feedback</button>&nbsp;<span ng-bind=""></span>
+      </div>
+    </form>
+  </div>
+  <!-- <div class="well" ng-show="pfsc.hasSent()">
+    <p>Sent to <span ng-style="{'background-image':'url({{fc.sender().profileImage}})'}" class="rt-profile-thumbnail img-circle"></span>
+      <span data-ng-bind="pfsc.sender().recipientId.username"></span> on <span data-ng-bind="pfsc.sender().datePosted | date:'MM/dd/yyyy - h:mma'"></span>:
+    </p>
+    <p star-rating="" rating="pfsc.sender().value" read-only="true" max-rating="5"></p>
+    <p>&ldquo;<span data-ng-bind="pfsc.sender().comment"></span>&rdquo;</p>
+  </div>
+  <div class="well" ng-show="pfsc.hasReceived()">
+    <p>Received from <span ng-style="{'background-image':'url({{fc.reciever().profileImage}})'}" class="rt-profile-thumbnail img-circle"></span>
+      <span data-ng-bind="pfsc.receiver().senderId.username"></span> on <span data-ng-bind="pfsc.receiver().datePosted | date:'MM/dd/yyyy - h:mma'">:</span>
+    </p>
+    <p star-rating="" rating="pfsc.receiver().value" read-only="true" max-rating="5"></p>
+    <p>&ldquo;<span data-ng-bind="pfsc.receiver().comment"></span>&rdquo;</p>
+  </div> -->
+  </div>
+</div>
+

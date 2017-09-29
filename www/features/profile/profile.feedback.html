@@ -1,0 +1,28 @@
+<div id="ContentPane" class="container-fluid">
+  <div id="ProfileFeedback">
+    <div ng-show="pfc.feedback.length===0" class="alert alert-info rt-alert row rt-admin-row">You have no feedback yet.</div>
+    <div class="feedback-list list-group" ng-hide="pfc.feedback.length===0">
+      <div ng-repeat="item in pfc.feedback" class="feedback-item list-group-item">
+	<a ui-sref="profile.feedback.submit({id:item._id, saleId:item.saleId._id})" class="wrapper">
+          <div class="user-image"></div>
+          <div class="rating">
+	    <b class="name" ng-bind="item.senderId.username"></b> &mdash;
+	    <span class="rating-stars text-info nowrap">
+	      <i class="fa fa-star"></i>
+	      <i ng-class="{'fa fa-star-o':item.value<2,'fa fa-star':item.value>1}"></i>
+	      <i ng-class="{'fa fa-star-o':item.value<3,'fa fa-star':item.value>2}"></i>
+	      <i ng-class="{'fa fa-star-o':item.value<4,'fa fa-star':item.value>3}"></i>
+	      <i ng-class="{'fa fa-star-o':item.value<5,'fa fa-star':item.value===5}"></i>
+	    </span>
+          </div>
+          <div class="item smaller text-muted">
+	    Buyer of <b ng-bind="item.saleId.listingId.title"></b>
+          </div>
+          <div class="comment small text-muted">
+	    <em ng-bind="item.comment"></em>
+          </div>
+	</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        },
+        "pushwoosh-cordova-plugin": {
+            "LOG_LEVEL": "DEBUG",
+            "IOS_FOREGROUND_ALERT_TYPE": "NONE",
+            "ANDROID_FOREGROUND_PUSH": "false",
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.reeltrail.rtappmobile"
+        }
+    }
+}

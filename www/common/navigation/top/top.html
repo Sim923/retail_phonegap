@@ -1,0 +1,298 @@
+<nav id="TopNav" class="navbar _rt_navbar-inverse navbar-fixed-top" ng-controller="top.controller as tc">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span class="navbar-brand" ng-if="$state.is('home')">        
+        BROWSE REELTRAIL
+      </span>
+      <span class="navbar-brand" ng-if="$state.is('profile')">        
+        PROFILE
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('home.category')">
+        ITEM LISTING
+      </span>
+      <span class="navbar-brand" ng-if="$state.is('search')">
+        SEARCH REELTRAIL
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('messaging')">
+        MESSAGES
+      </span>
+      
+      <span class="navbar-brand" ng-if="$state.is('profile.notifications')">
+        NOTIFICATIONS
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('profile.watches')">
+        WATCH LIST
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('profile.adventures')">
+        ADVENTURES
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('profile.purchased')">
+        PURCHASED
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('profile.sales')">
+        SOLD
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('profile.feedback')">
+        SEND FEEDBACK
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('profile.subscription.select')">
+        SELECT YOUR SELLING LEVEL
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('profile.subscription.payment')">
+        NEW SUBSCRIPTION
+      </span>
+      
+      <span class="navbar-brand" ng-if="$state.is('profile.subscription.success')">
+        NEW SUBSCRIPTION
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('profile.details')">
+        PROFILE DETAILS
+      </span>          
+
+      <span class="navbar-brand" ng-if="$state.is('profile.address')">
+        ADDRESSES
+      </span> 
+
+      <span class="navbar-brand" ng-if="$state.is('profile.items')">
+        ITEMS
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('home.item')">
+          ITEM DETAILS
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('home.cart')">
+          SHOPPING CART
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('home.cart.shipping')">
+          CHECKOUT
+      </span>
+      
+
+      <span class="navbar-brand" ng-if="$state.is('home.offer')">
+          ITEM OFFERS
+      </span>
+
+      
+      <span class="navbar-brand" ng-if="$state.is('checklist')">
+          BEFORE YOU CONTINUE
+      </span>
+      
+      
+
+      <span class="navbar-brand" ng-if="$state.is('profile.address.edit')">
+          NEW ADDRESS
+      </span>
+
+      <span class="navbar-brand" ng-if="$state.is('profile.seller-settings')">
+        FUNDING DESTINATION
+    </span>
+
+    <span class="navbar-brand" ng-if="$state.is('profile.about')">
+      ABOUT
+    </span>
+
+    <span class="navbar-brand" ng-if="$state.is('profile.payment-method')">
+      PAYMENTS METHODS
+    </span>
+
+    <span class="navbar-brand" ng-if="$state.is('profile.payment-method-edit')">
+      NEW PAYMENT METHODS
+    </span>
+
+    <span class="navbar-brand" ng-if="$state.is('profile.appsetting')">
+      APP SETTINGS
+    </span>
+
+    <span class="navbar-brand" ng-if="$state.is('login.recovery')">
+     FORGOT PASSWORD
+    </span>
+    
+    <span class="navbar-brand" ng-if="$state.is('login.recovery.check')">
+      FORGOT PASSWORD
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('login.recovery.new')">
+      FORGOT PASSWORD
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('login.recovery.success')">
+      FORGOT PASSWORD
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('sell-landing')">
+      SELL
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('item-wizard')">
+      New Item
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('item-wizard.step2')">
+      New Item
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('item-wizard.step3')">
+      New Item
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('item-wizard.step4')">
+      New Item
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('item-wizard.step5')">
+      New Item
+     </span>
+     
+     <span class="navbar-brand" ng-if="$state.is('adventure-wizard')">
+      New Adventure
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('adventure-wizard.step2')">
+      New Adventure
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('adventure-wizard.step3')">
+      New Adventure
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('adventure-wizard.step4')">
+      New Adventure
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('sold')">
+      SOLD
+     </span>
+
+     <span class="navbar-brand" ng-if="$state.is('storefront')">
+      STORE FRONT
+     </span>      
+      
+      
+
+
+    </div>
+    <p class="nav-icon nav-icon-back navbar-text navbar-left rt_back_icon">
+      <a href="" ng-class="{'ng-hide':$state.is('home')}" ng-click='tc.back()'><img src="icon/left_chevron.png" style="height: 15px;"></a>
+    </p>
+    <p class="nav-icon nav-icon-cart navbar-text navbar-right">
+      <a ui-sref="signup()" ng-if="$state.is('home')" class="rt_hader_cart_img">
+  <!-- <i class="fa fa-shopping-cart"></i> -->
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('home.category')" class="rt_hader_cart_img">
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('search')" class="rt_hader_cart_img">
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('profile.notifications')" class="rt_hader_cart_img">
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('profile.watches')" class="rt_hader_cart_img">
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('profile.adventures')" class="rt_hader_cart_img">
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('profile.purchased')" class="rt_hader_cart_img">
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('profile.sales')" class="rt_hader_cart_img">
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('profile.details')" class="rt_hader_cart_img">
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('profile.address')" class="rt_hader_cart_img">
+        <img src="icon/cart3.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a> 
+
+      <a ui-sref="home.cart()" ng-if="$state.is('profile.items')" class="rt_hader_cart_img">
+          <img src="icon/cart3.png" >
+          <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+        </a>
+
+        <a ui-sref="home.cart()" ng-if="$state.is('home.item')" class="rt_hader_cart_img">
+            <img src="icon/cart3.png" >
+            <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+        </a>
+
+        <a ui-sref="home.cart()" ng-if="$state.is('home.offer')" class="rt_hader_cart_img">
+            <img src="icon/cart3.png" >
+            <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+        </a>
+
+        <a ui-sref="home.cart()" ng-if="$state.is('checklist')" class="rt_hader_cart_img">
+            <img src="icon/cart3.png" >
+            <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+        </a>
+
+        <a ui-sref="home.cart()" ng-if="$state.is('profile.seller-settings')" class="rt_hader_cart_img">
+          <img src="icon/cart3.png" >
+          <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+        </a>
+
+        <a ui-sref="home.cart()" ng-if="$state.is('sell-landing')" class="rt_hader_cart_img">
+          <img src="icon/cart3.png" >
+          <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+        </a>
+
+        <a ng-if="$state.is('home.cart.shipping')" class="rt_hader_cart_img">
+            <i class="fa fa-times cart_close_icon" aria-hidden="true"></i>
+        </a>
+
+        <a ng-if="$state.is('home.about')" class="rt_hader_cart_img">
+          <i class="fa fa-times cart_close_icon" aria-hidden="true"></i>
+        </a>
+
+        <a ng-if="$state.is('home.cart')" class="rt_hader_cart_img">
+            <i class="fa fa-times cart_close_icon" aria-hidden="true"></i>
+        </a>
+
+        <a ng-if="$state.is('profile.address.edit')" class="rt_hader_cart_img">
+            <i class="fa fa-times cart_close_icon" aria-hidden="true"></i>
+        </a>
+
+      <a ui-sref="home.cart()" ng-if="$state.is('messaging')" class="rt_hader_cart_img">
+        <img src="icon/msg_setting_icon.png" >
+        <span ng-show="tc.data.cartCount > 0" class="badge" data-ng-bind="tc.data.cartCount"></span>
+      </a>
+
+      <a class="rt_hader_cart_img" ng-if="$state.is('profile')" >
+        <img src="icon/profile_edit_icon.png" >
+      </a>
+    </p>
+  </div>
+</nav>
+

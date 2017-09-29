@@ -1,0 +1,19 @@
+<!-- <hr/> -->
+<div class="tab-content">
+  <div class="tab-pane fade in active">
+    <div class="category-grid row tight">
+      <div class="category-grid-item category-all-adventures col-xs-6 col-sm-4">
+	<a ui-sref="home.category({type:'Adventure', all:true})" class="text-center">
+	  <div class="category-icon"></div>
+	  <strong class="category-name">All Adventures</strong>
+	</a>
+      </div>
+      <div ng-repeat="category in bc.tabs.data.adventures() | orderBy:'order'" class='category-grid-item category-{{category.link|lowercase}}-adventure col-xs-6 col-sm-4'>
+	<button type="button" class='text-center' ng-click='bc.goTo("Adventure", category, false)'>
+	  <div class="category-icon"></div>
+	  <strong class="category-name"><span ng-bind="category.name"></span></strong>
+	</button>
+      </div>
+    </div>
+  </div>
+</div>

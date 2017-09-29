@@ -1,0 +1,62 @@
+<div id="ContentPane" class="container-fluid">
+  <form id="Register" name="step3RegisterForm" class="no-bottom-nav">
+    <div class="progress wizard-progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" style="width: 100%">
+	<em>3 of 3</em>
+      </div>
+    </div>
+    <p class="lead text-center">Choose your login credentials</p>
+    <hr/>
+    <div class="form-group">
+      <label for="username" class="control-label small">Username</label>
+      <input id="username" name="username" autocomplete='off'  type="text" class="form-control input-sm" ng-required="true" ng-model="rs3c.model.username" ng-minlength="5" ng-maxlength="16" username-availability-validator="https://reeltrail.com/rtapi/v1/users/check/username">
+      <small class="help-block">This will be used to identify you along with your listings, purchases and other transactions.</small>
+      <div class="form-alert" ng-messages="step3RegisterForm.username.$error" ng-show="step3RegisterForm.username.$touched && step3RegisterForm.username.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Username required.</div>
+	<div ng-message='minlength' class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Username should be at least 5 characters in length.</div>
+	<div ng-message='maxlength' class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Username cannot be over 16 characters in length.</div>
+	<div ng-message="usernameLoading" class="smaller text-muted"><i class="fa fa-fw fa-spinner fa-pulse"></i> Checking availability&hellip;</div>
+	<div ng-message="usernameAvailable" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> The username is already in use.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="control-label small">Password</label>
+      <input id="password" name="password" type="password" class="form-control input-sm" ng-required="true" ng-model="rs3c.model.password" ng-minlength="5" ng-maxlength="16">
+      <small class="help-block">Use numbers and symbols to make it hard for anyone to guess. Don't share your passwords <span class="nowrap">with anyone else.</span></small>
+      <div class="form-alert" ng-messages="step3RegisterForm.password.$error" ng-show="step3RegisterForm.password.$touched && step3RegisterForm.password.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Password required.</div>
+	<div ng-message='minlength' class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Password should be at least 8 characters in length.</div>
+	<div ng-message='maxlength' class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Password cannot be over 24 characters in length.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword" class="control-label small">Confirm Password</label>
+      <input id="confirmPassword" name="confirmPassword" type="password" class="form-control input-sm" ng-required="true" ng-model="rs3c.model.confirmPassword" compare-to="rs3c.model.password">
+      <div class="form-alert" ng-messages="step3RegisterForm.confirmPassword.$error" ng-show="step3RegisterForm.confirmPassword.$touched && step3RegisterForm.confirmPassword.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Confirm Password required.</div>
+	<div ng-message="compareTo" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> Passwords do not match.</div>
+      </div>
+    </div>
+    <hr class="spacer spacer-sm"/>
+    <div class="form-group">
+      <div class="checkbox">
+	<label for="terms" class="small">
+	  <input id="terms" name="terms" type="checkbox" ng-required="true" ng-model="rs3c.model.agreedToTerms">
+	  I Agree to the <a href="" class="text-info"><b>Terms &amp; Conditions</b></a> of ReelTrail, LLC.
+	</label>
+      </div>
+      <div class="form-alert" ng-messages="step3RegisterForm.terms.$error" ng-show="step3RegisterForm.terms.$touched && step3RegisterForm.terms.$error">
+	<div ng-message="required" class="smaller text-danger"><i class="fa fa-fw fa-exclamation-triangle"></i> You must agree to the Terms &amp; Conditions.</div>
+      </div>
+    </div>
+    <hr class="spacer"/>
+    <div class="row tighter">
+      <div class="col-xs-7">
+	<button class="btn btn-link"><i class="fa fa-arrow-left" ng-click='back()'></i> Back</button>
+      </div>
+      <div class="col-xs-5">
+	<button class="btn btn-primary btn-block" ng-disabled="step3RegisterForm.$invalid" ng-click='rs3c.register()'>Register</button>
+      </div>
+    </div>
+  </form>
+</div>
